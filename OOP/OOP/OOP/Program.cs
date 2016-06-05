@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OOP
+﻿namespace OOP
 {
     class Program
     {
@@ -31,7 +25,8 @@ namespace OOP
             //Destructor.DestructorTester.DestructorTestMethod();
             //Destructor.AppExample.TestGC();
             //Anonymous_Method.AnonymousMethod.TestAnonymousMethod();
-            Anonymous_Method.AnonymousMethod.CheckingAnonymousMethodEvolution();
+            //Delegate.DelegateBasic.CheckingAnonymousMethodEvolution();
+            Delegate.DelegateBasic.PluginMethod();
         }
     }
 }

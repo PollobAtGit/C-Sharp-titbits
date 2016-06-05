@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Anonymous Method\AnonymousMethod.cs" />
+    <Compile Include="Delegate\DelegateBasic.cs" />
     <Compile Include="Collection\IComparable\Diary.cs" />
     <Compile Include="Collection\IEnum\HubIterator.cs" />
     <Compile Include="Constructor\PrivateConstructor.cs" />
@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
