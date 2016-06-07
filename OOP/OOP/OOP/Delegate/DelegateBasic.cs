@@ -19,7 +19,7 @@ namespace OOP.Delegate
             Console.WriteLine(message + "\n");
         }
 
-        internal static void CheckingAnonymousMethodEvolution()
+        internal static void CheckingAnonymousMethodEvolutionWithMultiCastDelegate()
         {
             //Creating a delegate instance
             PrintToConsole printDelegate = new PrintToConsole(PrintMessage);
@@ -102,15 +102,49 @@ namespace OOP.Delegate
             str = ConvertStringCase(str, Char.ToLower);
             Console.WriteLine("MODIFIED TO LOWER THROUGH DELEGATE: " + str);
 
-            CaseConversion caseConversionDelegate = Char.ToUpper;
+            CaseConversion caseConversionDelegate = new CaseConversion(Char.ToUpper);
+
+            //The above is similar to the following
+            //CaseConversion caseConversionDelegate = Char.ToUpper;
+
+            //Here we are adding other methods as Target of the delegate. So we are creating a multi-cast delegate
             caseConversionDelegate  += Char.ToLower;
 
             // Note that, Char.ToUpper has been added previously. So adding same method multiple times is allowed
             caseConversionDelegate += Char.ToUpper;
 
+            //Not sure what the below method does but the focus here is the usage of new.
+            //Delegates are immutable. So every-time to create a multi-cast delegate we use '+=' we don't add
+            //the new method to the existing delegate instance rather we create another delegate instance that
+            //contains the new method and eventually that instance's reference is being assigned to the old
+            //delegate variable
+            caseConversionDelegate += new CaseConversion(Char.ToLowerInvariant);
+
             TestDelegatePropertiesAndFeatures(caseConversionDelegate);
             Console.WriteLine();
+
+            //Note that: in this case simply one method is being plugged in into the invoker method which is similar to
+            //what has been done in the previous invocation for this method. In that case the whole delegate instance is
+            //being to the method
             TestDelegatePropertiesAndFeatures(Char.ToUpper);
+
+            //Now no method is being referenced by the delegate instance
+            caseConversionDelegate = null;
+            Console.WriteLine("\nSHOWING FEATURES AFTER DELEGATE INSTANCE IS BEING NULLIFIED\n");
+            TestDelegatePropertiesAndFeatures(caseConversionDelegate);
+
+            //+= works on null reference. Here before assignment delegate reference is null.
+            caseConversionDelegate += new CaseConversion(Char.ToUpper);
+            caseConversionDelegate += new CaseConversion(Char.ToLower);
+
+            Console.WriteLine("\nSHOWING FEATURES AFTER METHOD IS ASSIGNED TO DELEGATE INSTANCE\n");
+            TestDelegatePropertiesAndFeatures(caseConversionDelegate);
+
+            //Below deletion operation is similar to doing 'caseConversionDelegate -= Char.ToUpper;'
+            caseConversionDelegate -= new CaseConversion(Char.ToLower);
+
+            Console.WriteLine("\nSHOWING FEATURES AFTER METHOD IS DELETED (!) FROM DELEGATE INSTANCE\n");
+            TestDelegatePropertiesAndFeatures(caseConversionDelegate);
         }
 
         private static string ConvertStringCase(string strToConvert, CaseConversion csConversionMethod)
@@ -129,6 +163,9 @@ namespace OOP.Delegate
 
         private static void TestDelegatePropertiesAndFeatures(CaseConversion csConversionMethod)
         {
+            if (csConversionMethod == null)
+                return;
+
             Console.WriteLine();
 
             // Returns EMPTY for Char.ToUpper & Others because they are static methods.
