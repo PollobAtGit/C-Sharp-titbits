@@ -69,6 +69,64 @@ namespace OOP.Delegate
             cSharpVersionTwoPointTwo.Invoke(null);
         }
 
+        internal static void Method_X(char ch) { }
+        internal static void Method_Y(char ch) { }
+
+        private delegate void DelegateToCheckCompatibility_00(char ch);
+        private delegate void DelegateToCheckCompatibility_01(char ch);
+
+        internal static void CompatabilityOfDelegate()
+        {
+            DelegateToCheckCompatibility_00 delegate_00 = new DelegateToCheckCompatibility_00(Method_X);
+            DelegateToCheckCompatibility_00 delegate_01 = new DelegateToCheckCompatibility_00(Method_X);
+
+            //Delegate instances are considered equal if they have same instances
+            Console.WriteLine(delegate_00 == delegate_01);//TRUE
+
+            //Interestingly, following doesn't return true though for both delegate
+            //instance's referenced method signature is same
+            DelegateToCheckCompatibility_00 delegate_with_lambda_00 = new DelegateToCheckCompatibility_00((x) => { });
+            DelegateToCheckCompatibility_00 delegate_with_lambda_01 = new DelegateToCheckCompatibility_00((x) => { });
+
+            Console.WriteLine("RETURNED CONDITIONAL VALUE USING LAMBDA: "
+                + (delegate_with_lambda_00 == delegate_with_lambda_01));//FALSE
+
+            DelegateToCheckCompatibility_00 multicast_delegate_01 = new DelegateToCheckCompatibility_00(Method_X);
+            multicast_delegate_01 += new DelegateToCheckCompatibility_00(Method_Y);
+
+            //For multi-cast delegate the last method will be considered for checking equality.
+            //That's why in this case, return value is FALSE
+            Console.WriteLine(delegate_00 == multicast_delegate_01);//FALSE
+            Console.WriteLine(delegate_00 != multicast_delegate_01);//TRUE
+
+            //Console.WriteLine(delegate_00 > multicast_delegate_01);//THIS CONDITIONAL OPERATORS NOT DEFINED FOR DELEGATES
+            //Console.WriteLine(delegate_00 < multicast_delegate_01);//THIS CONDITIONAL OPERATORS NOT DEFINED FOR DELEGATES
+
+            //Delegate instance of same type can be assigned to another instance of same type
+            DelegateToCheckCompatibility_00 delegate_02 = multicast_delegate_01;
+
+            Console.WriteLine("\nDELEGATE METHODS ARE BELOW:\n");
+            foreach (System.Delegate delegateInstance in delegate_02.GetInvocationList())
+            {
+                Console.WriteLine(delegateInstance.Method);
+            }
+
+            //Following can't be done because type casting from one delegate type to another isn't possible
+            //even if delegate signature for both of the delegates are same
+            //DelegateToCheckCompatibility_01 delegate_03 = delegate_02;
+            //DelegateToCheckCompatibility_01 delegate_03 = (DelegateToCheckCompatibility_01) delegate_02;
+
+            //Following is sort of delegate casting. Note that, 'delegate_02' is of different delegate type
+            //Though new delegate instance isn't referencing the old methods anymore! (Research more on it!)
+            DelegateToCheckCompatibility_01 delegate_03 = new DelegateToCheckCompatibility_01(delegate_02);
+
+            Console.WriteLine("\nDELEGATE METHODS ARE BELOW:\n");
+            foreach (System.Delegate delegateInstance in delegate_03.GetInvocationList())
+            {
+                Console.WriteLine(delegateInstance.Method);
+            }
+        }
+
         public static void TestAnonymousMethod()
         {
             List<int> lstOfIntegrals = new List<int>() { 12, 56, 89, 1023, 100 };
@@ -89,7 +147,6 @@ namespace OOP.Delegate
         }
 
         private delegate char CaseConversion(char ch);
-
         public static void PluginMethod()
         {
             string str = "Delegate is Awesome";
@@ -108,7 +165,7 @@ namespace OOP.Delegate
             //CaseConversion caseConversionDelegate = Char.ToUpper;
 
             //Here we are adding other methods as Target of the delegate. So we are creating a multi-cast delegate
-            caseConversionDelegate  += Char.ToLower;
+            caseConversionDelegate += Char.ToLower;
 
             // Note that, Char.ToUpper has been added previously. So adding same method multiple times is allowed
             caseConversionDelegate += Char.ToUpper;
@@ -151,7 +208,7 @@ namespace OOP.Delegate
         {
             var strToConvertArray = strToConvert.ToCharArray();
 
-            for(int i = 0; i < strToConvertArray.Length; i++)
+            for (int i = 0; i < strToConvertArray.Length; i++)
             {
                 //Note the following invocation. Here method 'Char.ToUpper' or 'Char.ToLower'
                 //is being invoked through delegate that takes one parameter and returns another parameter
@@ -181,7 +238,7 @@ namespace OOP.Delegate
 
             //Following is showing all the subscribed methods to this delegate
             Console.WriteLine("\nSHOWING ALL METHODS THAT HAVE BEEN SUBSCRIBED TO THIS DELEGATE:\n");
-            foreach(System.Delegate del in methodsAttachedToThisDelegate)
+            foreach (System.Delegate del in methodsAttachedToThisDelegate)
             {
                 Console.WriteLine(del.Method);
             }

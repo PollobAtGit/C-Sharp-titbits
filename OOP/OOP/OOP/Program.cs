@@ -26,7 +26,8 @@
             //Destructor.AppExample.TestGC();
             //Anonymous_Method.AnonymousMethod.TestAnonymousMethod();
             //Delegate.DelegateBasic.CheckingAnonymousMethodEvolution();
-            Delegate.DelegateBasic.PluginMethod();
+            //Delegate.DelegateBasic.PluginMethod();
+            Delegate.DelegateBasic.CompatabilityOfDelegate();
         }
     }
 }
