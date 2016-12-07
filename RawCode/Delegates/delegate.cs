@@ -14,7 +14,14 @@ class Program
     {
         ObserverDelegate();
         TransformMethod();
+
+        Prnt(IWilltranformAsYouWant(10, x => x * x) == 100);
     }
+
+    //Plugging method into another method via delegate is useful when that function is used by some other language / framework type / construct that
+    //the developer wanna use. If that type / construct depends on a function that developer can provide with his custom implementation than the 
+    //construct can be used without re-writting the construct
+    public static int IWilltranformAsYouWant(int value, Transform func) => func(value);
 
     //Can't declare another member/TYPE with this name      
     //delegate void TransformMethod();
@@ -53,4 +60,6 @@ class Program
 
         anotherObserver();
     }
+
+    public static void Prnt(object msg) => Console.WriteLine(msg);
 }
