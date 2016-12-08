@@ -50,7 +50,7 @@ public class Program
         //var a = _isbn;
 
         //But this allowed even though ITakeProgramMethods isn't static (!). Delegates can't be static
-        ITakeProgramMethods iTakeProgramMethods = new ITakeProgramMethods(new Program().GetISBN); 
+        ITakeProgramMethods iTakeProgramMethods = new ITakeProgramMethods(new Program().GetISBN);
     }
 
     public void GetISBN() => Print(_isbn);
