@@ -27,6 +27,30 @@ class Program
         //Note that null is passed as argument. So a 'Null Reference Exception' is thrown which indicates delegate instances are reference types &
         //every method that replies on delegate instance must check for the instance's nullability
         Invoke(null);
+
+        Transform shifter = GetAnAwesomeDelegateToAShift3BitsToALeft();
+        Prnt(shifter(10) == 80);//TRUE
+
+        //WOW! JUST LIKE JS CLOSURE INVOCATION
+        Prnt(GetAnAwesomeDelegateToAShift3BitsToALeft()(9) == 72);//TRUE
+
+        Prnt(null);
+
+        //Advantage of this approach: this delegate can be invoked later 
+        GetAMultiCastDelegate()();
+    }
+
+    //There's usage of returning delegate
+    public static Transform GetAnAwesomeDelegateToAShift3BitsToALeft() => (x) => x << 3;
+
+    //This is more useful
+    public static Observers GetAMultiCastDelegate()
+    {
+        Observers observer = new Observers(() => Prnt("I have been returned wrapped inside a delegate & returned via delegate too"));
+        observer += MethodOne;
+        observer += MethodTwo;
+
+        return observer;
     }
 
     private static void ABitOfNestedClassAccessibilityChecking()
@@ -40,7 +64,7 @@ class Program
 
     private class InnerClass
     {
-        //This member is accessible only INSIDE this function, not even to the Outer level class (even though inner class can access private members of outer level class)
+        //This member is accessible only INSIDE this class, not even to the Outer level class (even though inner class can access private members of outer level class)
         private readonly int _count = 100;
 
         //This member is public so that makes it accessible to the outer class but through object reference
