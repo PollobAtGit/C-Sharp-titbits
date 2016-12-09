@@ -4,6 +4,33 @@ public class Program
 {
     public delegate int Transformer(int a);//Identifier 'a' must be defined
 
+
+    delegate void D1();
+    delegate void D2();
+
+    void Method1() { }
+    void Method2() { }
+
+    public void DelegateInstanceCompatability()
+    {
+        D1 dInstance = Method1;
+        
+        //This throws compilation error
+        //POI: One delegate instance isn't compatible with another delegate type
+        // even though they are instances of same delegate type (Compare the scenario with class instances) 
+        
+        //D2 dTwoInstance = dInstance;
+
+        //Compare the below scenario with delegate instance's compatible scenario
+        X xInstance = new X();
+        X xxInstance = new X();
+
+        X xSwapper = xInstance;
+
+        xInstance = xxInstance;
+        xxInstance = xSwapper;
+    }
+
     public static void Main()
     {
         //Delegate instance declared. Instance is null here
@@ -57,5 +84,7 @@ POI: Two delegate instances are considered same if
 # They have same Target
 # They have same Method
 # They have same invocation list (applicable for multicast delegate)
+
+Even if some delegate instance is considered SAME with another they aren't COMPATIBLE
 
 */
