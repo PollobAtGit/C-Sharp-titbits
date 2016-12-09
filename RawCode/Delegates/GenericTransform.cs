@@ -31,6 +31,34 @@ public class Program
         TransformByCube(decimalArray, cubeTransformer);
 
         DisplayDecimalArray(decimalArray);
+        Print(null);
+
+        //From seeing this code it's difficult to say whether 'Cube' is generic or non-generic
+        // If Cube were generic this code will always compile (given that the cube &
+        // Transformer declaration is proper). But if cube is strongly typed then it MIGHT not compile
+        // & that depends on type of Transformer & Cube's type 
+        Transformer<decimal> transformer = Cube;
+
+        GenericTransform(decimalArray, Cube);
+        GenericArrayDisplay(decimalArray);
+        Print(null);
+
+        GenericTransform(values, Square);
+        GenericArrayDisplay(values);
+        Print(null);
+
+        GenericFuncTransform(values, Square);
+        GenericArrayDisplay(values);
+        Print(null);
+
+        GenericFuncTransform(values, (x) => x / 2);
+        
+        //POI: (input [,...]) => .... this lambda format doen't necessarily means something has to be returned
+        // it depends on the delegate that's being accepted. In this example, Print(x) returns noting but displays x
+        // on the other hand in the invocation 'GenericFuncTransform(values, (x) => x / 2);' the second parameter
+        // returns 'x / 2' for every 'x'
+        ActionArrayDisplay<int>(values, (x) => Print(x));
+        Print(null);
     }
 
     //Why doesn't it work?
@@ -49,6 +77,26 @@ public class Program
         foreach(var elem in array)
         {
             Print(elem);
+        }
+    }
+
+    //This can take array of any type
+    //POI: This method makes 'DisplayDecimalArray' & 'DisplayArray' obsolete
+    //POI: Failed attempt to do this was by declaring 'object[]' as parameter but as int[]/decimal[]/double[] etc..
+    // can't be transformed into object[] (they aren't reference types)
+    public static void GenericArrayDisplay<T>(T[] array)
+    {
+        foreach(var elem in array)
+        {
+            Print(elem);
+        }
+    }
+
+    public static void ActionArrayDisplay<T>(T[] array, Action<T> action)
+    {
+        foreach(var elem in array)
+        {
+            action(elem);
         }
     }
 
@@ -72,6 +120,24 @@ public class Program
         {
             array[i] = t(array[i]);//Transformation
         }
+    }
+
+    //POI: This method made 'Transform' & 'TransformByCube' obsolete
+    // POI: Transform<T> has been declared here & that's possible because this method is generic (note '<T>')
+    public static void GenericTransform<T>(T[] array, Transformer<T> transform)
+    {
+        for(var i = 0; i < array.Length; i++)
+        {
+            array[i] = transform(array[i]);
+        }
+    }
+
+    //POI: First argument for 'Func' is input, second one is output
+    //POI: Becasue Func<T, T> is provided by .NET we don't need delegate 'Transformer' 
+    public static void GenericFuncTransform<T>(T[] array, Func<T, T> func)
+    {
+        for(var i = 0; i < array.Length; i++) 
+            array[i] = func(array[i]);
     }
 
     public static int Square(int a) => a * a;
