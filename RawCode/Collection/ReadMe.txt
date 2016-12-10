@@ -28,6 +28,7 @@
 # IEnumerator interface
 
 {code:C#}
+    //IDisposable is not implemented for IEnumerator but for IEnumerator<T>
     public interface IEnumerator
     {
         bool MoveNext();
@@ -47,3 +48,24 @@
         IEnumerator GetEnumerator();
     }
 {code}
+
+# Generic IEnumerator<T>
+
+{code:C#}
+    public interface IEnumerator<T> : IEnumerator, IDisposable
+    {
+        T Current { get; } //IEnumerator returns 'object' instead of T
+    }
+{code}
+
+# Generic IEnumerable<T>
+
+{code:C#}
+    //Both of IEnumerable<T> & IEnumerator<T> implements their non-generic version IEnumerable & IEnumerator
+    public interface IEnumerable<T> : IEnumerable
+    {
+        IEnumerator<T> GetEnumerator();
+    }
+{code}
+
+# Arrays implement IEnumerable<T>

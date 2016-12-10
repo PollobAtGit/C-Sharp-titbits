@@ -11,6 +11,9 @@ public class Program
 
         IEnumerator<char> enumerator = str.GetEnumerator();
 
+        //This will throw CE (CS0305) because exposed GetEnumerator is the generic version
+        //IEnumerator nonGenericEnumerator = str.GetEnumerator();
+
         while(enumerator.MoveNext())
         {
             Print<char>(enumerator.Current);
