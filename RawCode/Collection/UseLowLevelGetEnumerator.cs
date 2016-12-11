@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 public class Program
@@ -9,16 +10,19 @@ public class Program
 
         string str = "Greeting!";
 
-        IEnumerator<char> enumerator = str.GetEnumerator();
+        //POI: GetEnumerator for STRING doesn't return classic IEnumerator nor does it return generic IEnumerator<char> but CharEnumerator
+        // which is a class defined in System namespace NOT IN System.Collections.Generic namespace
+        // But as this CharEnumerator class implements BOTH of IEnumerator & IEnumerator<char>, both of the following statements are
+        // true along with the last one
 
-        //This will throw CE (CS0305) because exposed GetEnumerator is the generic version
-        //IEnumerator nonGenericEnumerator = str.GetEnumerator();
+        IEnumerator<char> genericEnumerator = str.GetEnumerator();//Generic version
+        IEnumerator nonGenericStringEnumerator = str.GetEnumerator();//Non-generic version
+        CharEnumerator strEnumerator = str.GetEnumerator();
 
-        while(enumerator.MoveNext())
+        while(strEnumerator.MoveNext())
         {
-            Print<char>(enumerator.Current);
+            Print<char>(strEnumerator.Current);
         }
-
 
         /********** ITERATING OVER A LINKED LIST OF X *******************/
 
@@ -90,6 +94,30 @@ public class Program
         {
             Print<string>(xQueueEnumerator.Current.Greeting);
         }
+
+
+        /********** ITERATING OVER A ARRAY *******************/
+
+        int[] array = new int[] { 0, 1, 2 };
+
+        //POI: Following will throw CE because arrays return classic (non-generic) version of IEnumerator 
+        //IEnumerator<int> intArrayEnumerator = array.GetEnumerator();        
+        
+        IEnumerator nonGenericIntArrayEnumerator = array.GetEnumerator();
+
+        Print<string>(null);
+        while(nonGenericIntArrayEnumerator.MoveNext())
+        {
+            Print(nonGenericIntArrayEnumerator.Current);
+        } 
+
+        /********** TYPE RETURNED BY GetEnumerator *******************/
+
+        //POI: All of the following returns generic IEnumerator<T>
+        Print<Type>(xLinkedList.GetEnumerator().GetType());//System.Collections.Generic.LinkedList`1+Enumerator[Program+X]
+        Print<Type>(xDic.GetEnumerator().GetType());//System.Collections.Generic.Dictionary`2+Enumerator[System.String,Program+X]
+        Print<Type>(xStack.GetEnumerator().GetType());//System.Collections.Generic.Stack`1+Enumerator[Program+X]
+        Print<Type>(xQueue.GetEnumerator().GetType());//System.Collections.Generic.Queue`1+Enumerator[Program+X]
 
     }
 

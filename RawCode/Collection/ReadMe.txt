@@ -69,3 +69,13 @@
 {code}
 
 # Arrays implement IEnumerable<T>
+
+# Declaration of CharEnumerator. This class is defined in System namespace NOT IN System.Collections.Generic
+
+{code:C#}
+    public sealed class CharEnumerator : IEnumerator, IEnumerator<char>, IDisposable, ICloneable
+    {
+        .....
+        .....
+    } 
+{code}
