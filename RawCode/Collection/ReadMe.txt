@@ -68,7 +68,9 @@
     }
 {code}
 
-# Arrays implement IEnumerable<T>
+# Arrays implement IEnumerable<T>. But documentation doesn't show that because it's done on run time & it's more
+    of a special knowledge of CLI. Source (search text: Starting with the .NET Framework 2.0) :
+    https://msdn.microsoft.com/en-us/library/system.array.aspx
 
 # Declaration of CharEnumerator. This class is defined in System namespace NOT IN System.Collections.Generic
 
