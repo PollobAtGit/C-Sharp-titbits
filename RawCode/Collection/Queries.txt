@@ -1,0 +1,8 @@
+
+# How does implementing IEnumerable, IEnumerable<T>, IEnumerator & IEnumerator<T> helps a consumer of collection
+to use collection initializer?
+
+# How does Collection<T> help to implement own collection?
+
+# What does the private class contains that is generated as a result of using yield in a method/property/indexer?
+    (Details explanation)
