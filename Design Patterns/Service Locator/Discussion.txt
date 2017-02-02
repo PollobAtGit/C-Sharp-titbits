@@ -1,0 +1,17 @@
+
+# How to define a interface with generic types?
+
+# In a class/interface following functions doesn't cause any conflict, they are properly overloaded:
+
+	object GetService(Type svcType);
+	TService GetService<TService>(Type svcType);
+
+	Cmwk: How does Generic plays a role here?
+
+# For Generics if Type constraint is specified as 'class' then that means the Type parameter can be
+	## Concrete Class
+	## Interface
+	## Delegate
+	## Array Type
+
+	Cmwk: When might someone need to use Delegate & Array Type as Type parameter?
