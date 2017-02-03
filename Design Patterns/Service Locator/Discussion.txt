@@ -22,3 +22,6 @@
 # What's the difference between "(TService)(new NotificationService())" & "new NotificationService() as TService" ?
 
 # What is Type ?
+	## An abstract class
+
+# Can extension methods be written for an interface?
