@@ -20,3 +20,5 @@
 	keyword 'public' isn't allowed at all which indicates the implementation's purpose is to be private.
 
 # What's the difference between "(TService)(new NotificationService())" & "new NotificationService() as TService" ?
+
+# What is Type ?
