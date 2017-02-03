@@ -19,7 +19,11 @@ namespace ServiceLocator
 
   public class ConcreteServiceLocator : IServiceLocator
   {
-    public object GetService(Type svcType) { throw new NotImplementedException("Generic alternative is available"); }
+    //Poi: Introducing 'IServiceLocator' before GetService() means the method is being implemented explicitly. 
+    //For explicit implementation 'public' keyword isn't valid
+    //Cmwk: What does it mean by explicit interface implementation & what's the purpose?
+    
+    object IServiceLocator.GetService(Type svcType) { throw new NotImplementedException("Generic alternative is available"); }
     public TService GetService<TService> () where TService : class
     { 
       if(typeof(TService) == typeof(INotificationService))

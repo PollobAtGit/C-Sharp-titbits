@@ -15,3 +15,8 @@
 	## Array Type
 
 	Cmwk: When might someone need to use Delegate & Array Type as Type parameter?
+
+# What is explicit interface implementation? What's the purpose? Note that in explicit interface implementation,
+	keyword 'public' isn't allowed at all which indicates the implementation's purpose is to be private.
+
+# What's the difference between "(TService)(new NotificationService())" & "new NotificationService() as TService" ?
