@@ -25,3 +25,5 @@
 	## An abstract class
 
 # Can extension methods be written for an interface?
+
+# Why weekly typed SL is flexible than strongly typed SL?

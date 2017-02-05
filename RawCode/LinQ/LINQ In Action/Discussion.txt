@@ -1,0 +1,17 @@
+
+# Every LINQ query operates on IEnumerable<T> & return IEnumerable<T>
+
+# Most (or ALL?) generic collections in .NET & array type implement IEnumerable<T> interface. So LINQ queries are applicable on .NET generic collections & arrays
+
+# How about non-generic collections such as HashTable, ArrayList?
+	## LINQ queries are also applicable on non-generic collections by the help of Cast<T>() LINQ functionality
+
+# How LINQ queries infer type? For example:
+	if an array is like: int[] array = new int[] { 1, 2 };
+	Then type need not to be specified in the following query: array.Where(number => (number % 2 == 0))
+	Though if type is specified than that's fine too such as: array.Where<int>(number => (number % 2 == 0))
+
+# What's the use case of 
+	## System.Collections.Generic.HashSet<T>?
+	## System.Collections.Generic.LinkedList<T> when we have System.Collections.Generic.List<T>?
+	## System.Collections.Generic.BindingList<T>
