@@ -4,14 +4,49 @@
 # Most (or ALL?) generic collections in .NET & array type implement IEnumerable<T> interface. So LINQ queries are applicable on .NET generic collections & arrays
 
 # How about non-generic collections such as HashTable, ArrayList?
-	## LINQ queries are also applicable on non-generic collections by the help of Cast<T>() LINQ functionality
+    ## LINQ queries are also applicable on non-generic collections by the help of Cast<T>() LINQ functionality
 
 # How LINQ queries infer type? For example:
-	if an array is like: int[] array = new int[] { 1, 2 };
-	Then type need not to be specified in the following query: array.Where(number => (number % 2 == 0))
-	Though if type is specified than that's fine too such as: array.Where<int>(number => (number % 2 == 0))
+    if an array is like: int[] array = new int[] { 1, 2 };
+    Then type need not to be specified in the following query: array.Where(number => (number % 2 == 0))
+    Though if type is specified than that's fine too such as: array.Where<int>(number => (number % 2 == 0))
 
-# What's the use case of 
-	## System.Collections.Generic.HashSet<T>?
-	## System.Collections.Generic.LinkedList<T> when we have System.Collections.Generic.List<T>?
-	## System.Collections.Generic.BindingList<T>
+# What's the use case of
+    ## System.Collections.Generic.HashSet<T>?
+    ## System.Collections.Generic.LinkedList<T> when we have System.Collections.Generic.List<T>?
+    ## System.Collections.Generic.BindingList<T>
+
+# C# provides following types of Dictionaries:
+    ## System.Collections.Generic.Dictionary<TKey, TValue>
+    ## System.Collections.Generic.SortedDictionary<TKey, TValue>
+    ## System.Collections.Generics.SortedList<TKey, TValue>
+
+# What is the use case of System.Collections.Generic.SortedList<TKey, TValue>?
+
+# All of the following dictionaries use struct KeyValuePair<TKey, TValue> to store the tuple
+    ## Dictionary<TKey, TValue>
+    ## SortedDictionary<TKey, TValue>
+    ## SortedList<TKey, TValue>
+
+# All of the following dictionary types implement 'IEnumerable<KeyValuePair<TKey, TValue>>':
+    ## Dictionary<TKey, TValue>
+    ## SortedDictionary<TKey, TValue>
+    ## SortedList<TKey, TValue>
+
+    That's why LINQ quering is also possible on C# Dictionary types
+
+# All LINQ functions are in static class 'Enumerable' of namespace 'System.Linq'
+
+# LINQ query 'Select' TRANSFORMS one type of collection to another type of collection. So if type is explicitly mentioned for the TYPE PARAMETER than
+    first parameter (TSource) is the SOURCE type & second (TResult) mentioned type is the TRANSFORMED type. Example:
+
+        var frenchNumbers = new Dictionary<int, string> { { 1, "un" }, { 2, "duex"} };
+        IEnumerable<string> oddNumbers = frenchNumbers
+            .Where<KeyValuePair<int, string>>(pair => (pair.Key % 2 != 0))
+                .Select<KeyValuePair<int, string>, string>(pair => pair.Value);
+
+# Is String in C# a collection?
+    ## YES
+        ## String is a collection & it implements IEnumerable<char>
+
+# LINQ functions operate on IEnumerable<T>. So LINQ functions can be used on ANY TYPE (custom class) that implements IEnumerable<T>
