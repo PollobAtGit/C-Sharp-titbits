@@ -50,3 +50,28 @@
         ## String is a collection & it implements IEnumerable<char>
 
 # LINQ functions operate on IEnumerable<T>. So LINQ functions can be used on ANY TYPE (custom class) that implements IEnumerable<T>
+
+# An object created as anonymous types are simply 'dynamic' object.
+
+# The following code block:
+
+    {code}
+        var selectedBooks = from book in books where book.Price > 100.23 select new { Title = book.Title, Price = book.Price };
+    {code}
+
+    is equivalent to (note that here 'selectedBooks' DT is 'IEnumerable<dynamic>'):
+
+    {code}
+        IEnumerable<dynamic> selectedBooks = from book in books where book.Price > 100.23 select new { Title = book.Title, Price = book.Price };
+    {code}
+
+# In case of using LINQ QUERY OPERATORS, 'OrderBy<TSource, TResult>(...)' & 'OrderByDescending<TSource, TResult>(...)' can be used AFTER or BEFORE of 'Select<TSource, TResult>(...)'
+    ## In fact most probably, Any LINQ QUERY OPERATORS that outputs 'TResult' can be used AFTER or BEFORE projection operator (Select<TSource, TResult>(...))
+
+# Anonymous types are really useful in terms of generating presentational data from domain sepcific data
+
+# To handle complex criteria using LINQ Query expression & LINQ Query operators a non-anonymous method can be defined & used in condition. It is
+    possible because ultimately these LINQ QUERY OPERATORS & EXPRESSION expects 'Func<....>' which is a delegate
+
+# Unless there is a tranformation required there is no necessity to use '...Select<TSource, TResult>(...)'. LINQ in this respect is not
+    similar to SQL SELECT, in which case SELECT is a must to project data.
