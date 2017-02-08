@@ -75,3 +75,30 @@
 
 # Unless there is a tranformation required there is no necessity to use '...Select<TSource, TResult>(...)'. LINQ in this respect is not
     similar to SQL SELECT, in which case SELECT is a must to project data.
+
+# LINQ Query expressions are converted into LINQ Query operators. For example: 'select' is converted into 'Select(TSource, TResult)(...)'
+
+# Can Anonymous objects be created using LINQ query operators?
+    ## YES. It can be created & as in this case anonymous object is just a dynamic object 'TResult' in '...Select<TSource, TResult>(...)'
+        will be 'dynamic' such as following:
+
+        {code}
+            IEnumerable<dynamic> resultSet = intArray.Select<int, dynamic>(nmbr => new { Value = nmbr });
+        {code}
+
+# Work on examples where 'TResult' in '...Select<TSource, TResult>(...)' is a class not a primite type or dynamic
+
+# A common use case for '...Select<TSource, TResult>(...)' can be to create presentational 'ViewModel'
+
+# Can 'TResult' in '...Select<TSource, TResult>(...)' be
+        ## Struct
+        ## Enumeration
+        ## Delegate
+
+    ?
+
+# C# interface can be inside class.
+
+# In C# is there any construct that is only allowed in namespace but not inside class?
+
+# Which can be some use cases for interface inside class, private/public?

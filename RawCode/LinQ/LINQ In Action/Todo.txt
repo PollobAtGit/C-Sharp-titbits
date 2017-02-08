@@ -1,0 +1,3 @@
+
+# Nice hack to get index of current element in 'where' LINQ QUERY EXPRESSION => http://stackoverflow.com/questions/3757814/is-there-a-linq-syntax-for-the-t-int-overloads-of-where-and-select
+
