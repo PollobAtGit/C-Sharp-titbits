@@ -138,3 +138,30 @@
     {code}
 
 # In other words, '...SelectMany<TSource, TResult>(...)' will convert 'IEnumerable<IEnumerable<T>>' into 'IEnumerable<T>'
+
+# Full signature of '...SelectMany<TSource, TResult>(...)':
+
+    {code}
+        public static IEnumerable<TResult> SelectMany<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, IEnumerable<TResult>> selector) { ... }
+    {code}
+
+# Similar to LINQ Where (signature below)
+
+    {code}
+        public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source, Func<TSource, int, bool> predicate)
+    {code}
+
+    SelectMany's overloads are not available in LINQ Query expression
+
+# Combination of '...SelectMany' & then '...Select' is equivalent to FLAT-MAP
+
+# LINQ '...Distinct<TSource>(this IEnumerable<TSource>)' will work on any list of custom object if that custom class
+    implements 'IEquatable<T>.Equals' (Note: That class might also need to override GetHashCode, not sure why)
+
+    {code}
+        public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source);
+    {code}
+
+    {code}
+        public override int GetHashCode() => 0; //Custom logic here
+    {code}
