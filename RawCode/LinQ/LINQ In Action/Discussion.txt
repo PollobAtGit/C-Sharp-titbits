@@ -101,4 +101,40 @@
 
 # In C# is there any construct that is only allowed in namespace but not inside class?
 
+# How a public/internal interface INSIDE a class might be extended by another class that's not a member of that class.
+
 # Which can be some use cases for interface inside class, private/public?
+
+# '...SelectMany<TSource, TResult>(...)' FLATTENS the list of list & returns a single list with all elements from both lists.
+
+# '...SelectMany<TSource, TResult>(...)' is used when there is a one to many relation between 'TSource' & 'TResult' Example:
+
+    {code}
+        public class Order { }
+        public class Cutomer { public IEnumerable<Order> Orders { get; set; } }
+
+        IEnumerable<Customer> customers = new List<Customer>
+        {
+            new Customer
+            {
+                Orders = new List<Order>
+                {
+                    new Order(),
+                    new Order()
+                }
+            },
+            new Customer
+            {
+                Orders = new List<Order>
+                {
+                    new Order(),
+                    new Order()
+                }
+            }
+        }
+
+        //At this level developer wants ALL the orders. So we use '...SelectMany<TSource, TResult>(...)' because it flattens the list of lists
+        IEnumerable<Order> orders = customers.SelectMany<Customer, Order>(cus => cus.Orders);
+    {code}
+
+# In other words, '...SelectMany<TSource, TResult>(...)' will convert 'IEnumerable<IEnumerable<T>>' into 'IEnumerable<T>'

@@ -1,3 +1,8 @@
 
 # Nice hack to get index of current element in 'where' LINQ QUERY EXPRESSION => http://stackoverflow.com/questions/3757814/is-there-a-linq-syntax-for-the-t-int-overloads-of-where-and-select
 
+# Work with '...SelectMany<TSource, TResult>(...)' overloads
+
+# Consider '...SelectMany<TSource, TResult>(...)' in respect of hierarchical relationship
+    ## http://blogs.interknowlogy.com/2008/10/10/use-linqs-selectmany-method-to-flatten-collections/
+    ## http://stackoverflow.com/questions/958949/difference-between-select-and-selectmany
