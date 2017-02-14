@@ -215,3 +215,23 @@
 # For Dictionary or IDictionary key is defined at the left side of generic type parameters & value is on the right
     side of the generic type parameter. LINQ extension method '.ToDictionary<TSource, TKey>' will return in that format that is
     'Dictionary<TKey, TValue>' or 'IDictionary<TKey, TValue>'. Note that TKey is the second type parameter in '.ToDictionary<TSource, TKey>'
+
+# None of IEnumerable<T>, IList<T> or ICollection<T> implements IDisposable<T> (Most probably none of the .NET collections)
+
+# Is there equivalent LINQ aggregate Query Expression operators?
+
+# From findings TILL NOW, there is no relation between LINQ extension method return type & specified generic typed parameter
+    'TSource' & 'TResult'. Example:
+    {code}
+        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector);
+        public static decimal Sum<TSource>(this IEnumerable<TSource> source, Func<TSource, decimal> selector);
+    {code}
+
+# Among the aggregate LINQ query operators, 'Min<TSource>(...)' & 'Max<TSource>(...)' has an overload that returns 'TSource'. So the
+    argument list can be EMPTY. But that's not true for '.Sum<TSource>(...)'
+    {code}
+        public static TSource Min<TSource>(this IEnumerable<TSource> source);
+        public static Int32 Sum<TSource>(this IEnumerable<TSource> source, Func<TSource, Int32> selector);
+    {code}
+
+# Why isn't there a parameterless overload for '.Sum<TSource>(...)' similar to '.Min<TSource>(...)' or '.Max<TSource>(...)'?

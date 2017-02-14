@@ -8,3 +8,7 @@
     ## http://stackoverflow.com/questions/958949/difference-between-select-and-selectmany
 
 # Try other overloaded version of '.ToDictionary<TSource, TKey>()'
+
+# Try Linq 'using' example from 'Linq In Action' Page: 144
+
+# Try extensive examples for Dictionary
