@@ -165,3 +165,53 @@
     {code}
         public override int GetHashCode() => 0; //Custom logic here
     {code}
+
+# Invoking conversion operator on IEnumerable<T> for LINQ will materialize the query. That is resultset will be stored in memory
+    immediately
+
+# As Query expressions are similar to Query operator to materialize the query immediately, '.ToList<TSource>' needs to be invoked
+    Example:
+    {code}
+        IEnumerable<Book> books = (from book in books where book.ISBN.Contains("F") select book).ToList<Book>();
+    {code}
+
+# For Query operator, using '.Select<TSource, TResult>()' is optional. It is needed only when mapping/conversion is required. BUT in case
+    of query expression, using 'select' is a MUST (otherwise, compilation error 'CS0742' will be thrown). So following is invalid:
+    {code}
+        IEnumerable<Book> filteredBooks = from book in books where book.ISBN.Contains("F");
+    {code}
+
+    Even though following is correct
+    {code}
+        IEnumerable<Book> filteredBooks = books.Where<Book>(book => book.ISBN.Contains("F"));
+    {code}
+
+    On the otherhand, both of the following is correct
+    {code}
+        IEnumerable<Book> filteredBooks = from book in books where book.ISBN.Contains("F") select book;
+        IEnumerable<Book> filteredBooksQueryOperator = books.Where<Book>(book => book.ISBN.Contains("F")).Select<Book, Book>(book => book);
+    {code}
+
+# IEnumerable<T> can consume T[] because C# array's implicitly implement IEnumerable<T> but T[] can't consume IEnumerable<T>
+    Example:
+    {code}
+
+        //Poi: Possible
+        IEnumerable<Book> books = new Book[]
+        {
+            new Book { ISBN = "123" },
+            new Book { ISBN = "FGT" },
+            new Book { ISBN = "DF" }
+        };
+
+        //Poi: INVALID!
+        Book[] bookArray = books;
+    {code}
+
+# Extension methods must be declared in a non-generic static class
+
+# Dictionary<TKey, TValue> is a IEnumerable<KeyValuePair<TKey, TValue>>
+
+# For Dictionary or IDictionary key is defined at the left side of generic type parameters & value is on the right
+    side of the generic type parameter. LINQ extension method '.ToDictionary<TSource, TKey>' will return in that format that is
+    'Dictionary<TKey, TValue>' or 'IDictionary<TKey, TValue>'. Note that TKey is the second type parameter in '.ToDictionary<TSource, TKey>'

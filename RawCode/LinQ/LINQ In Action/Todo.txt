@@ -6,3 +6,5 @@
 # Consider '...SelectMany<TSource, TResult>(...)' in respect of hierarchical relationship
     ## http://blogs.interknowlogy.com/2008/10/10/use-linqs-selectmany-method-to-flatten-collections/
     ## http://stackoverflow.com/questions/958949/difference-between-select-and-selectmany
+
+# Try other overloaded version of '.ToDictionary<TSource, TKey>()'
