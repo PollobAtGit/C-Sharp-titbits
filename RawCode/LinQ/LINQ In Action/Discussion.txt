@@ -235,3 +235,17 @@
     {code}
 
 # Why isn't there a parameterless overload for '.Sum<TSource>(...)' similar to '.Min<TSource>(...)' or '.Max<TSource>(...)'?
+
+# ThenBy<TSource, TKey>(...) or ThenByDescending<TSource, TKey>(...) will have impact on result set only if there are multiple values returned
+    by first Order By.
+
+# OrderBy<TSource, TKey>(...), OrderByDescending<TSource, TKey>(...), ThenBy<TSource, TKey>(...) & ThenByDescending<TSource, TKey>(...)
+    all returns IOrderedEnumerable<TSource> which implements IEnumerable<T> & IEnumerable
+
+    {code}
+        public interface IOrderedEnumerable<TElement> : IEnumerable<TElement>, IEnumerable
+        {
+            IEnumerator<TElement> GetEnumerator();
+            .....
+        }
+    {code}
