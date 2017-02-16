@@ -4,8 +4,8 @@ using System.Linq;
 
 namespace LinqingByOrder
 {
-      public class Book
-      {
+    public class Book
+    {
         public IEnumerable<Author> Authors { get; set; }
         public String Isbn { get; set; }
         public Decimal Price { get; set; }
@@ -15,7 +15,7 @@ namespace LinqingByOrder
         {
           return Title + " || ISBN => " + Isbn;
         }
-      }
+    }
 
     public class Author
     {
