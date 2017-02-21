@@ -47,6 +47,29 @@ namespace LinqPartitioningWithString
             IEnumerable<string> countriesWthLngthMrThanFvFrmBgnng = _countries.TakeWhile<string>(country => country.Length >=5);
             IEnumerable<string> cntrsWthLngthNtMrThanFvFrmBgnng = _countries.SkipWhile<string>(country => country.Length >=5);
 
+            Console.WriteLine("\nPAGING BELOW\n");
+
+            //Generally, this is the only parameter that is given
+            int page = 1;
+
+            pageSize = 3;
+            offset = (page - 1) * pageSize;
+
+            IEnumerable<string> listOfCountriesGivenPage = _countries.Skip<string>(offset).Take<string>(pageSize);
+            IterateOverSequence<string>(listOfCountriesGivenPage);
+
+            page = 2;
+            offset = (page - 1) * pageSize;
+            listOfCountriesGivenPage = _countries.Skip<string>(offset).Take<string>(pageSize);
+            IterateOverSequence<string>(listOfCountriesGivenPage);
+
+            page = 3;
+            offset = (page - 1) * pageSize;
+            listOfCountriesGivenPage = _countries.Skip<string>(offset).Take<string>(pageSize);
+            IterateOverSequence<string>(listOfCountriesGivenPage);
+
+            Console.WriteLine("\nPAGING DONE\n");
+
             IterateOverSequence<string>(firstThreeCountries);
             IterateOverSequence<string>(exceptFirstThreeCountries);
             IterateOverSequence<string>(firstFourCountriesWithQueryExp);
@@ -56,6 +79,7 @@ namespace LinqPartitioningWithString
             IterateOverSequence<string>(countriesWthLngthMrThanFv);
             IterateOverSequence<string>(countriesWthLngthMrThanFvFrmBgnng);
             IterateOverSequence<string>(cntrsWthLngthNtMrThanFvFrmBgnng);
+            IterateOverSequence<string>(listOfCountriesGivenPage);
         }
 
         private static void IterateOverSequence<T>(IEnumerable<T> source)
