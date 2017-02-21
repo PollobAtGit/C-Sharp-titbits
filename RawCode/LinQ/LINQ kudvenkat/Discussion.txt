@@ -18,3 +18,12 @@
     {code}
         public static IEnumerable<TResult> Cast<TResult>(this IEnumerable source);
     {code}
+
+# Cast<TResult>() tries (!) to CAST/CONVERT elements from sequence to of type TResult
+
+# OfType<TResult>() FILTERS elements of type 'TResult' from sequence
+
+# OfType<TResult> signature:
+    {code}
+        public static IEnumerable<TResult> OfType<TResult>(this IEnumerable source);
+    {code}

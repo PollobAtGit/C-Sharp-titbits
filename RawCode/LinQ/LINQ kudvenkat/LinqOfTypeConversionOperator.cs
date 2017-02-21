@@ -30,51 +30,46 @@ namespace LinqCastConversionOperator
 
         public static void Main()
         {
-            IEnumerable<int> intsFromArrayList = _objectArray.Cast<int>();
+            IEnumerable<int> intsFromArrayList = _objectArray.OfType<int>();
             IterateOverSequence<int>(intsFromArrayList);
 
             _objectArray.Add(8);
             _objectArray.Add("I AM STRING");
             _objectArray.Add(80);
 
-            //Poi: While iterating over sequence the conversion is being performed. That's why, 1, 2 & 3 is printed in console but not
-            //"I AM STRING" because while conversion it throws exception
+            //Poi: While iterating over sequence the filtering is being performed. That's why, 1, 2 & 3 is printed in console but not
+            //"I AM STRING". Actually it is being SKIPPED & later '80' is returned/printed in console
 
-            //Poi: Because Cast<TResult>(...) performs deferred execution '8' is printed in console
+            //Poi: Because OfType<TResult>(...) performs deferred execution '8' & '80' is printed in console
 
             IterateOverSequence<int>(intsFromArrayList);
 
-            //Poi: Normally Cast<TResult>() is used on non-generic collection. But it can be used on generic collections too. Because
+            //Poi: Normally OfType<TResult>() is used on non-generic collection. But it can be used on generic collections too. Because
             //generic collections implement 'IEnumerable' which all non-generic collections implement
 
-            IEnumerable<object> ints = _strArray.Cast<object>();
+            IEnumerable<object> ints = _strArray.OfType<object>();
             IterateOverSequence<object>(ints);
 
-            IEnumerable<Book> castToBookList = _books.Cast<Book>();
+            IEnumerable<Book> castToBookList = _books.OfType<Book>();
 
             //Poi: Overridden 'ToString()' will be invoked from here
             IterateOverSequence<Book>(castToBookList);
 
-            IEnumerable<IRepository> failedCastToRepositoryList = _books.Cast<IRepository>();
+            //Poi: This filtering will not result any data because all of the elements in sequence is of type IBook & but it has been asked
+            //to be converted into IRepository.
+
+            IEnumerable<IRepository> failedCastToRepositoryList = _books.OfType<IRepository>();
             IterateOverSequence<IRepository>(failedCastToRepositoryList);
         }
 
         private static void IterateOverSequence<T>(IEnumerable<T> source)
         {
-            Console.WriteLine();
+            if(!source.Any()) Console.WriteLine("Source Is Empty");
 
-            //Poi: Conversion is being done when 'IEnumerator<T> GetEnumerator()' is invoked. That's why 'foreach' has to be enclosed by
-            //'try...catch' which internally calls 'IEnumerator<T> GetEnumerator()'
-            try
+            Console.WriteLine();
+            foreach(T item in source)
             {
-                foreach(T item in source)
-                {
-                    Console.WriteLine(item);
-                }
-            }
-            catch(Exception)
-            {
-                Console.WriteLine("Conversion Failed For Some Value");
+                Console.WriteLine(item);
             }
         }
     }
