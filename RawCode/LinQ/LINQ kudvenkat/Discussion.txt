@@ -1,0 +1,10 @@
+
+# Some LINQ conversion operators
+    Cast
+    OfType
+    AsEnumerable
+    AsQueryable
+    ToDictionary
+    ToLookup
+    ToList
+    ToArray
