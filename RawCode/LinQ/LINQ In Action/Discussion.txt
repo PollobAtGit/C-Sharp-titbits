@@ -249,3 +249,11 @@
             .....
         }
     {code}
+
+# Linq executes in lazy way that is when the query is CREATED the operations aren't performed. So only compile time checking is available
+    for a Linq query when it is GENERATED. But if there's any chance for run time exception than that will be thrown when the query is
+    evaluated (when the values are being yield-ed)
+
+# To have access to generic linq extension methods it's enough to Cast<T>() the non-generic collection into a collection of object by
+    collection.Cast<object>(). Essentially it's same as not casting but this conversion will allow extension methods to be used on the
+    collection (casted from non-generic to generic but of object type).

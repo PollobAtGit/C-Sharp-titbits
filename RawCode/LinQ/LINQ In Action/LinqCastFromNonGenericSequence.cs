@@ -26,8 +26,8 @@ namespace LinqCastFromNonGenericSequence
             ListOfBooks = new ArrayList
             {
                 new Fiction { Title = "War & Peace" },
-                new Fiction { Title = "Catch-22" },
                 new NonFiction { Title = "Mao" },
+                new Fiction { Title = "Catch-22" },
                 new NonFiction { Title = "The Politics" }
             };
         }
@@ -45,29 +45,15 @@ namespace LinqCastFromNonGenericSequence
             IEnumerable<IBook> books = ListOfBooks.Cast<IBook>();
             books.IterateOverSequence<IBook>();
 
-            try
-            {
-                IEnumerable<Fiction> fictions = ListOfBooks.Cast<Fiction>();
+            IEnumerable<Fiction> fictions = ListOfBooks.Cast<Fiction>();
 
-                //Poi: LINQ operates on deferred execution. That is the above line DIDN'T cast the objects to 'Fiction' but
-                //during iteration (via foreach) below Cast<T> will be applied. So cast operation will fail than
+            //Poi: LINQ operates on deferred execution. That is the above line DIDN'T cast the objects to 'Fiction' but
+            //during iteration (via foreach) below Cast<T> will be applied. So cast operation will fail than
 
-                fictions.IterateOverSequence<Fiction>();
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            fictions.IterateOverSequence<Fiction>();
 
-            try
-            {
-                IEnumerable<NonFiction> nonFictions = ListOfBooks.Cast<NonFiction>();
-                nonFictions.IterateOverSequence<NonFiction>();
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            IEnumerable<NonFiction> nonFictions = ListOfBooks.Cast<NonFiction>();
+            //nonFictions.IterateOverSequence<NonFiction>();
 
             //Poi: On generic collection it's enough to Cast that to object to have access to IEnumerable<T> extension methods
             new ArrayList().IterateOverSequence();
@@ -77,12 +63,19 @@ namespace LinqCastFromNonGenericSequence
         {
             if(source == null || !source.Cast<object>().Any()) return;
 
-            Console.WriteLine();
-            foreach(object model in source)
+            try
             {
-                //Qry: Why is the proper name printed in console? Type is 'object' it should print the default ToString() value unless casted
-                //to proper TYPE
-                Console.WriteLine(model);
+                Console.WriteLine();
+                foreach(object model in source)
+                {
+                    //Qry: Why is the proper name printed in console? Type is 'object' it should print the default ToString() value unless casted
+                    //to proper TYPE
+                    Console.WriteLine(model);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -90,10 +83,17 @@ namespace LinqCastFromNonGenericSequence
         {
             if(source == null || !source.Any()) return;
 
-            Console.WriteLine();
-            foreach(TModel model in source)
+            try
             {
-                Console.WriteLine(model);
+                Console.WriteLine();
+                foreach(TModel model in source)
+                {
+                    Console.WriteLine(model);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
