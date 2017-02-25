@@ -36,6 +36,9 @@ namespace LinqDynamicQueryWithMutableVariable
             dotPublishers.IterateOverSequence<Publisher>();
 
             domainToSearchFor = ".com";
+
+            //Poi: dotPublishers has the same query but the only changed value is the variable value & based on that variable value
+            //query result is different
             dotPublishers.IterateOverSequence<Publisher>();
 
             domainToSearchFor = ".me";
@@ -68,18 +71,6 @@ namespace LinqDynamicQueryWithMutableVariable
             }
         }
 
-        private class Author
-        {
-            public String FirstName { get; set; }
-            public String LastName { get; set; }
-            public String WebSite { get; set; }
-
-            public override string ToString()
-            {
-                return FirstName + " " + LastName;
-            }
-        }
-
         private class Publisher
         {
             public String Name {get; set;}
@@ -89,25 +80,6 @@ namespace LinqDynamicQueryWithMutableVariable
             {
                 return Name;
             }
-        }
-
-        private interface IBook
-        {
-            string Title { get; set; }
-        }
-
-        private class Fiction : IBook
-        {
-            public string Title { get; set; }
-
-            public override string ToString() => Title;
-        }
-
-        private class NonFiction : IBook
-        {
-            public string Title { get; set; }
-
-            public override string ToString() => Title;
         }
     }
 }
