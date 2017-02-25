@@ -32,10 +32,28 @@ namespace LinqToTextFiles
                     });
 
             filteredLines.IterateOverSequence<Book>();
+            filteredLines.ForEach<Book>(book => Console.WriteLine(book));
+        }
+
+        private static void ForEach<T>(this IEnumerable<T> source, Action<T> func)
+        {
+            if(source == null) return;
+
+            Console.WriteLine();
+            try
+            {
+                foreach(T item in source)
+                    func(item);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private static void IterateOverSequence<T>(this IEnumerable<T> source)
         {
+            if(source == null) return;
             try
             {
                 Console.WriteLine();

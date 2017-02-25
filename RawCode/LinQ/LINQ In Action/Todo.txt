@@ -18,3 +18,5 @@
 # More practice on 'GroupBy' & 'SelectMany' with generic types specified
 
 # What is the non-generic version of Dictionary<TKey, TValue>, LookUp<TKey, TElement>?
+
+# Work with All variants of 'Func<>' & 'Action<>'
