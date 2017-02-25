@@ -40,7 +40,9 @@ namespace LinqDynamicQueryByLambda
 
             //Poi: Changing bound variable value changes the resultset
             webSiteToSearch = "https://";
-            filteredPublisherByWebSite.IterateOverSequence<Publisher>();
+
+            filteredPublisherByWebSite.SortBy(pub => pub.Name).IterateOverSequence<Publisher>();
+            filteredPublisherByWebSite.SortBy(predicate: pub => pub.WebSite, asc: false).IterateOverSequence<Publisher>();
         }
 
         private static void PopulatePublisherList()
@@ -72,6 +74,12 @@ namespace LinqDynamicQueryByLambda
         {
             if(source == null || predicate == null) return source;
             return source.Where<Publisher>(predicate);
+        }
+
+        private static IEnumerable<Publisher> SortBy(this IEnumerable<Publisher> source, Func<Publisher, string> predicate, bool asc = true)
+        {
+            if(source == null || predicate == null) return source;
+            return asc ? source.OrderBy<Publisher, string>(predicate) : source.OrderByDescending<Publisher, string>(predicate);
         }
 
         private class Publisher
