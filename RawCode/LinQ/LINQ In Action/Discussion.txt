@@ -257,3 +257,23 @@
 # To have access to generic linq extension methods it's enough to Cast<T>() the non-generic collection into a collection of object by
     collection.Cast<object>(). Essentially it's same as not casting but this conversion will allow extension methods to be used on the
     collection (casted from non-generic to generic but of object type).
+
+# Can a class contain public class? What is the usecase?
+
+# Property's setter type & getter type has to be same. Consider the following example which doesn't compile:
+    {code}
+        private static string _domain;
+        private static IEnumerable<Publisher> Prop
+        {
+            get
+            {
+                return Publishers
+                        .OfType<Publisher>()
+                        .Where<Publisher>(publisher => publisher.WebSite.Contains(_domain));
+            }
+            set
+            {
+                _domain = value;
+            }
+        }
+    {code}
