@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace LinqQuerySourcePopulatedLater
+namespace LinqDynamicQueryByLambda
 {
     internal static class Client
     {
@@ -15,19 +15,32 @@ namespace LinqQuerySourcePopulatedLater
 
         public static void Main()
         {
-            IEnumerable<Publisher> filteredPublisherByName = _publishers.ByName("Publisher");
-            IEnumerable<Publisher> filteredPublisherByWebSite = _publishers.ByWebSite("http://");
-            IEnumerable<Publisher> filteredPublisherByWebSiteAndName = filteredPublisherByName.ByWebSite("https://");
+            string nameToSearch = "Publisher";
+            string webSiteToSearch = "http://";
 
-            filteredPublisherByName.IterateOverSequence<Publisher>();
-            filteredPublisherByWebSite.IterateOverSequence<Publisher>();
-            filteredPublisherByWebSiteAndName.IterateOverSequence<Publisher>();
+            Func<Publisher, bool> predicateForNameSearch = pub => pub.Name.Contains(nameToSearch);
+            Func<Publisher, bool> predicateForWebSiteSearch = pub => pub.WebSite.Contains(webSiteToSearch);
+
+            IEnumerable<Publisher> filteredPublisherByName = _publishers.SearchBy(predicateForNameSearch);
+            IEnumerable<Publisher> filteredPublisherByWebSite = _publishers.SearchBy(predicateForWebSiteSearch);
+
+            IEnumerable<Publisher> filteredPublisherByWebSiteAndName = filteredPublisherByName
+                                                                        .SearchBy(pub => pub.WebSite.Contains("https://"));
 
             PopulatePublisherList();
 
             filteredPublisherByName.IterateOverSequence<Publisher>();
             filteredPublisherByWebSite.IterateOverSequence<Publisher>();
             filteredPublisherByWebSiteAndName.IterateOverSequence<Publisher>();
+
+            nameToSearch = "Fun";
+
+            //Poi: Changing bound variable value changes the resultset
+            filteredPublisherByName.IterateOverSequence<Publisher>();
+
+            //Poi: Changing bound variable value changes the resultset
+            webSiteToSearch = "https://";
+            filteredPublisherByWebSite.IterateOverSequence<Publisher>();
         }
 
         private static void PopulatePublisherList()
@@ -55,16 +68,10 @@ namespace LinqQuerySourcePopulatedLater
             }
         }
 
-        private static IEnumerable<Publisher> ByName(this IEnumerable<Publisher> source, string nameToSearch = null)
+        private static IEnumerable<Publisher> SearchBy(this IEnumerable<Publisher> source, Func<Publisher, bool> predicate)
         {
-            if(source == null || nameToSearch == null) return source;
-            return source.Where<Publisher>(publisher => publisher.Name.Contains(nameToSearch));
-        }
-
-        private static IEnumerable<Publisher> ByWebSite(this IEnumerable<Publisher> source, string webSiteToSearch = null)
-        {
-            if(source == null || webSiteToSearch == null) return source;
-            return source.Where<Publisher>(publisher => publisher.WebSite.Contains(webSiteToSearch));
+            if(source == null || predicate == null) return source;
+            return source.Where<Publisher>(predicate);
         }
 
         private class Publisher
