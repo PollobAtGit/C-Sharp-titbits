@@ -13,9 +13,9 @@ namespace DbFirstApproach
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DbEntitiesContext : DbContext
+    public partial class DbEntities : DbContext
     {
-        public DbEntitiesContext()
+        public DbEntities()
             : base("name=DbEntities")
         {
         }
