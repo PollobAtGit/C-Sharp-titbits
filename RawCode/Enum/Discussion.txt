@@ -1,0 +1,4 @@
+
+# Enum is defined in System namespace
+
+# Enum is an abstract class but not static
