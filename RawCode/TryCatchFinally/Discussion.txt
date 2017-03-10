@@ -1,0 +1,11 @@
+
+# finally & return statement BOTH will be executed in the following scenario:
+    {code}
+        try { throw new NotImplementedException(); }
+        catch(Exception)
+        {
+            // ..... Handle exception
+            return false;
+        }
+        finally { //Release shared resources }
+    {code}
