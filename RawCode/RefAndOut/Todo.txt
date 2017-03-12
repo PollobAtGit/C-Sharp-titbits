@@ -1,0 +1,4 @@
+
+# Find use-case for ref & out
+
+# Try ref & out examples with custom object / delegate / enum
