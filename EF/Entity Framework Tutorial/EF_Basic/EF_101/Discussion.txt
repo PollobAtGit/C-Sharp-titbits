@@ -1,0 +1,12 @@
+﻿
+# VS Navigate takes developer to public interface of the class not to the private parts & in this case it doesn't show
+	any explicitly implemented interface member
+
+# Get ObjectContext from DbContext derived class
+	{code:c#}
+		ObjectContext objCtx = (new DbContext() as IObjectContextAdapter).ObjectContext
+	{code}
+                
+# IObjectContextAdapter resides in System.Data.Entity.Infrastructure
+
+# ObjectContext resides in System.Data.Entity.Core.Objects
