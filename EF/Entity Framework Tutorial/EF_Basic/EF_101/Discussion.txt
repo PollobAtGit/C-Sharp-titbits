@@ -10,3 +10,27 @@
 # IObjectContextAdapter resides in System.Data.Entity.Infrastructure
 
 # ObjectContext resides in System.Data.Entity.Core.Objects
+
+# Nullable is struct
+
+# POCO (Plain Old CLR Object) are also known as persistence-ignorant-objects
+
+# DynamicProxy AKA POCO Proxy is a RUNTIME class for POCO entity. It's more like a wrapper for a POCO entity
+
+# Advantages of POCO entity:
+	## Allows lazy loading
+	## Automatic change tracking
+
+# Dynamic Proxy AKA POCO proxy needs to be declared explicitly rather if a POCO class adheres to some requirements than
+	it will be considered as POCO proxy
+
+# Requirements to be fulfilled to be POCO proxy
+	## ACCESSOR: A POCO class must be declared with public accessor
+	## A POCO class MUST NOT be sealed or abstract (may be because RUMTIME, CLR will manipulate the class to create new objects)
+	## NAVIGATION: Each navigation property MUST be declared as public & virtual
+	## Each collection MUST be ICollection<T> (Qry: Is it strict? What about IList<T> which inherits ICollection<T>)
+	## ProxyCreationEnabled MUST NOT be set to false
+
+# ProxyCreationEnabled can be accessed by DbContext.Configuration.ProxyCreationEnabled
+
+# DbContext.Configuration returns DbContextConfiguration

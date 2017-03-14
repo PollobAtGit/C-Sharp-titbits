@@ -14,13 +14,25 @@ using EF_101.EDM;
 
     namespace EF_101
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        internal static void Main(string[] args)
         {
             using (SchoolDBEntities ctx = new SchoolDBEntities())
             {
-                ObjectContext objCtx = (ctx as IObjectContextAdapter).ObjectContext
+                //ObjectContext objCtx = (ctx as IObjectContextAdapter).ObjectContext;
+                Student proxyStudent = ctx.Students.FirstOrDefault<Student>();
+
+                Console.WriteLine(proxyStudent.StudentName);
+
+                //Poi: Following will return 'System.Data.Entity.DynamicProxies.Student.....'
+                //Poi: The instance Type is Student still GetType() returns DynamicProxy. Which shows another
+                //derived type of Student has been created. That's Student type can hold it also GetType() returns the
+                //injected (DynamicProxies.Student) Type
+                Console.WriteLine(proxyStudent.GetType());
+
+                Type originalStudentType = ObjectContext.GetObjectType(proxyStudent.GetType());
+                Console.WriteLine(originalStudentType);
             }
         }
     }
