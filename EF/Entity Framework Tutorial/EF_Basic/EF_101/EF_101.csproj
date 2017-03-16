@@ -51,72 +51,137 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EDM\Course.cs">
+    <Compile Include="EDM\DBFirstApproach\Course.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDM\GetCoursesByStudentId_Result.cs">
+    <Compile Include="EDM\DBFirstApproach\GetCoursesByStudentId_Result.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDM\SchoolDB.Context.cs">
+    <Compile Include="EDM\DBFirstApproach\SchoolDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDM\SchoolDB.cs">
+    <Compile Include="EDM\DBFirstApproach\SchoolDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDM\SchoolDB.Designer.cs">
+    <Compile Include="EDM\DBFirstApproach\SchoolDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SchoolDB.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EDM\Standard.cs">
+    <Compile Include="EDM\DBFirstApproach\Standard.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDM\Student.cs">
+    <Compile Include="EDM\DBFirstApproach\Student.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDM\StudentAddress.cs">
+    <Compile Include="EDM\DBFirstApproach\StudentAddress.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDM\Teacher.cs">
+    <Compile Include="EDM\DBFirstApproach\Teacher.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="EDM\View_StudentCourse.cs">
+    <Compile Include="EDM\DBFirstApproach\View_StudentCourse.cs">
       <DependentUpon>SchoolDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ModelFirstApproach\Course.cs">
+      <DependentUpon>SchoolDbContextModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst-LetsSeeWhatHappens.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDbContextModelFirst-LetsSeeWhatHappens.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst-LetsSeeWhatHappens.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDbContextModelFirst-LetsSeeWhatHappens.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDbContextModelFirst.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDbContextModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDbContextModelFirst.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ModelFirstApproach\Student.cs">
+      <DependentUpon>SchoolDbContextModelFirst.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ModelFirstApproach\Teacher.cs">
+      <DependentUpon>SchoolDbContextModelFirst.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="EDM\SchoolDB.edmx">
+    <EntityDeploy Include="EDM\DBFirstApproach\SchoolDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>SchoolDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="EDM\SchoolDB.edmx.diagram">
+    <None Include="EDM\DBFirstApproach\SchoolDB.edmx.diagram">
       <DependentUpon>SchoolDB.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SchoolDbContextModelFirst.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst.edmx.diagram">
+      <DependentUpon>SchoolDbContextModelFirst.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DiscussionDiagrams\CodeFirst.png" />
     <Content Include="Discussion.txt" />
-    <Content Include="EDM\SchoolDB.Context.tt">
+    <Content Include="EDM\DBFirstApproach\SchoolDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SchoolDB.edmx</DependentUpon>
       <LastGenOutput>SchoolDB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="EDM\SchoolDB.tt">
+    <Content Include="EDM\DBFirstApproach\SchoolDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SchoolDB.edmx</DependentUpon>
       <LastGenOutput>SchoolDB.cs</LastGenOutput>
+    </Content>
+    <Content Include="DiscussionDiagrams\EntityStateChange.PNG" />
+    <Content Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst-LetsSeeWhatHappens.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SchoolDbContextModelFirst-LetsSeeWhatHappens.Context.cs</LastGenOutput>
+      <DependentUpon>SchoolDbContextModelFirst.edmx</DependentUpon>
+    </Content>
+    <Content Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst-LetsSeeWhatHappens.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SchoolDbContextModelFirst-LetsSeeWhatHappens.cs</LastGenOutput>
+      <DependentUpon>SchoolDbContextModelFirst.edmx</DependentUpon>
+    </Content>
+    <Content Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SchoolDbContextModelFirst.Context.cs</LastGenOutput>
+      <DependentUpon>SchoolDbContextModelFirst.edmx</DependentUpon>
+    </Content>
+    <Content Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst.edmx.sql" />
+    <Content Include="EDM\ModelFirstApproach\SchoolDbContextModelFirst.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>SchoolDbContextModelFirst.cs</LastGenOutput>
+      <DependentUpon>SchoolDbContextModelFirst.edmx</DependentUpon>
     </Content>
     <Content Include="Todo.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

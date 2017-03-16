@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EF_101.EDM
+namespace EF_101.EDM.DBFirstApproach
 {
     using System;
     using System.Data.Entity;

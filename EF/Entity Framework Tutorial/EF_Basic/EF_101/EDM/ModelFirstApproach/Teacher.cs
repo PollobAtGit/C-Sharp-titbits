@@ -7,26 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EF_101.EDM
+namespace EF_101.EDM.ModelFirstApproach
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Teacher
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public Teacher()
         {
             this.Courses = new HashSet<Course>();
         }
     
-        public int StudentID { get; set; }
-        public string StudentName { get; set; }
-        public Nullable<int> StandardId { get; set; }
-        public byte[] RowVersion { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     
-        public virtual Standard Standard { get; set; }
-        public virtual StudentAddress StudentAddress { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Course> Courses { get; set; }
     }

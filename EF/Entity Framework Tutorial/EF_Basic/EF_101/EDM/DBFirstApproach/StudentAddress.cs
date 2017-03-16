@@ -7,14 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EF_101.EDM
+namespace EF_101.EDM.DBFirstApproach
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetCoursesByStudentId_Result
+    public partial class StudentAddress
     {
-        public Nullable<int> courseid { get; set; }
-        public string coursename { get; set; }
-        public Nullable<int> TeacherId { get; set; }
+        public int StudentID { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+    
+        public virtual Student Student { get; set; }
     }
 }

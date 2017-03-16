@@ -34,3 +34,42 @@
 # ProxyCreationEnabled can be accessed by DbContext.Configuration.ProxyCreationEnabled
 
 # DbContext.Configuration returns DbContextConfiguration
+
+# Scalar property in a POCO object is the property whose actual values are contained in the entity
+
+# Navigation property in a POCO object is a reference to any related POCO entity
+
+# In case of one to one relationship both entities hold a navigation property to another property
+	## In case of SchoolDB context, Student entity has a navigation property to StudentAddress
+	## Also StudentAddress has a NAVIGATION PROPERTY to Student. Note that, StudentAddress also contains StudentId
+	## So an Entity consists of two sets of data 1) A replica of original table 2) Navigation property
+	## Note that from Db table's point of view Student table has no reference to StudentAddress table but StudentAddress table
+		has reference to Student table by StudentId. So VS handles generating navigation property for the entities
+
+# In case of one to many relationship, one entity (which has MANY entities of other type) will contain a navigation property
+	which is a collection (ICollection<T>) to another entity. The other entity will contain a navigation property that refers
+	to the other entity which is a single object not a collection.
+		## As an example consider the relation between Course & Teacher. From Teacher to Course the relationship is one to many
+		So Teacher contains a navigation property which is a ICollection<T> of courses
+		## Course on the other hand has a navigation property which refers to Teacher & that property is not a collection. Also
+		Course contains a TeacherId
+
+# In case of many to many relationship both of the entities contain a navigation property to the other entity & both
+	of the navigation properties are ICollection<T>
+
+# There are five Entity States defined in enum System.Data.Entity.EntityState. They are:
+	## Added
+	## Deleted
+	## Modified
+	## Unchanged
+	## Detached
+
+# Change tracking: EF not only holds all retrieved entity from DB but also their change state (EntityState defined by
+	System.Data.Entity.EntityState).
+
+# State change from Unchanged to Modified is the only one that EF handles. Other states are needs to be EXPLICITLY
+	mentioned using DbContext's proper method.
+
+# If an entity has a navigation property that isn't a collection than that entity's primary key / id will
+	automatically be added as that entity's scalar property. The same is not true if the navigation 
+	property is a collection

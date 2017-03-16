@@ -10,9 +10,9 @@ using System.Data.Entity.Infrastructure;
 //Poi: ObjectContext resides in this namespace (System.Data.Entity.Core.Objects)
 using System.Data.Entity.Core.Objects;
 
-using EF_101.EDM;
+using EF_101.EDM.DBFirstApproach;
 
-    namespace EF_101
+namespace EF_101
 {
     internal static class Program
     {
