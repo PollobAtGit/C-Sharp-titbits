@@ -1,0 +1,2 @@
+﻿
+# Implement repository pattern in WebForm. Reference: http://www.primaryobjects.com/2009/08/13/implementing-the-repository-design-pattern-in-c-asp-net/
