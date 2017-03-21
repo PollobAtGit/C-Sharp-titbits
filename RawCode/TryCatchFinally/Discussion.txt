@@ -9,3 +9,6 @@
         }
         finally { //Release shared resources }
     {code}
+
+# The above scenario is applicable even if 'try' contained a 'return' statement. In that case too, first the
+    finally would have been executed than the return statement
