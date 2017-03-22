@@ -11,7 +11,7 @@ namespace Ado_101
 
         static Client()
         {
-            _Connection = new SqlConnection("Data Source=;Initial Catalog=;Integrated Security=SSPI");
+            _Connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=SchoolDB;Integrated Security=SSPI");
             _Command = new SqlCommand
             {
                 Connection = _Connection
@@ -22,7 +22,7 @@ namespace Ado_101
         {
             foreach(Student student in GetAllStudents())
             {
-                // Console.Write(student.StudentId + "\t" + student.StudentName + "\t" + student.StandardId);
+                Console.Write(student.StudentId + "\t" + student.StudentName + "\t" + student.StandardId);
                 Console.WriteLine();
             }
         }
@@ -32,14 +32,8 @@ namespace Ado_101
             try
             {
                 _Command.CommandText = @"SELECT * FROM [dbo].[Student]";
-
                 _Connection.Open();
-
-                IList<Student> stnds = _Command.ExecuteReader().ToStudents();
-
-                Console.WriteLine(stnds.Count);
-
-                return stnds;
+                return _Command.ExecuteReader().ToStudents();
             }
             catch(Exception) { return null; }
             finally
@@ -53,8 +47,6 @@ namespace Ado_101
             public int StudentId;
             public string StudentName;
             public string StandardId;
-
-            // public IList<Student> ConvertReaderTo
         }
 
         //Poi: Extension method can be private. This is useful to make code readable
@@ -64,19 +56,15 @@ namespace Ado_101
 
             while(source.Read())
             {
-                int id;
-                if(!int.TryParse(source["StudentID"] as string, out id)) continue;
-
                 Student student = new Student
                 {
-                    StudentId = id,
+                    //Poi: Using Convert.ToInt32 because conversion from object to string & then using
+                    //int.TryParse() on that string is not properly working
+                    StudentId = Convert.ToInt32(source["StudentID"]),
                     StudentName = source["StudentName"] as string,
                     StandardId = source["StandardId"] as string
                 };
 
-                Console.Write(student.StudentId + "\t" + student.StudentName + "\t" + student.StandardId);
-                Console.WriteLine();
-                
                 students.Add(student);
             }
 

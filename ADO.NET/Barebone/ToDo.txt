@@ -1,0 +1,2 @@
+
+# Why conversion from object to string didn't work properly incase of SqlReader?
