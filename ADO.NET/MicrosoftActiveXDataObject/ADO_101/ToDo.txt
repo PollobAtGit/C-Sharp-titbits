@@ -1,2 +1,9 @@
 ﻿
 # Implement repository pattern in WebForm. Reference: http://www.primaryobjects.com/2009/08/13/implementing-the-repository-design-pattern-in-c-asp-net/
+
+# What really is invoked when using 'using' statement. Is it Dispose() or is it close()? How does CLR
+	determines which method to invoke if a object has both of the methods?
+
+# What is SSPI?
+
+# What are the other options for security?

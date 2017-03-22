@@ -24,12 +24,19 @@ namespace ADO_101.ASPXs
             //when DataBind() is invoked. So if method 'GetAllStudent' closes the connection than
             //exception is thrown
 
-            _connection.Open();
+            try
+            {
+                _connection.Open();
 
-            StudentsGrdVw.DataSource = GetAllStudent();
-            StudentsGrdVw.DataBind();
-
-            _connection.Close();
+                StudentsGrdVw.DataSource = GetAllStudent();
+                StudentsGrdVw.DataBind();
+            }
+            catch (Exception) { }
+            finally
+            {
+                //Poi: 'using' statement is supposed to invoke 'Close()' on the connection
+                _connection.Close();
+            }
         }
 
         private SqlDataReader GetAllStudent()
@@ -41,13 +48,8 @@ namespace ADO_101.ASPXs
                 //Poi: ExecuteReader from SqlCommand will return a SqlDataReader
                 return _command.ExecuteReader();
             }
-            catch (Exception)
-            {
-                return null;
-            }
-            finally
-            {
-            }
+            catch (Exception) { return null; }
+            finally { }
         }
     }
 }
