@@ -1,17 +1,20 @@
 ﻿using System;
 using System.Web.UI;
+using System.Configuration;
 using System.Data.SqlClient;
 
 namespace ADO_101.ASPXs
 {
     public partial class Students : Page
     {
+        private readonly string _connectionString;
         private readonly SqlConnection _connection;
         private readonly SqlCommand _command;
 
         public Students()
         {
-            _connection = new SqlConnection(@"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=SchoolDB;Integrated Security=SSPI");
+            _connectionString = ConfigurationManager.ConnectionStrings["SchoolDbConnectionString"].ConnectionString;
+            _connection = new SqlConnection(_connectionString);
             _command = new SqlCommand
             {
                 Connection = _connection

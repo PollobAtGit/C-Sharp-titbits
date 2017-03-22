@@ -1,1 +1,21 @@
 ﻿
+# ASP.NET application has a Web.config file
+
+# Windows form application contains app.config file
+
+# <connectionStrings> configuration setting needs a child nod <add/> (self closing tag) which contains numerous properties among which most important
+	are: name, connectionString & providerName
+
+	## name => contains a user friendly name/alias that will be used from code to get the connection string. It must be unique if there is multiple connection string
+	## connectionString => Original connection string. Most important components are
+		@ Data Source
+		@ Initial Catalog
+		@ Integrated Security
+	## providerName => Namespace in .NET library that contains necessary classes that will be used AGAINST this connection string
+
+# To access Web.config values, we use namespace System.Configuration which contains static class ConfigurationManager
+
+# ConfigurationManager contains ConnectionStrings property that returns an instance of ConnectionStringSettingsCollection
+	ConnectionStringSettingsCollection provides a indexer that can be used to get an instance of ConnectionStringSettings 
+	that contains a property called ConnectionString which is of string data type. This property returns the original 
+	connection string
