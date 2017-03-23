@@ -19,3 +19,8 @@
 	ConnectionStringSettingsCollection provides a indexer that can be used to get an instance of ConnectionStringSettings 
 	that contains a property called ConnectionString which is of string data type. This property returns the original 
 	connection string
+
+# EACH SQL operations MUST be handled in SEPERATE CONNECTION. SEPERATE CONNECTION needs to be 
+	opened & closed for seperate SQL commands
+
+# SqlCommand.ExecuteScalar() return type is object. In fact it returns the 1st column data from the 1st row
