@@ -82,5 +82,93 @@ namespace ADO_101.ASPXs
             catch (Exception) { return null; }
             finally { }
         }
+
+        private void UpdateProductsQuantity()
+        {
+            int productQuantity = new Random().Next();
+
+            try
+            {
+                _command.CommandText = @"UPDATE [dbo].[Product] SET [QuantityAvailable] = " + productQuantity;
+
+                _connection.Open();
+                int effectedRows = _command.ExecuteNonQuery();
+
+                MakeUpdateRecordCountLabelVisible(makeVisible: true);
+                SetUpdateRecordCountLabelText(message: effectedRows + " Rows Effected");
+            }
+            catch (Exception exp) { throw exp; }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
+        protected void updateQty_Click(object sender, EventArgs e)
+        {
+            //Poi: This encapsulation (UpdateProductsQuantity) over update operation is required because
+            //the OPENED connection MUST BE closed before another SQL operation is performed
+            UpdateProductsQuantity();
+
+            LoadAllProductsGrid();
+        }
+
+        private void DeleteProduct()
+        {
+            try
+            {
+                _command.CommandText = @"DELETE FROM [dbo].[Product] WHERE [ProductId] = (SELECT MIN([ProductId]) FROM [dbo].[Product])";
+                _connection.Open();
+                int effectedRows = _command.ExecuteNonQuery();
+
+                MakeUpdateRecordCountLabelVisible(makeVisible: true);
+                SetUpdateRecordCountLabelText(message: effectedRows + " Rows Effected");
+            }
+            catch (Exception exp) { throw exp; }
+            finally
+            {
+                _connection.Close();
+            }
+        }
+
+        protected void deleteProduct_Click(object sender, EventArgs e)
+        {
+            DeleteProduct();
+            LoadAllProductsGrid();
+        }
+
+        private void MakeUpdateRecordCountLabelVisible(bool makeVisible) => updateRecordCount.Visible = makeVisible;
+
+        private void SetUpdateRecordCountLabelText(string message) => updateRecordCount.Text = message;
+
+        protected void insertProductBtn_Click(object sender, EventArgs e)
+        {
+            InsertProduct();
+            LoadAllProductsGrid();
+        }
+
+        private void InsertProduct()
+        {
+            try
+            {
+                string productName = productNameTxt.Text.Trim();
+                if (string.IsNullOrEmpty(productName)) return;
+
+                int productQuantity = new Random().Next();
+
+                _command.CommandText = @"INSERT INTO [dbo].[Product] ([ProductName], [QuantityAvailable]) VALUES('" + productName + "', " + productQuantity + ")";
+                _connection.Open();
+                int effectedRows = _command.ExecuteNonQuery();
+
+                MakeUpdateRecordCountLabelVisible(makeVisible: true);
+                SetUpdateRecordCountLabelText(message: effectedRows + " Rows Effected");
+                productNameTxt.Text = string.Empty;
+            }
+            catch (Exception exp) { throw exp; }
+            finally
+            {
+                _connection.Close();
+            }
+        }
     }
 }
