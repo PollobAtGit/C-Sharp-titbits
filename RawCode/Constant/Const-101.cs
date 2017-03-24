@@ -19,6 +19,8 @@ namespace Const_101
         {
             //Poi: BookCount is 'const' NOT static. Still 'BookCount' can be invoked with only class name
             //specified & that's because constants are by definition static (Makes sense !)
+
+            //Poi: Naming convention for C# constants is Pascal casing
             public const int BookCount = 100;
             public static string Address = string.Empty;
         }
