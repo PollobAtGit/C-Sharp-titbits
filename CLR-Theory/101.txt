@@ -27,3 +27,5 @@
 # Very roughly, any type that resides in 'System' namespace most probably is part of BCL
 
 # BCL & FCL can be used inter-changeably
+
+# .NET framework is the umbrella term used for CLR (Common Language Runtime) & BCL/FCL
