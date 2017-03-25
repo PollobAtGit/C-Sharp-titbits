@@ -1,0 +1,29 @@
+
+# C# compiler creates executable (exe) but that doesn't contain machine code. It contains IL (Microsoft intermediate language). When the
+    executable is ran CLR (common language runtime) just in time compiles the IL & creates the necessary machine code for execution.
+
+# What does executables (EXE) contain that are built using C++/python etc.? Machine code?
+
+# If so then NOT every executables (EXEs) contain same content inside.
+
+# CLR is a virtual machine that requires hardware & OS (aka Host) to run on
+
+# Disadvantages of having a virtual machine (CLR):
+  ## Performance
+  ## Bad for low level coding
+        $ Can't write CLR or virtual machine that needs to be directly ran on top of bare hardware & operating system
+        $ Can't write driver
+        $ Can't write OS
+  ## Code is more visible because IL de-assembler can reverse engineer & find what the code does
+
+# BCL stands for "Base Class Library" & FCL stands for "Framework Class Library"
+
+# BCL is a subset of FCL
+
+# BCL contains the VERY basic types such as primitive types, arrays, collections, security, basic File I/O etc.
+
+# FCL contains BCL & other types such as database relevant types, WPF, WCF, WEB API, ASP.NET etc.
+
+# Very roughly, any type that resides in 'System' namespace most probably is part of BCL
+
+# BCL & FCL can be used inter-changeably

@@ -1,0 +1,24 @@
+1. True/False. C# is compiled to binary that is immediately executable by the computer.
+    ## False
+    ## True Answer: C# compiler compiles code into IL that is compiled just in time later by JIT compiler that is part of CLR
+2. Is a virtual machine software or hardware?
+    ## Software
+3. What is the name of the .NET Framework’s virtual machine?
+    ## CLR (Common Language Runtime)
+4. Name the two key parts of the .NET Framework.
+    ## BCL (Base Class Library) & FCL (Framework Class Library)
+    ## CLR & FCL
+5. True/False. A slightly different version of the CLR is required for every platform you want to run C# code on.
+    ## True
+6. True/False. The CLR understands C# code.
+    ## False
+    ## True Answer: Understands IL
+7. Name two other languages that can be used to write code for the .NET Framework.
+    # IronPython
+    # IronRuby
+    # VB.NET
+8. True/False. Virtual machines will always be slower than compiling directly to binary.
+    # False
+    # True Answer: Sometimes it is slower but that can be improved
+9. True/False. IL code is easier to reverse engineer than compiled code.
+    # True
