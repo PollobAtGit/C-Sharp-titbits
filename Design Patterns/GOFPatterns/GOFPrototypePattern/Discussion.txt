@@ -1,0 +1,2 @@
+﻿
+# Main advantage of this pattern is that the new object gets the state of the onl object
