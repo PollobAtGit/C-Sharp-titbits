@@ -2,9 +2,12 @@
 {
     public class Milk : Product
     {
-        public Milk()
+        public FreezingProperty FreezingProp { get; set; }
+
+        public Milk(FreezingProperty freezProp)
         {
             Type = ProductType.BEVERAGE;
+            FreezingProp = freezProp;
         }
 
         public Milk(ProductType type)
@@ -14,7 +17,19 @@
 
         public override Product Clone()
         {
-            return this.MemberwiseClone() as Product;
+            //POI: Shallow clone. After this assignment 'FreezingProp' of cloned instance will
+            //refer to the same 'FreezingProp' of 'this' instance
+            var clonedMilk = this.MemberwiseClone() as Milk;
+
+            //POI: Deep Clone portion
+            clonedMilk.FreezingProp = this.FreezingProp.Clone() as FreezingProperty;
+
+            return clonedMilk as Product;
+        }
+
+        public override string ToString()
+        {
+            return "Product Type =>" + "\t" + Type + "\t" + FreezingProp;
         }
     }
 }
