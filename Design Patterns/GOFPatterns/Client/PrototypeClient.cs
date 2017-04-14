@@ -5,6 +5,11 @@ namespace Client
 {
     internal static class PrototypeClient
     {
+        static void Main(string[] args)
+        {
+            Execute();
+        }
+
         internal static void Execute()
         {
             var powerBank = new PowerBank(new Battery { Price = 56.00m });

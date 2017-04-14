@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EB980F2E-2AB2-46A4-BE76-DD2E664A71DE}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>Client</RootNamespace>
-    <AssemblyName>Client</AssemblyName>
+    <ProjectGuid>{BE3CEB1D-3E9F-46BA-8711-B45B83A6D050}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GOFBuilderPattern</RootNamespace>
+    <AssemblyName>GOFBuilderPattern</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,16 +22,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>Client.BuilderClient</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -45,22 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuilderClient.cs" />
+    <Compile Include="Builder\CommuteCarBuilder.cs" />
+    <Compile Include="Builder\RacingCarBuilder.cs" />
+    <Compile Include="Director.cs" />
+    <Compile Include="VehicleParts\Engine.cs" />
+    <Compile Include="VehicleParts\Frame.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PrototypeClient.cs" />
+    <Compile Include="VehicleParts\Tire.cs" />
+    <Compile Include="Vehicle\Car.cs" />
+    <Compile Include="Builder\CarBuilder.cs" />
+    <Compile Include="Vehicle\CarStatus.cs" />
+    <Compile Include="Vehicle\MazdaTwo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GOFBuilderPattern\GOFBuilderPattern.csproj">
-      <Project>{be3ceb1d-3e9f-46ba-8711-b45b83a6d050}</Project>
-      <Name>GOFBuilderPattern</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GOFPrototypePattern\GOFPrototypePattern.csproj">
-      <Project>{656bb48f-693a-449b-be83-d8261328c068}</Project>
-      <Name>GOFPrototypePattern</Name>
-    </ProjectReference>
+    <Content Include="Discussion.txt" />
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
