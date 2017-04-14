@@ -1,6 +1,8 @@
-﻿namespace PrototypePattern
+﻿using System;
+
+namespace PrototypePattern
 {
-    public class Milk : Product
+    public class Milk : CloneableProduct
     {
         public FreezingProperty FreezingProp { get; set; }
 
@@ -15,7 +17,8 @@
             Type = type;
         }
 
-        public override Product Clone()
+        //POI: When abstract methods are implemented, 'override' keyword is required
+        public override object Clone()
         {
             //POI: Shallow clone. After this assignment 'FreezingProp' of cloned instance will
             //refer to the same 'FreezingProp' of 'this' instance
@@ -24,7 +27,7 @@
             //POI: Deep Clone portion
             clonedMilk.FreezingProp = this.FreezingProp.Clone() as FreezingProperty;
 
-            return clonedMilk as Product;
+            return clonedMilk as CloneableProduct;
         }
 
         public override string ToString()

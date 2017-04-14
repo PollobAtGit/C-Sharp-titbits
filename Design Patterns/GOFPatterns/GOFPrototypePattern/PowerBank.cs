@@ -1,6 +1,6 @@
 ﻿namespace PrototypePattern
 {
-    public class PowerBank : Product
+    public class PowerBank : CloneableProduct
     {
         public Battery Battery { get; set; }
 
@@ -16,9 +16,9 @@
             Type = type;
         }
 
-        public override Product Clone()
+        public override object Clone()
         {
-            return this.MemberwiseClone() as Product;
+            return this.MemberwiseClone();
         }
 
         public override string ToString()

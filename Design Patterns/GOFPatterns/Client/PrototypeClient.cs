@@ -8,7 +8,7 @@ namespace Client
         internal static void Execute()
         {
             var powerBank = new PowerBank(new Battery { Price = 56.00m });
-            var clonedPowerBank = powerBank.Clone();
+            var clonedPowerBank = powerBank.Clone<PowerBank>();
 
             powerBank.PrintPowerBankInfo();
             clonedPowerBank.PrintPowerBankInfo();
@@ -25,7 +25,7 @@ namespace Client
             clonedPowerBank.PrintPowerBankInfo();//ELECTRONIC
 
             var milk = new Milk(new FreezingProperty { FreezingPoint = -0.235 });
-            var clonedMilk = milk.Clone();
+            var clonedMilk = milk.Clone<Milk>();
 
             milk.PrintPowerBankInfo();
             clonedMilk.PrintPowerBankInfo();
@@ -38,7 +38,7 @@ namespace Client
             clonedMilk.PrintPowerBankInfo();
         }
 
-        internal static void PrintPowerBankInfo(this Product source)
+        internal static void PrintPowerBankInfo(this CloneableProduct source)
         {
             Console.WriteLine(source);
         }

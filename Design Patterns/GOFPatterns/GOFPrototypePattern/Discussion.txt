@@ -1,2 +1,4 @@
 ﻿
 # Main advantage of this pattern is that the new object gets the state of the onl object
+
+# 'override' keyword is required when implementing a abstract method
