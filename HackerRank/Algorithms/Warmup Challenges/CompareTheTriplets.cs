@@ -2,22 +2,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
 class Solution {
 
     static int[] solve(int a0, int a1, int a2, int b0, int b1, int b2){
-        int aliceComparisonPoint = 0;
-        int bobComparisonPoint = 0;
-        
-        if(a0 > b0) aliceComparisonPoint++;
-        else if(a0 < b0) bobComparisonPoint++;
-            
-        if(a1 > b1) aliceComparisonPoint++;
-        else if(a1 < b1) bobComparisonPoint++;
-            
-        if(a2 > b2) aliceComparisonPoint++;
-        else if(a2 < b2) bobComparisonPoint++;
-    
-        return new int[] { aliceComparisonPoint, bobComparisonPoint };
+
+        var aliceTriplet = new int[] { a0, a1, a2 };
+        var bobTriplet = new int[] { b0, b1, b2 };
+
+        return new int[]
+        {
+            aliceTriplet.Zip(bobTriplet, (aliceVal, bobVal) => (aliceVal > bobVal) ? 1 : 0).Sum(),
+            aliceTriplet.Zip(bobTriplet, (aliceVal, bobVal) => (aliceVal < bobVal) ? 1 : 0).Sum()
+        };
     }
 
     static void Main(String[] args) {
