@@ -1,0 +1,2 @@
+
+# System.String instances are sequence of unicode characters & the instance is immutable by nature
