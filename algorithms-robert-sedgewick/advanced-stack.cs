@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 internal class Stack
@@ -44,13 +45,7 @@ internal class Stack
         _sequence = sequence;
     }
 
-    //TODO: Expose a read-only iterator
-    /*
-        public IEnumerable<System.String> Iterator()
-        {
-            foreach(var item in _sequence) yield item;
-        }
-    */
+    public IEnumerator Iterator() => _sequence.GetEnumerator();
 }
 
 internal static class Client
@@ -78,5 +73,16 @@ internal static class Client
 
         //POI: This will throw Exception
         //Console.WriteLine(anotherStackInstance.Pop());
+
+        stackInstance.Push("UTF-8");
+        stackInstance.Push("UTF-16");
+        stackInstance.Push("ASCII");
+
+        Console.WriteLine("-------- GetEnumerator() to Iterate Over Sequence ----------------------");
+        var iterator = stackInstance.Iterator();
+        while(iterator.MoveNext())
+        {
+            Console.WriteLine(iterator.Current);
+        }
     }
 }
