@@ -2,3 +2,8 @@
 # How to check System.String instances are immutable?
 
 # How to create operator overload to compare System.String instances using (< & >)?
+
+# Given a struct 'A' why can't A contains another property of 'A'?
+    [Compile Error: xxx(40,26): error CS0523: Struct member 'xxx' of type 'xxx' causes a cycle in the struct layout]
+
+# If the above is not legal for struct then why is it legal for 'class'? In there any possibility of RTE?

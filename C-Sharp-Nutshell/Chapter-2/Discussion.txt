@@ -4,3 +4,7 @@
 # Join method in System.String & Parse method in System.Int32 are both static methods
 
 # A sequence of System.Char can directly be assigned to a System.String variable or used where System.String is expected
+
+# Structs are value type. Comparison on value type instance for 'null' is not legal. Consider comparing an integer variable for 'null'
+
+# foreach doesn't allow to change the iteration element. So foreach can not be used to initialize array elements
