@@ -1,2 +1,6 @@
 
-# System.String instances are sequence of unicode characters & the instance is immutable by nature
+# System.String instances are sequence of UNICODE characters & the instance is immutable by nature
+
+# Join method in System.String & Parse method in System.Int32 are both static methods
+
+# A sequence of System.Char can directly be assigned to a System.String variable or used where System.String is expected
