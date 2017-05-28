@@ -72,3 +72,83 @@ Console.WriteLine(nodes.Where(node => node == null).Count());//5
 
 for(var i = 0; i < nodes.Length; i++) nodes[i] = new Node();
 Console.WriteLine(nodes.Where(node => node == null).Count());//0
+
+// --------------------------------- ARRAYS ARE REFERENCE TYPES --------------------------------------------
+
+//POI: Arrays are reference types & reference types can hold 'null' values
+System.Int32[] intSequence = null;
+Console.WriteLine(intSequence == null);//True
+
+class AnotherNode
+{
+    //POI: By default this array (sequence) will be initilaized to null
+    public System.Int32[] IntSequence { get; set; }
+}
+
+Console.WriteLine((new AnotherNode()).IntSequence == null);//True
+
+struct AnotherStructNode
+{
+    //POI: By default also for struct Array instance will be initialized to 'null'
+    public System.Int32[] IntSequence { get; set; }
+}
+
+Console.WriteLine((new AnotherStructNode()).IntSequence == null);//True
+
+// --------------------------------- MULTI-DIMENSIONAL ARRAY --------------------------------------------
+
+var multiDimensionalIntSequence = new System.Int32[5, 5];
+
+//POI: Difference between one dimensional & multi-dimensional array declaration is on each side ',' has to be used inside bracket
+System.Int32[,] anotherMultiDimensionalIntSequence = new System.Int32[5, 5];
+System.String[,] multiDimensionalStringArray = new System.String[10, 9];
+System.Double[,] multiDimensionalDoubleArray = null;
+
+//POI: null will be assigned automatically
+System.Decimal[,] multiDimensionalDecimalArray;
+
+//POI: Total length of multi-dimensional array is (x * y)
+Console.WriteLine(multiDimensionalIntSequence.Length);//25
+Console.WriteLine(anotherMultiDimensionalIntSequence.Length);//25
+Console.WriteLine(multiDimensionalStringArray.Length);//90
+
+Console.WriteLine(multiDimensionalDoubleArray == null);
+Console.WriteLine(multiDimensionalDecimalArray == null);//True
+
+//POI: For shortcut initializer '[]' needs to be mentioned to indicate array
+var anArray = new int[] { 20, 30 };
+var rectangleArray = new System.Int32[,]
+{
+    { 1, 2 },
+    { 3 , 5 },
+    { 7 , 10 },
+    { 11, 10 }
+};
+
+var aTwoByThreeMatrix = new int[,]
+{
+    {2, 5, 69},
+    {89, 78, 60}
+};
+
+Console.WriteLine(rectangleArray.Length);//8
+
+//POI: GetLength operates on dimension (!). Dimension '0' indicates 'row' & '1' indicates 'column' (!!) (Research more)
+Console.WriteLine(rectangleArray.GetLength(0));//4
+Console.WriteLine(rectangleArray.GetLength(1));//2
+
+// --------------------------------- PRINT ALL FROM MULTI-DIMENSIONAL ARRAY --------------------------------------------
+
+Console.WriteLine();
+for(var i = 0; i < rectangleArray.GetLength(0); i++)
+{
+    List<System.Int32> ints = new List<System.Int32>();
+
+    //POI: To access a individual cell in a multi-dimensional array use the indices & those indices should be separated by comma (,)
+    for(var j = 0; j < rectangleArray.GetLength(1); j++) ints.Add(rectangleArray[i, j]);
+
+    Console.WriteLine(System.String.Join(", ", ints));
+}
+
+Console.WriteLine(rectangleArray[0, 1]);//2
+Console.WriteLine(rectangleArray[3, 1]);//10
