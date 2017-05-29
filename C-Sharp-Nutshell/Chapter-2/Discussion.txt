@@ -8,3 +8,15 @@
 # Structs are value type. Comparison on value type instance for 'null' is not legal. Consider comparing an integer variable for 'null'
 
 # foreach doesn't allow to change the iteration element. So foreach can not be used to initialize array elements
+
+# Jagged array declaration/accessing syntax is similar to C++'s mult-dimentional array declaration syntax
+    {code:C#}
+
+        //Jagged Declaration
+        int[][] array = new int[3][];
+        int[,] multiArray = new int[3, 4];
+
+        //Access
+        var val = array[0][0];
+        var multiVal = multiArray[0, 0];
+    {code}
