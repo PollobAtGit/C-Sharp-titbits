@@ -11,7 +11,8 @@ internal class Ans
             int data=Int32.Parse(Console.ReadLine());
             root=insert(root,data);            
         }
-        levelOrder(root);
+        //levelOrder(root);
+        levelOrderLoop(root);
     }
 
     private static Queue<Node> _container = new Queue<Node>();
@@ -34,6 +35,21 @@ internal class Ans
 
         if(_container.Count != 0) LevelOrderRecursive(_container.Dequeue());
         return;
+    }
+
+    static void levelOrderLoop(Node root)
+    {
+        if(root != null) _container.Enqueue(root);
+
+        while(_container.Count != 0)
+        {
+            var currentNode = _container.Dequeue();
+
+            Console.Write(currentNode.data + " ");
+            
+            if(currentNode.left != null) _container.Enqueue(currentNode.left);
+            if(currentNode.right != null) _container.Enqueue(currentNode.right);
+        }
     }
 
     static Node insert(Node root, int data)
@@ -65,5 +81,5 @@ internal class Ans
             this.data=data;
             left=right=null;
         }
-}
+    }
 }
