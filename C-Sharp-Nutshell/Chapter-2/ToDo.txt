@@ -9,3 +9,13 @@
 # If the above is not legal for struct then why is it legal for 'class'? In there any possibility of RTE?
 
 # How to get the number of dimensions in an multi-dimensional array?
+
+# Does all objects reside in heap? Even if the object is a local variable to a method?
+
+# Static member variables reside in heap & is not tore down until the application domain is not tore down
+
+    ## How does it occur?
+
+    ## If an object is destroyed but it contains a static field then that static field will be stored in Heap. But does that mean the object is NOT totally destroyed?
+
+    ## When are the static fields initialized? Is it lazily evaluated? What if there's an class that contains a static field but that the application doesn't create any instance of that class. Will the static member variable be initialized?
