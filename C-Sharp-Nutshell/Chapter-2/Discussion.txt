@@ -20,3 +20,12 @@
         var val = array[0][0];
         var multiVal = multiArray[0, 0];
     {code}
+
+# An object is eligible for garbage collection whenever there is no reference to that object
+
+# Static member variables reside in Heap. But it is NOT garbage collected until the application domain is not tore down
+
+# CLR runtime doesn't auto initialize LOCAL VARIABLES or method arguments. That's why values for variables of these categories MUST be
+provided before reading them.
+
+# CLR runtime auto initializes member variables (not const variables. How about readonly?) unlike method arguments & local variables
