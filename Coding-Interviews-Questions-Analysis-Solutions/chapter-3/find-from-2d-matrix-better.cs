@@ -38,11 +38,9 @@ internal static class Ans
         get
         {
             for(var i = 0; i < matrix.GetLength(0) - 1; i++)
-            {
                 if((searchTerm >= matrix[i, 0]) && (searchTerm < matrix[i + 1, 0])) return i;
-                if(searchTerm >= matrix[i + 1, 0]) return i + 1;
-            }
-            return -1;
+
+            return matrix.GetLength(0) - 1;
         }
     }
 }
