@@ -29,3 +29,5 @@
 provided before reading them.
 
 # CLR runtime auto initializes member variables (not const variables. How about readonly?) unlike method arguments & local variables
+
+# The default value for all PREDEFINED types are bitwise zero-ing of memory

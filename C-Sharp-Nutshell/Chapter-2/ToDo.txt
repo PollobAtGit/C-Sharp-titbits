@@ -19,3 +19,12 @@
     ## If an object is destroyed but it contains a static field then that static field will be stored in Heap. But does that mean the object is NOT totally destroyed?
 
     ## When are the static fields initialized? Is it lazily evaluated? What if there's an class that contains a static field but that the application doesn't create any instance of that class. Will the static member variable be initialized?
+
+# Default value for all PREDEFINED types are bitwise zeroing of memory. What does 'bitwise zeroing of memory means'?
+
+# Is Enum value type of reference type?
+
+# Learn more about Enum type
+
+# Default can be used initialize a variable that is declared with 'var'. So can a generic method have a local variable declared with 'var'
+that will have the default value of the 'Type Parameter'
