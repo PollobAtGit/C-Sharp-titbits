@@ -18,7 +18,8 @@ internal static class Ans
         {
             var searchTerm = int.Parse(Console.ReadLine());
             Console.WriteLine("\nIsFoundBruteForce : " + IsFoundBruteForce(searchTerm));
-            Console.WriteLine("IsFoundOptimal : " + IsFoundOptimal(searchTerm) + "\n");
+            Console.WriteLine("IsFoundOptimal : " + IsFoundOptimal(searchTerm));
+            Console.WriteLine("IsFoundBinarySearch : " + IsFoundBinarySearch(searchTerm) + "\n");
         }
     }
 
@@ -34,8 +35,7 @@ internal static class Ans
 
     private static bool IsFoundOptimal(int searchTerm)
     {
-        if(searchTerm < _matrix[0, 0] || searchTerm > _matrix[_matrix.GetLength(0) - 1, _matrix.GetLength(1) - 1])
-            return false;
+        if(!IsWithInRangeOfMatrix(searchTerm)) return false;
 
         var maxRowBoundary = FindMaxRowBoundary(searchTerm);
         var maxColBoundary = FindMaxColBoundary(searchTerm);
@@ -69,4 +69,31 @@ internal static class Ans
 
         return columnCount - 1;
     }
+
+    private static bool IsFoundBinarySearch(int searchTerm)
+    {
+        if(!IsWithInRangeOfMatrix(searchTerm)) return false;
+
+        for(var row = 0; row < _matrix.GetLength(0); row++)
+        {
+            var i = 0;
+            var j = _matrix.GetLength(1) - 1;
+            var mid = i + ((j - i + 1) / 2);
+
+            while(i < j)
+            {
+                if(_matrix[row, mid] == searchTerm) return true;
+                if(_matrix[row, mid] > searchTerm) j = mid - 1;
+                if(_matrix[row, mid] < searchTerm) i = mid + 1;
+                mid = i + ((j - i + 1) / 2);
+            }
+
+            if(_matrix[row, i] == searchTerm) return true;
+        }
+
+
+        return false;
+    }
+
+    private static bool IsWithInRangeOfMatrix(int searchTerm) => searchTerm >= _matrix[0, 0] && searchTerm <= _matrix[_matrix.GetLength(0) - 1, _matrix.GetLength(1) - 1];
 }
