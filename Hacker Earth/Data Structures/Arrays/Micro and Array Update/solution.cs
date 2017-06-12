@@ -18,10 +18,10 @@ internal static class Ans
 
             //POI: Subtract: Possibility of getting negative numbers
             var minTime = UsingLinq(a, k);
-            // var minTimeUsingLoop = UsingLoop(a, k);
+            var minTimeUsingLoop = UsingLoop(a, k);
 
             Console.WriteLine(minTime < 0 ? 0 : minTime);
-            // Console.WriteLine(minTimeUsingLoop < 0 ? 0 : minTimeUsingLoop);
+            Console.WriteLine(minTimeUsingLoop < 0 ? 0 : minTimeUsingLoop);
         }
     }
 
@@ -29,6 +29,12 @@ internal static class Ans
 
     internal static int UsingLoop(int[] a, int k)
     {
+        //POI: When Min is required to be found, set the variable's value to MAX. So that the variable's value contains the
+        //1st element at 1st iteration
+
+        //POI: When Mix is required to be found, set the variable's value to MIN. In that way at the 1st iteration, 1st
+        //element's value will be in the array unless that is also the MIN value
+        
         var min = int.MaxValue;
 
         foreach(var el in a)
@@ -36,6 +42,6 @@ internal static class Ans
             min = Math.Min(min, el);
         }
 
-        return min;
+        return k - min;
     }
 }
