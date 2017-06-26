@@ -204,6 +204,7 @@
       <LastGenOutput>PartTwoDataModel.cs</LastGenOutput>
       <DependentUpon>PartTwoDataModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Tut\Part 3\PartThree.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -314,6 +315,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PartTwoDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Tut\Part 3\EmployeeDBContext.cs" />
+    <Compile Include="Tut\Part 3\EmployeeRepository.cs" />
+    <Compile Include="Tut\Part 3\Model\Department.cs" />
+    <Compile Include="Tut\Part 3\Model\Employee.cs" />
+    <Compile Include="Tut\Part 3\PartThree.aspx.cs">
+      <DependentUpon>PartThree.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tut\Part 3\PartThree.aspx.designer.cs">
+      <DependentUpon>PartThree.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -324,7 +336,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
