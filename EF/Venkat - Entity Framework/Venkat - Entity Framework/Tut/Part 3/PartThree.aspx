@@ -4,16 +4,22 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Departments</title>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="White" BorderStyle="Ridge" BorderWidth="2px" CellPadding="3" CellSpacing="1" DataSourceID="ObjectDataSource1" GridLines="None">
                 <Columns>
-                    <asp:BoundField DataField="ID" HeaderText="ID" SortExpression="ID" />
+                    <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                     <asp:BoundField DataField="Location" HeaderText="Location" SortExpression="Location" />
+                    <asp:TemplateField HeaderText="Employees">
+                        <ItemTemplate>
+                            <asp:GridView ID="GridView2" runat="server" DataSource='<%# Eval("Employees") %>'>
+                            </asp:GridView>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
                 <HeaderStyle BackColor="#4A3C8C" Font-Bold="True" ForeColor="#E7E7FF" />
