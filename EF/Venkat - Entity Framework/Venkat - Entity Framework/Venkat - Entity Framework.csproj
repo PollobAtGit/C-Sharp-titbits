@@ -179,6 +179,7 @@
     <Content Include="Site.Master" />
     <Content Include="Sql\Part - 2.sql" />
     <Content Include="Sql\Part - 1.sql" />
+    <Content Include="Sql\Part - 4.sql" />
     <Content Include="Tut\Part 1\PartOneDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>PartOneDataModel.edmx</DependentUpon>
@@ -205,6 +206,7 @@
       <DependentUpon>PartTwoDataModel.edmx</DependentUpon>
     </Content>
     <Content Include="Tut\Part 3\PartThree.aspx" />
+    <Content Include="Tut\Part 4\PartFour.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -326,6 +328,18 @@
     <Compile Include="Tut\Part 3\PartThree.aspx.designer.cs">
       <DependentUpon>PartThree.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Tut\Part 4\Model\Department.cs" />
+    <Compile Include="Tut\Part 4\Model\DepartmentPartFour.cs" />
+    <Compile Include="Tut\Part 4\Model\EmployeePartFour.cs" />
+    <Compile Include="Tut\Part 4\PartFour.aspx.cs">
+      <DependentUpon>PartFour.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tut\Part 4\PartFour.aspx.designer.cs">
+      <DependentUpon>PartFour.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tut\Part 4\VenketDbContext.cs" />
+    <Compile Include="Tut\Part 4\VenketRepository.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

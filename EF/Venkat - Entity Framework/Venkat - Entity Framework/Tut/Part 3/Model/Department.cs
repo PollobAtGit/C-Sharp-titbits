@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace Venkat___Entity_Framework.Tut.Part_3.Model
 {
@@ -13,5 +14,9 @@ namespace Venkat___Entity_Framework.Tut.Part_3.Model
         public string Name { get; set; }
         public string Location { get; set; }
         public List<Employee> Employees { get; set; }
+
+        //POI: NotMapped DataAnnotations prevents EF from adding the new column to the Entity table
+        [NotMapped]
+        public int NotMapped { get; set; }
     }
 }
