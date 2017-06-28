@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
 
 namespace Venkat___Entity_Framework.Tut.Part_4.Model
 {
@@ -12,11 +13,16 @@ namespace Venkat___Entity_Framework.Tut.Part_4.Model
     //BP: One assembly shouldn't contain multiple Models with the same name both which might be included 
     //as DbSet<TModel> to the DbContext class
 
+    [Table("Department")]
     public class DepartmentPartFour
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Location { get; set; }
+
+        //POI: If 'Include' is required to be used to get the navigation property values then this navigation
+        //property name has to be used in the string of Include method
+
         public List<EmployeePartFour> Employees { get; set; }
     }
 }

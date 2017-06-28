@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>Departments</title>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,6 +15,15 @@
                     <asp:BoundField DataField="Id" HeaderText="Id" SortExpression="Id" />
                     <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
                     <asp:BoundField DataField="Location" HeaderText="Location" SortExpression="Location" />
+                    <asp:TemplateField HeaderText="Employees">
+                        <ItemTemplate>
+                            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSource='<%# Eval("Employees") %>'>
+                                <Columns>
+                                    <asp:BoundField DataField="FirstName" HeaderText="First Name" />
+                                </Columns>
+                            </asp:GridView>
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
                 <FooterStyle BackColor="#CCCC99" />
                 <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />

@@ -13,7 +13,11 @@ namespace Venkat___Entity_Framework.Tut.Part_4
 
         public List<DepartmentPartFour> GetDepartments()
         {
-            return _context.Departments.ToList();
+            //POI: The name provided in the string is not the DB table name nor is the original type name
+            //of the entity rather it's the Navigation property in the entity that is 
+            //referenced by 'Departments'
+
+            return _context.Departments.Include("Employees").ToList();
         }
     }
 }
