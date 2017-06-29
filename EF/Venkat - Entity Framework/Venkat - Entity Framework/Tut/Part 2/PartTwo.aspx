@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Departments</title>
+    <title>Departments - Part Two</title>
 </head>
 <body>
     <!-- TODO: What is the default action for <form>? -->
