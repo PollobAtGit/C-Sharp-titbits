@@ -12,6 +12,9 @@ namespace Venkat___Entity_Framework.Tut.Part_4
         //Web.config file. In this case the DB name will be 
         //'Venkat___Entity_Framework.Tut.Part_4.VenketDbContext'
 
+        //POI: The database will be created as a MDF file & will reside in App_Data folder which
+        //essentially is the 'Data Directory' for the application
+
         public VenketDbContext()
         {
 

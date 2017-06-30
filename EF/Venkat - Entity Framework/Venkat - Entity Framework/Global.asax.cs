@@ -4,6 +4,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using System.Data.Entity;
 using Venkat___Entity_Framework.Tut.Part_5;
+using Venkat___Entity_Framework.Tut.Part_6;
 
 namespace Venkat___Entity_Framework
 {
@@ -26,6 +27,11 @@ namespace Venkat___Entity_Framework
             //TODO: What are the other regular usages of Database class?
 
             Database.SetInitializer(new DropCreateDatabaseIfModelChanges<PartFiveDbContext>());
+
+            //POI: Given class initializes a particular context class with a chosen 
+            //initializing strategy
+
+            Database.SetInitializer(new PartSixContextInitializer());
         }
     }
 }

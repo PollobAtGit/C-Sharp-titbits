@@ -209,6 +209,7 @@
     <Content Include="Tut\Part 3\PartThree.aspx" />
     <Content Include="Tut\Part 4\PartFour.aspx" />
     <Content Include="Tut\Part 5\PartFive.aspx" />
+    <Content Include="Tut\Part 6\PartSix.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -353,6 +354,18 @@
     </Compile>
     <Compile Include="Tut\Part 5\PartFiveDbContext.cs" />
     <Compile Include="Tut\Part 5\PartFiveRepository.cs" />
+    <Compile Include="Tut\Part 6\Model\PartSixDepartment.cs" />
+    <Compile Include="Tut\Part 6\Model\PartSixEmployee.cs" />
+    <Compile Include="Tut\Part 6\PartSix.aspx.cs">
+      <DependentUpon>PartSix.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tut\Part 6\PartSix.aspx.designer.cs">
+      <DependentUpon>PartSix.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tut\Part 6\PartSixContextInitializer.cs" />
+    <Compile Include="Tut\Part 6\PartSixDbContext.cs" />
+    <Compile Include="Tut\Part 6\PartSixRepository.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
