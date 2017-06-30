@@ -180,6 +180,7 @@
     <Content Include="Sql\Part - 2.sql" />
     <Content Include="Sql\Part - 1.sql" />
     <Content Include="Sql\Part - 4.sql" />
+    <Content Include="Sql\Part - 7.sql" />
     <Content Include="Sql\Part - 5.sql" />
     <Content Include="Tut\Part 1\PartOneDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -210,6 +211,17 @@
     <Content Include="Tut\Part 4\PartFour.aspx" />
     <Content Include="Tut\Part 5\PartFive.aspx" />
     <Content Include="Tut\Part 6\PartSix.aspx" />
+    <Content Include="Tut\Part 7\PartSeven.aspx" />
+    <Content Include="Tut\Part 7\PartSevenEDMX.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PartSevenEDMX.edmx</DependentUpon>
+      <LastGenOutput>PartSevenEDMX.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Tut\Part 7\PartSevenEDMX.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PartSevenEDMX.edmx</DependentUpon>
+      <LastGenOutput>PartSevenEDMX.cs</LastGenOutput>
+    </Content>
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -366,6 +378,31 @@
     <Compile Include="Tut\Part 6\PartSixContextInitializer.cs" />
     <Compile Include="Tut\Part 6\PartSixDbContext.cs" />
     <Compile Include="Tut\Part 6\PartSixRepository.cs" />
+    <Compile Include="Tut\Part 7\Employee.cs">
+      <DependentUpon>PartSevenEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tut\Part 7\PartSeven.aspx.cs">
+      <DependentUpon>PartSeven.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tut\Part 7\PartSeven.aspx.designer.cs">
+      <DependentUpon>PartSeven.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tut\Part 7\PartSevenEDMX.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartSevenEDMX.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tut\Part 7\PartSevenEDMX.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartSevenEDMX.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tut\Part 7\PartSevenEDMX.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PartSevenEDMX.edmx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -386,6 +423,13 @@
     </EntityDeploy>
     <Content Include="Tut\Part 2\PartTwoDataModel.edmx.diagram">
       <DependentUpon>PartTwoDataModel.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Tut\Part 7\PartSevenEDMX.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PartSevenEDMX.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Tut\Part 7\PartSevenEDMX.edmx.diagram">
+      <DependentUpon>PartSevenEDMX.edmx</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
