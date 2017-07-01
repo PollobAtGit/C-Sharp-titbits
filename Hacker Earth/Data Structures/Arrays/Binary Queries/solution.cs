@@ -1,48 +1,52 @@
 using System; 
 using System.Numerics;
- 
+ 
 class MyClass 
 {
     static void Main(string[] args) 
     {
         try
         {
-            var firstLine = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
-			
+            var firstLine = Array.ConvertAll(Console.ReadLine().Trim().Split(' '), int.Parse);
+ 
             var q = firstLine[1];
-			
-            var array = Array.ConvertAll(Console.ReadLine().Split(' '), Int32.Parse);
-            var number = 0;
-			
+ 
+            var array = Array.ConvertAll(Console.ReadLine().Trim().Split(' '), Int32.Parse);
+            var isEven = false;
+ 
             while(--q >= 0)
             {
-                var query = Console.ReadLine().Split(' ');
+                var query = Console.ReadLine().Trim().Split(' ');
+ 
                 var queryDeterminent = query[0];
-				
+ 
                 if(queryDeterminent == "1")
                 {
                     var flipIndex = Int32.Parse(query[1]) - 1;
-                    array[flipIndex] = array[flipIndex] == 1 ? 0 : 1;
+ 
+                    if(flipIndex < array.Length)
+                    {
+                        array[flipIndex] = array[flipIndex] == 1 ? 0 : 1;
+                    }
+ 
                 }
                 else if(queryDeterminent == "0")
                 {
-                    var i = Int32.Parse(query[1]) - 1;
-                    var j = Int32.Parse(query[2]) - 1;
-					 
-                    var pos = 0d;
-					
-                    while(i <= j)
+                    var i = Int32.Parse(query[2]) - 1;
+                    var k = array[i];
+ 
+                    if(k == 0)
                     {
-                        number = (int)(number + (array[i] * Math.Pow(2d, pos)));
-                        pos = pos + 1;
-                        i = i + 1;
+                        isEven = true;
                     }
                 }
             }
-            Console.WriteLine(number % 2 == 0 ? "EVEN" : "ODD");
+ 
+            Console.WriteLine(isEven ? "EVEN" : "ODD");
         }
         catch(Exception)
         {
+ 
         }
     }
 }
