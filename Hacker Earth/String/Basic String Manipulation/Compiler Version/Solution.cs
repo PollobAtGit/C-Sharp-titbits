@@ -14,6 +14,9 @@ internal static class Solution
             {
                 var ch = str[i];
 
+                //POI: IF (i + 1) is used in condition then possibility is higher that normal
+                //enumeration for (i + 1) is not desired
+                
                 if((i < str.Length - 1) && ch == '/' && str[i + 1] == '/' && !didCommentStart)
                 {
                     didCommentStart = true;
