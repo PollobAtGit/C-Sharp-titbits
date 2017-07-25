@@ -189,3 +189,5 @@ ModelManifest.xml
 
 # Ignore EXE files
 *.exe
+
+*.dll
