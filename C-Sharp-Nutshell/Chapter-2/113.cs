@@ -55,4 +55,19 @@ namespace Outer
             }
         }
     }
+
+    namespace Inner
+    {
+        // POI: Importing '...Generic' namespace again even though it has been
+        // imported in other declaration of 'Inner'
+        using System.Collections.Generic;
+
+        class Soo
+        {
+            // POI: This declaration will not work unless '....Generic' is
+            // imported even though this namespace is imported in other declaration
+            // of namespace 'Inner'
+            private IList<int> _list = new List<int>();
+        }
+    }
 }
