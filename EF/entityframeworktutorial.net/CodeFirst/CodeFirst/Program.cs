@@ -17,7 +17,11 @@ namespace CodeFirst
                 {
                     context.Students.Add(new Student
                     {
-                        StudentName = "Conan"
+                        StudentName = "Conan",
+                        Standard = new Standard
+                        {
+                            StandardName = "IV"
+                        }
                     });
 
                     // TODO: Use 'SaveChangesAsync'

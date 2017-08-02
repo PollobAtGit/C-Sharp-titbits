@@ -50,14 +50,47 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\SchoolContext.cs" />
+    <Compile Include="Migrations\201708022036166_Initial.cs" />
+    <Compile Include="Migrations\201708022036166_Initial.Designer.cs">
+      <DependentUpon>201708022036166_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708022053456_Library Entity &amp; Base class added as DbSet.cs" />
+    <Compile Include="Migrations\201708022053456_Library Entity &amp; Base class added as DbSet.Designer.cs">
+      <DependentUpon>201708022053456_Library Entity &amp; Base class added as DbSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.cs" />
+    <Compile Include="Migrations\201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.Designer.cs">
+      <DependentUpon>201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Cook.cs" />
+    <Compile Include="Model\Rule.cs" />
     <Compile Include="Model\Standard.cs" />
     <Compile Include="Model\Student.cs" />
+    <Compile Include="Model\Teacher.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201708022036166_Initial.resx">
+      <DependentUpon>201708022036166_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708022053456_Library Entity &amp; Base class added as DbSet.resx">
+      <DependentUpon>201708022053456_Library Entity &amp; Base class added as DbSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.resx">
+      <DependentUpon>201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
+      <Project>{2126cd0e-c8e3-4e4c-8fb9-ede9e6e7c6cc}</Project>
+      <Name>EntityLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
