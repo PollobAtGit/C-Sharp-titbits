@@ -1,19 +1,15 @@
-namespace CodeFirst.Migrations
+﻿namespace CodeFirst.DAL
 {
-    using System.Data.Entity.Migrations;
-
-    // POI: Relative import statement is valid. It works because we are currently in 'CodeFirst.Migrations'
-    using DAL;
     using CodeFirst.Model;
     using System.Collections.Generic;
+    using System.Data.Entity;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<CodeFirst.DAL.SchoolContext>
+    // POI: DropCreateDatabaseIfModelChanges is a generic Type & DropSchoolDbIfModelChanges is not generic
+    // So the context has to be passed as the Open Type
+
+    class DropSchoolDbAlways : DropCreateDatabaseAlways<SchoolContext>
     {
-        public Configuration()
-        {
-            AutomaticMigrationsEnabled = false;
-        }
-
+        // POI: SchoolContext is passed as argument
         protected override void Seed(SchoolContext context)
         {
             // POI: AddRange takes a List as argument

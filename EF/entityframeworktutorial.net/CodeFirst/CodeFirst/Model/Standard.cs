@@ -3,7 +3,7 @@
     // POI: Aliasing a generic Type
     using IC = System.Collections.Generic.ICollection<Student>;
 
-    public class Standard
+    public class Standard : Entity
     {
         public Standard()
         {

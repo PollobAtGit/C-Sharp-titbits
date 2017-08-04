@@ -1,8 +1,7 @@
 namespace CodeFirst.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class AddpropertiesintoderivedCookRuleclasses : DbMigration
     {
         public override void Up()

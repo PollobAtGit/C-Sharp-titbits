@@ -7,7 +7,7 @@
     }
 
     // POI: Rule is added as DbSet<Rule> in Context class so it must contain an ID property
-    public abstract class Rule
+    public abstract class Rule : Entity
     {
         public int ID { get; set; }
         public Importance Importance { get; set; }

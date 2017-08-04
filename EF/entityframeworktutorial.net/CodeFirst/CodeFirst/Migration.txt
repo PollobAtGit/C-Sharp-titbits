@@ -11,3 +11,5 @@ Update-Migration -TargetMigration "migration-name"
 
 // POI: There can only be one pending migration at a time
 // POI: Before creating another migration, developer must update the database
+// POI: Migration was introduced in EF 4.3 & Database.SetInitializer(...) was introduced before that (int 4.1)
+// POI: To Seed database using Code-First Migration Use DbMigrationsConfiguration class's Configuration.cs file

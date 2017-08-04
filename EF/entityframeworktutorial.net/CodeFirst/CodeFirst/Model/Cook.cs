@@ -4,7 +4,7 @@
     // POI: All the DISCOVERED columns from the derived class (Type) of this class (Type) will be included
     // as columns of the Base class
 
-    public class Cook
+    public class Cook : Entity
     {
         public int ID { get; set; }
         public string Responsibility { get; set; }

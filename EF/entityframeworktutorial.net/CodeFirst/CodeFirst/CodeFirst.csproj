@@ -78,9 +78,27 @@
     <Compile Include="Migrations\201708041028475_Rename-Table.Designer.cs">
       <DependentUpon>201708041028475_Rename-Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708041536429_Entity.cs" />
+    <Compile Include="Migrations\201708041536429_Entity.Designer.cs">
+      <DependentUpon>201708041536429_Entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708041554236_Employee-Add.cs" />
+    <Compile Include="Migrations\201708041554236_Employee-Add.Designer.cs">
+      <DependentUpon>201708041554236_Employee-Add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708041608157_Initializer.cs" />
+    <Compile Include="Migrations\201708041608157_Initializer.Designer.cs">
+      <DependentUpon>201708041608157_Initializer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708041632338_IsSeniorAdd.cs" />
+    <Compile Include="Migrations\201708041632338_IsSeniorAdd.Designer.cs">
+      <DependentUpon>201708041632338_IsSeniorAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cook.cs" />
     <Compile Include="Model\Course.cs" />
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Entity.cs" />
     <Compile Include="Model\Rule.cs" />
     <Compile Include="Model\Standard.cs" />
     <Compile Include="Model\Student.cs" />
@@ -113,6 +131,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708041028475_Rename-Table.resx">
       <DependentUpon>201708041028475_Rename-Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041536429_Entity.resx">
+      <DependentUpon>201708041536429_Entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041554236_Employee-Add.resx">
+      <DependentUpon>201708041554236_Employee-Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041608157_Initializer.resx">
+      <DependentUpon>201708041608157_Initializer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041632338_IsSeniorAdd.resx">
+      <DependentUpon>201708041632338_IsSeniorAdd.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

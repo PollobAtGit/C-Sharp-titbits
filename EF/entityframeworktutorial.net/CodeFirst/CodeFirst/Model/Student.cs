@@ -6,7 +6,7 @@ namespace CodeFirst.Model
     // POI: Aliasing a class using using directive
     using DT = System.DateTime;
 
-    public class Student
+    public class Student : Entity
     {
         public Student()
         {

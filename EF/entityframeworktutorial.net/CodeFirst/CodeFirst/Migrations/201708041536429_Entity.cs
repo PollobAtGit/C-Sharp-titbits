@@ -2,7 +2,7 @@ namespace CodeFirst.Migrations
 {
     using System.Data.Entity.Migrations;
 
-    public partial class RenameTable : DbMigration
+    public partial class Entity : DbMigration
     {
         public override void Up()
         {

@@ -1,6 +1,6 @@
 ﻿namespace CodeFirst.Model
 {
-    public class Teacher
+    public class Teacher : Entity
     {
         public Teacher()
         {

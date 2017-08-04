@@ -1,10 +1,10 @@
-﻿using CodeFirst.DAL;
-using CodeFirst.Model;
-using System.Linq;
-using static System.Console;
-
-namespace CodeFirst
+﻿namespace CodeFirst
 {
+    using System.Linq;
+    using CodeFirst.DAL;
+    using CodeFirst.Model;
+    using static System.Console;
+
     class Program
     {
         static void Main(string[] args)

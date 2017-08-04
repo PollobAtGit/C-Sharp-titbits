@@ -1,6 +1,6 @@
 ﻿namespace CodeFirst.Model
 {
-    public abstract class Course
+    public abstract class Course : Entity
     {
         public int CourseId { get; set; }
         public string Name { get; set; }
