@@ -65,7 +65,7 @@ namespace CodeFirst.DAL
                 map.ToTable("employee");
             }).Map(map =>
             {
-                map.Properties(e => new { e.Email, e.PhoneNumber });
+                map.Properties(e => new { e.Email, e.PhoneNumber, e.HasResigned });
                 map.ToTable("employee-details");
             }).Ignore(e => e.NickName);
 
@@ -76,3 +76,9 @@ namespace CodeFirst.DAL
         }
     }
 }
+
+/*
+    // TODO: What's the purpose of Requires/HasValue etc.
+    //map.Requires("HasResigned").HasValue(true);
+    //.Ignore(e => e.HasResigned);
+*/

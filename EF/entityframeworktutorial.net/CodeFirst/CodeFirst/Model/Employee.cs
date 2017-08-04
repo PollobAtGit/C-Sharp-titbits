@@ -17,5 +17,7 @@
 
         // POI: This property is Ignored using FluentAPI
         public string NickName { get; set; }
+
+        public bool HasResigned { get; set; }
     }
 }
