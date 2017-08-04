@@ -62,8 +62,25 @@
     <Compile Include="Migrations\201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.Designer.cs">
       <DependentUpon>201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708040940447_Default Schema Name.cs" />
+    <Compile Include="Migrations\201708040940447_Default Schema Name.Designer.cs">
+      <DependentUpon>201708040940447_Default Schema Name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708041009533_TPC.cs" />
+    <Compile Include="Migrations\201708041009533_TPC.Designer.cs">
+      <DependentUpon>201708041009533_TPC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708041026501_E.cs" />
+    <Compile Include="Migrations\201708041026501_E.Designer.cs">
+      <DependentUpon>201708041026501_E.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708041028475_Rename-Table.cs" />
+    <Compile Include="Migrations\201708041028475_Rename-Table.Designer.cs">
+      <DependentUpon>201708041028475_Rename-Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cook.cs" />
+    <Compile Include="Model\Course.cs" />
     <Compile Include="Model\Rule.cs" />
     <Compile Include="Model\Standard.cs" />
     <Compile Include="Model\Student.cs" />
@@ -85,12 +102,27 @@
     <EmbeddedResource Include="Migrations\201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.resx">
       <DependentUpon>201708022101382_Add properties into derived %28Cook &amp; Rule%29 classes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708040940447_Default Schema Name.resx">
+      <DependentUpon>201708040940447_Default Schema Name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041009533_TPC.resx">
+      <DependentUpon>201708041009533_TPC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041026501_E.resx">
+      <DependentUpon>201708041026501_E.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041028475_Rename-Table.resx">
+      <DependentUpon>201708041028475_Rename-Table.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj">
       <Project>{2126cd0e-c8e3-4e4c-8fb9-ede9e6e7c6cc}</Project>
       <Name>EntityLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Migration.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

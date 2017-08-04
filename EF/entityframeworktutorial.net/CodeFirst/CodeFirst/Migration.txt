@@ -1,0 +1,13 @@
+﻿
+Enable-Migration
+Add-Migration "migration-name"
+Update-Database
+
+// POI: Migration name is the [MigrationId] from __MigrationHistory
+Update-Migration -TargetMigration "migration-name"
+
+// POI: If there is a bad migration then revert to the last good migration then delete/exclude the bad commit from
+// the project
+
+// POI: There can only be one pending migration at a time
+// POI: Before creating another migration, developer must update the database
