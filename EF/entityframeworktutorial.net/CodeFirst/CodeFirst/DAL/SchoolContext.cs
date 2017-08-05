@@ -40,7 +40,7 @@ namespace CodeFirst.DAL
                 m.MapInheritedProperties();
 
                 // POI: Db table name
-                m.ToTable("Online-Course");
+                m.ToTable("OnlineCourse");
             });
 
             modelBuilder.Entity<OfflineCourse>().Map(m =>
@@ -68,6 +68,10 @@ namespace CodeFirst.DAL
                 map.Properties(e => new { e.Email, e.PhoneNumber, e.HasResigned });
                 map.ToTable("employee-details");
             }).Ignore(e => e.NickName);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(p => p.RulesToFollow)
+                .WithMany(p => p.Employees);
 
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 

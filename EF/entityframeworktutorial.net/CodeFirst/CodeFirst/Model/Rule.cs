@@ -1,5 +1,7 @@
 ﻿namespace CodeFirst.Model
 {
+    using System.Collections.Generic;
+
     public enum Importance
     {
         MILD,
@@ -22,8 +24,12 @@
         public string ApplicableToClass { get; set; }
     }
 
+    // POI: *-* relationship between this Type & Employee Type is not indicated here
     public class SchedulingRule : Rule
     {
+        // POI: Using ICollection<TModel> is the proper approach to define a navigation
+        // porperty
+        public ICollection<Employee> Employees { get; set; }
         public string ApplicableToTeacher { get; set; }
     }
 }

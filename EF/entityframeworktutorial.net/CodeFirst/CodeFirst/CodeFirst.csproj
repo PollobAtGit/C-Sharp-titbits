@@ -98,6 +98,18 @@
     <Compile Include="Migrations\201708041644374_HasResigned-Add.Designer.cs">
       <DependentUpon>201708041644374_HasResigned-Add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708051513401_Rename-Online-Course-To-OnlineCourse.cs" />
+    <Compile Include="Migrations\201708051513401_Rename-Online-Course-To-OnlineCourse.Designer.cs">
+      <DependentUpon>201708051513401_Rename-Online-Course-To-OnlineCourse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708051517176_Many-Many-Student-OnlineCourse-v0.1.cs" />
+    <Compile Include="Migrations\201708051517176_Many-Many-Student-OnlineCourse-v0.1.Designer.cs">
+      <DependentUpon>201708051517176_Many-Many-Student-OnlineCourse-v0.1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708051532488_Many-Many-Employee-Rules-v0.1.cs" />
+    <Compile Include="Migrations\201708051532488_Many-Many-Employee-Rules-v0.1.Designer.cs">
+      <DependentUpon>201708051532488_Many-Many-Employee-Rules-v0.1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cook.cs" />
     <Compile Include="Model\Course.cs" />
@@ -150,6 +162,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708041644374_HasResigned-Add.resx">
       <DependentUpon>201708041644374_HasResigned-Add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708051513401_Rename-Online-Course-To-OnlineCourse.resx">
+      <DependentUpon>201708051513401_Rename-Online-Course-To-OnlineCourse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708051517176_Many-Many-Student-OnlineCourse-v0.1.resx">
+      <DependentUpon>201708051517176_Many-Many-Student-OnlineCourse-v0.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708051532488_Many-Many-Employee-Rules-v0.1.resx">
+      <DependentUpon>201708051532488_Many-Many-Employee-Rules-v0.1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

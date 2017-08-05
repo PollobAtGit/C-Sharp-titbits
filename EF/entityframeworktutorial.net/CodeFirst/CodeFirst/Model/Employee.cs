@@ -1,5 +1,7 @@
 ﻿namespace CodeFirst.Model
 {
+    using System.Collections.Generic;
+
     public class Employee : Entity
     {
         public int Id { get; set; }
@@ -19,5 +21,8 @@
         public string NickName { get; set; }
 
         public bool HasResigned { get; set; }
+
+        // POI: General rule is navigation properties will be ICollection
+        public ICollection<SchedulingRule> RulesToFollow { get; set; }
     }
 }

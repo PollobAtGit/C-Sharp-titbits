@@ -3,6 +3,7 @@
 
 namespace CodeFirst.Model
 {
+    using System.Collections.Generic;
     // POI: Aliasing a class using using directive
     using DT = System.DateTime;
 
@@ -39,6 +40,8 @@ namespace CodeFirst.Model
         // POI: Foreign key constraint. It's recommended to include foreign key as part of the model 
         // even though if not done EF will do it automatically
         //public int StandardID { get; set; }
+
+        public List<OnlineCourse> Courses { get; set; }
 
         public override string ToString() => $"{StudentID} {StudentName}";
     }
