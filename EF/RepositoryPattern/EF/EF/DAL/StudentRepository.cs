@@ -1,4 +1,4 @@
-﻿namespace EF.Repository
+﻿namespace EF.DAL
 {
     using System;
     using System.Collections.Generic;

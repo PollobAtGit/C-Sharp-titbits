@@ -1,4 +1,4 @@
-﻿namespace EF.Repository
+﻿namespace EF.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -14,7 +14,7 @@
         void Insert(TModel model);
         void Delete(TModel model);
         void Update(TModel model);
-        void Save();
+        void SaveAsync();
 
     }
 }
