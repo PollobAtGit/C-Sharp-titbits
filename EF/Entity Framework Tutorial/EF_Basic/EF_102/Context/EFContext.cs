@@ -14,6 +14,10 @@
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder
+                .Entity<Category>()
+                .Property(x => x.Name)
+                .IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }

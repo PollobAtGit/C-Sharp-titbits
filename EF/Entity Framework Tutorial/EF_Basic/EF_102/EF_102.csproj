@@ -58,6 +58,10 @@
     <Compile Include="Migrations\201709090712163_Init-992017.Designer.cs">
       <DependentUpon>201709090712163_Init-992017.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201709090720021_Required-Field-In-Category.cs" />
+    <Compile Include="Migrations\201709090720021_Required-Field-In-Category.Designer.cs">
+      <DependentUpon>201709090720021_Required-Field-In-Category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Category.cs" />
     <Compile Include="Model\Item.cs" />
@@ -74,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201709090712163_Init-992017.resx">
       <DependentUpon>201709090712163_Init-992017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201709090720021_Required-Field-In-Category.resx">
+      <DependentUpon>201709090720021_Required-Field-In-Category.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
