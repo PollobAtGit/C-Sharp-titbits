@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-class Solution {
+class DiagonalDiff
+{
 
-    static int diagonalDifference(int[][] a) {
+    static int diagonalDifference(int[][] a)
+    {
 
         int leftDiagonalSum = 0;
         int rightDiagonalSum = 0;
 
-        for(int i = 0; i < a.Length; i++)
+        for (int i = 0; i < a.Length; i++)
         {
             leftDiagonalSum += a[i][i];
             rightDiagonalSum += a[i][(a.Length - 1) - i];
@@ -19,16 +21,18 @@ class Solution {
         return leftDiagonalSum > rightDiagonalSum ? leftDiagonalSum - rightDiagonalSum : rightDiagonalSum - leftDiagonalSum;
     }
 
-    static void Main(String[] args) {
+    static void Main(String[] args)
+    {
 
         int n = Convert.ToInt32(Console.ReadLine());
 
         int[][] a = new int[n][];
 
-        for(int a_i = 0; a_i < n; a_i++){
+        for (int a_i = 0; a_i < n; a_i++)
+        {
 
-           string[] a_temp = Console.ReadLine().Split(' ');
-           a[a_i] = Array.ConvertAll(a_temp,Int32.Parse);
+            string[] a_temp = Console.ReadLine().Split(' ');
+            a[a_i] = Array.ConvertAll(a_temp, Int32.Parse);
 
         }
 
