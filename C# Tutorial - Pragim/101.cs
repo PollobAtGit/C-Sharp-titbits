@@ -60,8 +60,26 @@ namespace T
             cl(null);
             cl($"Total Non Public Properties = {tCustomerNonPublicProperties.Length}");
             tCustomerNonPublicProperties.ToList().ForEach(x => cl(x));
+
+            ConstructorInfo[] tCustomerCtors = tCustomer.GetConstructors();
+
+            cl(null);
+            cl($"Total Constructors = {tCustomerCtors.Length}");
+
+            // POI: Constructors has return type 'void' & name '.ctor' in assembly metadata
+            tCustomerCtors.ToList().ForEach(x => cl(x));// void .ctor() & void .ctor(Int32)
+
+            cl(null);
+            IRepository repo = new BlogRepository();
+
+            // POI: repo.GetType() will return the runtime Type
+            cl(typeof(BlogRepository) == repo.GetType());//True
         }
     }
+
+    internal interface IRepository { }
+    internal class BlogRepository : IRepository { }
+    internal class PostRepository : IRepository { }
 
     internal class Customer
     {
