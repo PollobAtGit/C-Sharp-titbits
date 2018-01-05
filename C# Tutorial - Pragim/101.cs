@@ -74,6 +74,18 @@ namespace T
 
             // POI: repo.GetType() will return the runtime Type
             cl(typeof(BlogRepository) == repo.GetType());//True
+
+            Assembly currentAssembly = Assembly.GetExecutingAssembly();
+
+            Type customerType = currentAssembly.GetType("T.Customer");
+            MethodInfo customerInstanceMethod = customerType.GetMethod("SayMyName");
+
+            object customerInstance = Activator.CreateInstance(customerType);
+
+            // POI: MethodInfo has a member 'Invoke' which requires value for 'this'
+            // POI: Situation is similar to JS's usage of bind/apply & call
+            // POI: The method here has no context
+            customerInstanceMethod.Invoke(customerInstance, null);// None
         }
     }
 
