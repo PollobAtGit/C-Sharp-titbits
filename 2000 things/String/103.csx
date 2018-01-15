@@ -12,4 +12,4 @@ var r = new Regex("^[0-9]+$");
 
 // TODO: Why difference between static method & instance method
 cl(r.IsMatch("8"));// True
-cl(Regex.IsMatch("^[0-9]+$", "8"));// False
+cl(Regex.IsMatch("82345.23", "^[0-9]+[.][0-9]{2}$"));// True

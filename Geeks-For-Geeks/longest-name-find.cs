@@ -7,13 +7,13 @@ internal class Ans
     {
         var t = System.Int32.Parse(Console.ReadLine());
 
-        while(--t >= 0)
+        while (--t >= 0)
         {
             var n = System.Int32.Parse(Console.ReadLine());
 
             var nameSequence = new string[n];
 
-            for(var i = 0; i < n; i++) nameSequence[i] = Console.ReadLine();
+            for (var i = 0; i < n; i++) nameSequence[i] = Console.ReadLine();
 
             Console.WriteLine(MaxLengthNameByLinq(nameSequence));
             Console.WriteLine(maxLengthName(nameSequence));
@@ -25,8 +25,8 @@ internal class Ans
     internal static string maxLengthName(string[] arr)
     {
         var maxLengthName = "";
-        foreach(var name in arr) 
-            if(maxLengthName.Length < name.Length)
+        foreach (var name in arr)
+            if (maxLengthName.Length < name.Length)
                 maxLengthName = name;
 
         return maxLengthName;
