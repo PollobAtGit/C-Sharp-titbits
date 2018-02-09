@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+    var cookieValue = ViewBag.ECookie == null ? string.Empty : ViewBag.ECookie as string;
+}
+
+<h2>Index</h2>
+
+<div>
+    <div>
+        <span>Cookie Value</span>
+    </div>
+    <div>
+        @Html.TextBox("vCookie", cookieValue)
+    </div>
+</div>
