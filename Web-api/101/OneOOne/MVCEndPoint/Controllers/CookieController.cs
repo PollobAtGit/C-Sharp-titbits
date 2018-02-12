@@ -12,13 +12,26 @@ namespace MVCEndPoint.Controllers
         public ActionResult Index()
         {
             var kCookie = "uCookie";
+            var eCookie = Request.Cookies.Get(kCookie);
 
-            //var eCookie = Request.Cookies.Get(kCookie);
+            if (eCookie == null)
+            {
+                var currentTime = DateTime.Now;
 
-            //if (eCookie == null) Response.Cookies.Add(new HttpCookie(kCookie, DateTime.Now.ToString()));
-            //else ViewBag.ECookie = eCookie.Value;
+                Response.Cookies.Add(new HttpCookie(kCookie, currentTime.ToString())
+                {
+                    Expires = currentTime.AddDays(1.0)
+                });
 
-            Response.Cookies.Add(new HttpCookie(kCookie, DateTime.Now.ToString()));
+                ViewBag.ECookie = null;
+            }
+            else
+            {
+                ViewBag.ECookie = eCookie.Value;
+            }
+
+            // POI: This statement creates a session id in cookie
+            Session["uCookie"] = eCookie.Value;
 
             return View();
         }

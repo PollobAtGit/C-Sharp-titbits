@@ -13,6 +13,10 @@ class T
 		o.Foo(new D2());// D.Foo
 		o.Foo(new B2());// D.Foo
 
+		B aO = new D();
+
+		// POI: Overload resolution occurs on compile time Type checking not on run time Type checking that's why D.Foo will not be invoked
+		aO.Foo(new D2());// B.Foo
 	}
 }
 

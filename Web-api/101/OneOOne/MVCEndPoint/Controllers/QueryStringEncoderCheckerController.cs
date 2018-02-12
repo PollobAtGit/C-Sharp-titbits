@@ -21,11 +21,13 @@ namespace MVCEndPoint.Controllers
             ViewBag.nid = i;
             ViewBag.Html = h;
 
-            //var eCookie = Request.Cookies.Get("uCookie");
-            //if (eCookie != null) ViewBag.ECookie = eCookie.Value;
-
             var kCookie = "uCookie";
-            Response.Cookies.Add(new HttpCookie(kCookie, DateTime.Now.ToString()));
+            var eCookie = Request.Cookies.Get(kCookie);
+
+            if (eCookie != null)
+            {
+                ViewBag.ECookie = eCookie.Value;
+            }
 
             return View();
         }
