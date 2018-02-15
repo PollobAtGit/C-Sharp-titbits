@@ -24,5 +24,7 @@ namespace Model
         public string ClimateInfo { get; set; }
 
         public List<Lodging> Lodgings { get; set; }
+
+        public override string ToString() => DestinationId + " => " + Name;
     }
 }
