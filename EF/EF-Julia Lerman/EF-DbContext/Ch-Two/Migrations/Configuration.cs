@@ -53,7 +53,10 @@ namespace Ch_Two.Migrations
                 }
             };
 
+            var destTwo = new Destination { Name = "yR", Country = "AUS" };
+
             context.Destinations.AddOrUpdate(destOne);
+            context.Destinations.AddOrUpdate(destTwo);
         }
     }
 }
