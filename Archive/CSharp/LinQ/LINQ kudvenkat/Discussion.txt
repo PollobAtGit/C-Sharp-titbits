@@ -1,0 +1,29 @@
+
+# Some LINQ conversion operators
+    Cast
+    OfType
+    AsEnumerable
+    AsQueryable
+    ToDictionary
+    ToLookup
+    ToList
+    ToArray
+
+# 1st characteristic of conversion operator is:
+    ## Deffered execution
+    ## TRIES to convert ALL elements of the sequence
+    ## If conversion (CAST) is unsuccefull then EXCEPTION (System.InvalidCastException) is thrown
+
+# Cast<TReuslt> signature:
+    {code}
+        public static IEnumerable<TResult> Cast<TResult>(this IEnumerable source);
+    {code}
+
+# Cast<TResult>() tries (!) to CAST/CONVERT elements from sequence to of type TResult
+
+# OfType<TResult>() FILTERS elements of type 'TResult' from sequence
+
+# OfType<TResult> signature:
+    {code}
+        public static IEnumerable<TResult> OfType<TResult>(this IEnumerable source);
+    {code}

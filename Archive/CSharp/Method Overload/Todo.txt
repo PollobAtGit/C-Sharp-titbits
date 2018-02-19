@@ -1,0 +1,2 @@
+
+# Try all scenarios from http://csharpindepth.com/Articles/General/Overloading.aspx

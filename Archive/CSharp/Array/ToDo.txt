@@ -1,0 +1,4 @@
+
+# Findout why simple Cast<DATA_TYPE>() can flatten n-dimensional array?
+
+# Is there any advanced usage of Cast<Type>()?

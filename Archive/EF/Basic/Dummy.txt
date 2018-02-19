@@ -1,0 +1,56 @@
+﻿//{
+            // POI: All references refer to the updated data
+            //var oldBlog = repo.BlogRepository.Find(3);
+
+            //cw(oldBlog.Rating);
+
+            //oldBlog.Rating = 500;
+
+            //repo.BlogRepository.Update(oldBlog);
+
+            //repo.Commit();
+
+            //cw(repo.BlogRepository.Find(3).Rating);
+            //cw(oldBlog.Rating);
+
+            return;
+
+                //cw($"Post Counts For Blog 2: {uow.BlogRepository.Find(2).Posts.Count}");
+
+                //uow.BlogRepository.Find(2).Posts.Add(new Post
+                //{
+                //    Title = "Post With Blog 2 - Title",
+                //    Content = "Post With Blog 2 - Content"
+                //});
+
+                //cw($"Post Counts For Blog 2: {uow.BlogRepository.Find(2).Posts.Count}");
+
+                //cw(uow.BlogRepository.Count());
+
+                //var samplePost = new Post
+                //{
+                //    Content = "Random Post",
+                //    Title = "Post Title"
+                //};
+
+                //var sampleBlog = new Blog
+                //{
+                //    Rating = 10.5,
+                //    Url = "someone.none@gmail.com",
+                //    Posts = new List<Post> { samplePost }
+                //};
+
+                //var newBlog = uow.BlogRepository.Add(sampleBlog);
+
+                //// POI: Returned entity from Add method of DbSet<T> will have the Id
+                //cw(newBlog.Id);
+
+                //// POI: Returned entity from Add methof of DbSet<T> will also have the related entity Id
+                //cw(newBlog.Posts.First().Id);
+
+                //uow.Commit();
+
+                //// POI: The original entity that was added to the DbSet<T> will also be populated with the Id
+                //cw(newBlog.Id);
+                //cw(newBlog.Posts.First().Id);
+            //}

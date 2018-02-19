@@ -1,0 +1,64 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div>
+    @if (ViewBag.IsQueryStringMatch)
+    {
+        <span>Query String Matched</span>
+    }
+    else
+    {
+        <span>Query String Didn't Match</span>
+    }
+
+    <div style="color: mediumslateblue">
+        <div>
+            <span>@ViewBag.UFromRequest</span>
+        </div>
+        <div>
+            <span>@ViewBag.IFromRequest</span>
+        </div>
+    </div>
+
+    <div style="color:green">
+        <div>
+            <span>@ViewBag.UFromParameter</span>
+        </div>
+        <div>
+            <span>@ViewBag.IFromParameter</span>
+        </div>
+    </div>
+
+    <div style="color:darkblue">
+        <div>
+            <span>@ViewBag.UTStringFromRequest</span>
+        </div>
+        <div>
+            <span>@ViewBag.ITStringFromRequest</span>
+        </div>
+    </div>
+
+    <div style="color:crimson">
+
+        <div>
+            <!-- POI: Use HTML.Raw(...) when it desirable that string (which contains HTML tags) are rendered -->
+            <span>@Html.Raw(ViewBag.htmlInputHtmlString)</span>
+        </div>
+
+        <div>
+            <!-- POI: By default strings are not directly rendered. In other words, they are escaped/sanitized as required -->
+            <span>@ViewBag.qHtmlInputHtmlString</span>
+        </div>
+    </div>
+
+    <div style="color:brown">
+        <!-- POI: By default razor engine does the advanced version of the following -->
+        <span>&lt;span&gt;I AM SPAN&lt;/span&gt;</span>
+    </div>
+</div>

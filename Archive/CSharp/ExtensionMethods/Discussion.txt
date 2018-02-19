@@ -1,0 +1,27 @@
+
+# What will happen in following scenario?
+
+	## One class has a method (Class A)
+	## Another class inherits that class (Class B) & HIDES the inherited method & provides a new implementation
+	## There's an extension method written for class 'A'
+	## This extension method invokes the only method of class 'A'
+	## As 'B' has inherited class 'A' an instance of 'B' can use that extension method
+
+	Now:
+		## The extension method is invoked on an instance of class 'B'
+	Query:
+		## Which method will be invoked? Class A's implementation or Class B's implementation?
+
+
+# Are static methods inherited when one class inherits another class?
+
+# Can properties be virtual? In other words can properties be overridden?
+
+# Can extension methods invoke 
+
+	## Private instance members (method/property)?
+	## Public/private static members (method/property)?
+
+# Is a overridden method virtual by default?
+
+# Are extension methods static or instance method?

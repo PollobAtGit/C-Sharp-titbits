@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opposites Attract", "Opposites Attract\Opposites Attract.csproj", "{7CEB63A9-E207-42F2-BBA3-77F1376CE46E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Opposites Attract Test", "Opposites Attract Test\Opposites Attract Test.csproj", "{CD26B036-03BC-403D-84E6-93F103B9497F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7CEB63A9-E207-42F2-BBA3-77F1376CE46E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CEB63A9-E207-42F2-BBA3-77F1376CE46E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CEB63A9-E207-42F2-BBA3-77F1376CE46E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CEB63A9-E207-42F2-BBA3-77F1376CE46E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD26B036-03BC-403D-84E6-93F103B9497F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD26B036-03BC-403D-84E6-93F103B9497F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD26B036-03BC-403D-84E6-93F103B9497F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD26B036-03BC-403D-84E6-93F103B9497F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,279 @@
+
+# Every LINQ query operates on IEnumerable<T> & return IEnumerable<T>
+
+# Most (or ALL?) generic collections in .NET & array type implement IEnumerable<T> interface. So LINQ queries are applicable on .NET generic collections & arrays
+
+# How about non-generic collections such as HashTable, ArrayList?
+    ## LINQ queries are also applicable on non-generic collections by the help of Cast<T>() LINQ functionality
+
+# How LINQ queries infer type? For example:
+    if an array is like: int[] array = new int[] { 1, 2 };
+    Then type need not to be specified in the following query: array.Where(number => (number % 2 == 0))
+    Though if type is specified than that's fine too such as: array.Where<int>(number => (number % 2 == 0))
+
+# What's the use case of
+    ## System.Collections.Generic.HashSet<T>?
+    ## System.Collections.Generic.LinkedList<T> when we have System.Collections.Generic.List<T>?
+    ## System.Collections.Generic.BindingList<T>
+
+# C# provides following types of Dictionaries:
+    ## System.Collections.Generic.Dictionary<TKey, TValue>
+    ## System.Collections.Generic.SortedDictionary<TKey, TValue>
+    ## System.Collections.Generics.SortedList<TKey, TValue>
+
+# What is the use case of System.Collections.Generic.SortedList<TKey, TValue>?
+
+# All of the following dictionaries use struct KeyValuePair<TKey, TValue> to store the tuple
+    ## Dictionary<TKey, TValue>
+    ## SortedDictionary<TKey, TValue>
+    ## SortedList<TKey, TValue>
+
+# All of the following dictionary types implement 'IEnumerable<KeyValuePair<TKey, TValue>>':
+    ## Dictionary<TKey, TValue>
+    ## SortedDictionary<TKey, TValue>
+    ## SortedList<TKey, TValue>
+
+    That's why LINQ quering is also possible on C# Dictionary types
+
+# All LINQ functions are in static class 'Enumerable' of namespace 'System.Linq'
+
+# LINQ query 'Select' TRANSFORMS one type of collection to another type of collection. So if type is explicitly mentioned for the TYPE PARAMETER than
+    first parameter (TSource) is the SOURCE type & second (TResult) mentioned type is the TRANSFORMED type. Example:
+
+        var frenchNumbers = new Dictionary<int, string> { { 1, "un" }, { 2, "duex"} };
+        IEnumerable<string> oddNumbers = frenchNumbers
+            .Where<KeyValuePair<int, string>>(pair => (pair.Key % 2 != 0))
+                .Select<KeyValuePair<int, string>, string>(pair => pair.Value);
+
+# Is String in C# a collection?
+    ## YES
+        ## String is a collection & it implements IEnumerable<char>
+
+# LINQ functions operate on IEnumerable<T>. So LINQ functions can be used on ANY TYPE (custom class) that implements IEnumerable<T>
+
+# An object created as anonymous types are simply 'dynamic' object.
+
+# The following code block:
+
+    {code}
+        var selectedBooks = from book in books where book.Price > 100.23 select new { Title = book.Title, Price = book.Price };
+    {code}
+
+    is equivalent to (note that here 'selectedBooks' DT is 'IEnumerable<dynamic>'):
+
+    {code}
+        IEnumerable<dynamic> selectedBooks = from book in books where book.Price > 100.23 select new { Title = book.Title, Price = book.Price };
+    {code}
+
+# In case of using LINQ QUERY OPERATORS, 'OrderBy<TSource, TResult>(...)' & 'OrderByDescending<TSource, TResult>(...)' can be used AFTER or BEFORE of 'Select<TSource, TResult>(...)'
+    ## In fact most probably, Any LINQ QUERY OPERATORS that outputs 'TResult' can be used AFTER or BEFORE projection operator (Select<TSource, TResult>(...))
+
+# Anonymous types are really useful in terms of generating presentational data from domain sepcific data
+
+# To handle complex criteria using LINQ Query expression & LINQ Query operators a non-anonymous method can be defined & used in condition. It is
+    possible because ultimately these LINQ QUERY OPERATORS & EXPRESSION expects 'Func<....>' which is a delegate
+
+# Unless there is a tranformation required there is no necessity to use '...Select<TSource, TResult>(...)'. LINQ in this respect is not
+    similar to SQL SELECT, in which case SELECT is a must to project data.
+
+# LINQ Query expressions are converted into LINQ Query operators. For example: 'select' is converted into 'Select(TSource, TResult)(...)'
+
+# Can Anonymous objects be created using LINQ query operators?
+    ## YES. It can be created & as in this case anonymous object is just a dynamic object 'TResult' in '...Select<TSource, TResult>(...)'
+        will be 'dynamic' such as following:
+
+        {code}
+            IEnumerable<dynamic> resultSet = intArray.Select<int, dynamic>(nmbr => new { Value = nmbr });
+        {code}
+
+# Work on examples where 'TResult' in '...Select<TSource, TResult>(...)' is a class not a primite type or dynamic
+
+# A common use case for '...Select<TSource, TResult>(...)' can be to create presentational 'ViewModel'
+
+# Can 'TResult' in '...Select<TSource, TResult>(...)' be
+        ## Struct
+        ## Enumeration
+        ## Delegate
+
+    ?
+
+# C# interface can be inside class.
+
+# In C# is there any construct that is only allowed in namespace but not inside class?
+
+# How a public/internal interface INSIDE a class might be extended by another class that's not a member of that class.
+
+# Which can be some use cases for interface inside class, private/public?
+
+# '...SelectMany<TSource, TResult>(...)' FLATTENS the list of list & returns a single list with all elements from both lists.
+
+# '...SelectMany<TSource, TResult>(...)' is used when there is a one to many relation between 'TSource' & 'TResult' Example:
+
+    {code}
+        public class Order { }
+        public class Cutomer { public IEnumerable<Order> Orders { get; set; } }
+
+        IEnumerable<Customer> customers = new List<Customer>
+        {
+            new Customer
+            {
+                Orders = new List<Order>
+                {
+                    new Order(),
+                    new Order()
+                }
+            },
+            new Customer
+            {
+                Orders = new List<Order>
+                {
+                    new Order(),
+                    new Order()
+                }
+            }
+        }
+
+        //At this level developer wants ALL the orders. So we use '...SelectMany<TSource, TResult>(...)' because it flattens the list of lists
+        IEnumerable<Order> orders = customers.SelectMany<Customer, Order>(cus => cus.Orders);
+    {code}
+
+# In other words, '...SelectMany<TSource, TResult>(...)' will convert 'IEnumerable<IEnumerable<T>>' into 'IEnumerable<T>'
+
+# Full signature of '...SelectMany<TSource, TResult>(...)':
+
+    {code}
+        public static IEnumerable<TResult> SelectMany<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, IEnumerable<TResult>> selector) { ... }
+    {code}
+
+# Similar to LINQ Where (signature below)
+
+    {code}
+        public static IEnumerable<TSource> Where<TSource>(this IEnumerable<TSource> source, Func<TSource, int, bool> predicate)
+    {code}
+
+    SelectMany's overloads are not available in LINQ Query expression
+
+# Combination of '...SelectMany' & then '...Select' is equivalent to FLAT-MAP
+
+# LINQ '...Distinct<TSource>(this IEnumerable<TSource>)' will work on any list of custom object if that custom class
+    implements 'IEquatable<T>.Equals' (Note: That class might also need to override GetHashCode, not sure why)
+
+    {code}
+        public static IEnumerable<TSource> Distinct<TSource>(this IEnumerable<TSource> source);
+    {code}
+
+    {code}
+        public override int GetHashCode() => 0; //Custom logic here
+    {code}
+
+# Invoking conversion operator on IEnumerable<T> for LINQ will materialize the query. That is resultset will be stored in memory
+    immediately
+
+# As Query expressions are similar to Query operator to materialize the query immediately, '.ToList<TSource>' needs to be invoked
+    Example:
+    {code}
+        IEnumerable<Book> books = (from book in books where book.ISBN.Contains("F") select book).ToList<Book>();
+    {code}
+
+# For Query operator, using '.Select<TSource, TResult>()' is optional. It is needed only when mapping/conversion is required. BUT in case
+    of query expression, using 'select' is a MUST (otherwise, compilation error 'CS0742' will be thrown). So following is invalid:
+    {code}
+        IEnumerable<Book> filteredBooks = from book in books where book.ISBN.Contains("F");
+    {code}
+
+    Even though following is correct
+    {code}
+        IEnumerable<Book> filteredBooks = books.Where<Book>(book => book.ISBN.Contains("F"));
+    {code}
+
+    On the otherhand, both of the following is correct
+    {code}
+        IEnumerable<Book> filteredBooks = from book in books where book.ISBN.Contains("F") select book;
+        IEnumerable<Book> filteredBooksQueryOperator = books.Where<Book>(book => book.ISBN.Contains("F")).Select<Book, Book>(book => book);
+    {code}
+
+# IEnumerable<T> can consume T[] because C# array's implicitly implement IEnumerable<T> but T[] can't consume IEnumerable<T>
+    Example:
+    {code}
+
+        //Poi: Possible
+        IEnumerable<Book> books = new Book[]
+        {
+            new Book { ISBN = "123" },
+            new Book { ISBN = "FGT" },
+            new Book { ISBN = "DF" }
+        };
+
+        //Poi: INVALID!
+        Book[] bookArray = books;
+    {code}
+
+# Extension methods must be declared in a non-generic static class
+
+# Dictionary<TKey, TValue> is a IEnumerable<KeyValuePair<TKey, TValue>>
+
+# For Dictionary or IDictionary key is defined at the left side of generic type parameters & value is on the right
+    side of the generic type parameter. LINQ extension method '.ToDictionary<TSource, TKey>' will return in that format that is
+    'Dictionary<TKey, TValue>' or 'IDictionary<TKey, TValue>'. Note that TKey is the second type parameter in '.ToDictionary<TSource, TKey>'
+
+# None of IEnumerable<T>, IList<T> or ICollection<T> implements IDisposable<T> (Most probably none of the .NET collections)
+
+# Is there equivalent LINQ aggregate Query Expression operators?
+
+# From findings TILL NOW, there is no relation between LINQ extension method return type & specified generic typed parameter
+    'TSource' & 'TResult'. Example:
+    {code}
+        public static IEnumerable<TResult> Select<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector);
+        public static decimal Sum<TSource>(this IEnumerable<TSource> source, Func<TSource, decimal> selector);
+    {code}
+
+# Among the aggregate LINQ query operators, 'Min<TSource>(...)' & 'Max<TSource>(...)' has an overload that returns 'TSource'. So the
+    argument list can be EMPTY. But that's not true for '.Sum<TSource>(...)'
+    {code}
+        public static TSource Min<TSource>(this IEnumerable<TSource> source);
+        public static Int32 Sum<TSource>(this IEnumerable<TSource> source, Func<TSource, Int32> selector);
+    {code}
+
+# Why isn't there a parameterless overload for '.Sum<TSource>(...)' similar to '.Min<TSource>(...)' or '.Max<TSource>(...)'?
+
+# ThenBy<TSource, TKey>(...) or ThenByDescending<TSource, TKey>(...) will have impact on result set only if there are multiple values returned
+    by first Order By.
+
+# OrderBy<TSource, TKey>(...), OrderByDescending<TSource, TKey>(...), ThenBy<TSource, TKey>(...) & ThenByDescending<TSource, TKey>(...)
+    all returns IOrderedEnumerable<TSource> which implements IEnumerable<T> & IEnumerable
+
+    {code}
+        public interface IOrderedEnumerable<TElement> : IEnumerable<TElement>, IEnumerable
+        {
+            IEnumerator<TElement> GetEnumerator();
+            .....
+        }
+    {code}
+
+# Linq executes in lazy way that is when the query is CREATED the operations aren't performed. So only compile time checking is available
+    for a Linq query when it is GENERATED. But if there's any chance for run time exception than that will be thrown when the query is
+    evaluated (when the values are being yield-ed)
+
+# To have access to generic linq extension methods it's enough to Cast<T>() the non-generic collection into a collection of object by
+    collection.Cast<object>(). Essentially it's same as not casting but this conversion will allow extension methods to be used on the
+    collection (casted from non-generic to generic but of object type).
+
+# Can a class contain public class? What is the usecase?
+
+# Property's setter type & getter type has to be same. Consider the following example which doesn't compile:
+    {code}
+        private static string _domain;
+        private static IEnumerable<Publisher> Prop
+        {
+            get
+            {
+                return Publishers
+                        .OfType<Publisher>()
+                        .Where<Publisher>(publisher => publisher.WebSite.Contains(_domain));
+            }
+            set
+            {
+                _domain = value;
+            }
+        }
+    {code}

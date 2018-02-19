@@ -1,0 +1,11 @@
+﻿
+# When adding an [1 - *] association, the entity that will contain the many navigation property will contain
+ICollection<TModel> but the other entity that will contain the [1 - 1] association will contain an instance of 
+the other entity & one foreign key that will refer to the other instance
+
+# [1 - *] association from DB's perspective means the table that has [1 - 1] association will contain the
+foreign key but the other table will not contain any foreign key. From model class's perspective, it means
+the entity (table) that will have [1 - *] association will contain a collection of the other entity which is
+reverse of what the DB table will contain. On the other hand, the entity that will have the [1 - 1] 
+association will contain the other entity & it's corresponding foreign key. The foreign key's data type will
+be same as the original entity's identity column's data type.

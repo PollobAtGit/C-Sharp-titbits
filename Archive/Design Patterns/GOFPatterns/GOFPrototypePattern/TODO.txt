@@ -1,0 +1,13 @@
+﻿
+# There's a issue with MemberWiseClone(). It performs shallow copy not deep copy. So if there are
+	any reference types in the class then the reference will be copied not the content.
+
+# Does the above applies for string?
+
+# Add more fields to PowerBank or Milk class to make the advantage more obvious.
+
+# Make use of ICloneable via Product
+
+# Why keyword 'override' is required when implementing abstract methods?
+
+# Is a 'abstract' method virtual by definition?

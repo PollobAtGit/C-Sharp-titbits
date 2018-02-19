@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+    var u = ViewBag.user as string;
+    var i = ViewBag.nid as string;
+    var h = ViewBag.Html as string;
+
+    var cookieValue = ViewBag.ECookie == null ? "Cookie Doesn't Exist" : ViewBag.ECookie as string;
+}
+
+<h2>Index</h2>
+
+<div>
+
+    <!-- POI: Query string is encoded also when created using razor view -->
+    @using (Html.BeginForm("index", "QueryStringEncoderChecker", FormMethod.Get, null))
+    {
+        @Html.TextBox("user", u, new { })
+        @Html.TextBox("nid", i, new { })
+        @Html.TextBox("htmlInput", Html.Raw(h), new { })
+
+        <input type="text" value="@Html.Raw(h)" />
+
+        <input type="submit" value="GO TO SERVER" />
+    }
+
+    @Html.ActionLink("To Cookie Controller", "Index", "Cookie")
+
+    <div>
+        <div>
+            <span>Cookie Value</span>
+        </div>
+        <div>
+            @Html.TextBox("vCookie", cookieValue)
+        </div>
+    </div>
+</div>

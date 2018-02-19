@@ -1,0 +1,9 @@
+﻿
+# Properties can not be generic in stand alone fashion. To have a generic property that Type has to be 
+	generic
+
+# The advantage of this pattern is the class can work indenpendent of the creation logic of other 
+	constituents of the class. It helps if creation logic is complex.
+
+# Client doesn't have to be bothered about the order of creation. If there is any possible creation 
+	order for the constituents parts then Builder will handle that.

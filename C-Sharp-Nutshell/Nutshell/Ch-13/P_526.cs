@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 #else
 using System.Collections;
+using System.Diagnostics;
 #endif
 
 namespace Ch_13
@@ -31,6 +32,41 @@ namespace Ch_13
             InvokeConditionalMethodExistence();
 
             Invoke();
+
+            Debug();
+        }
+
+        private static void Debug()
+        {
+            // POI: Debug is helpful if developer doesn't want to step into those places but wanna track the path
+            // POI: WriteLine writes to the output window so if the application is not ran from VS then there's no point in using Debug.WriteLine()
+
+            System.Diagnostics.Debug.WriteLine("Output To - Debug Output");
+            System.Diagnostics.Debug.WriteLine("Outputted To - Debug Output");
+
+            int x = 29;
+
+            // POI: Conditional debugging
+            System.Diagnostics.Debug.WriteLineIf(x > 30, "X is > 30");
+
+            x++;
+            x = x - 1000;
+
+            // POI: Fail(...) will be invoked only in Debug mode not in release mode
+            // POI: This an approach to fail early
+            // POI: Fail(...) will work in EXE only but Debug.WriteLine(...) doesn't work in that case because that only writes 
+            // in VS Output window
+            // POI: Debug.Fail(...) is unconditional failure
+            // POI: Debug.Fail(...) can be used to Attach to a failed process
+            if (x > 0) System.Diagnostics.Debug.Fail("X is negative");
+
+            // POI: Debug.Assert(...) is the same as above except that to throw exception the condition has to be false
+            // POI: Using Debug.Assert(...) is the same as using Debug.Fail(...) with the added advantage that application can fail
+            // conditionally
+            // POI: Failed process/application with Debug.Assert(...) or Debug.Fail(...) can be used to Attach with a VS application
+            System.Diagnostics.Debug.Assert(x > 0, "X is not positive");
+
+            int y = -23;
         }
 
         // POI: Static variables & other C# construct can't reach here (if-else outside method)
