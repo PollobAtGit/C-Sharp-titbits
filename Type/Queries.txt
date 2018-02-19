@@ -1,2 +1,0 @@
-
-# Enum is a non-nullable value type. Struct is also a non-nullable value type. What's the difference between two?

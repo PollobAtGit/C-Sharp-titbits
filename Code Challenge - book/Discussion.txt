@@ -1,7 +1,0 @@
-
-# When dealing with sequence (Array, List, Collection etc.) always consider what will happen for index 0, 1 & (Length - 1)
-
-# If values are accessed via index directly make sure to have guard clause against the above (index 0, 1 & length - 1)
-
-# When incrementing / decrementing index in adhoc basis inside code, conside the above scenarios
-

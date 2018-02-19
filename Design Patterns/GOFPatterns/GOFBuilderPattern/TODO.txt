@@ -1,8 +1,0 @@
-﻿
-# Whay can't properties be readonly?
-
-# Add behaviors to Car objects.
-
-# Introduce multiple Car parts of each category
-
-# What to do if creation logic needs 

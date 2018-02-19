@@ -1,9 +1,0 @@
-
-# To flatten n-dimensional array simply CAST (LINQ CAST) that array by giving the proper data type
-    {code:C#}
-        int [,] arr = new int[,] { { 1, 2 }}
-        int [,,] DArray = new int[,,] { { { 1, 2, 2} } };
-
-        IEnumerable<int> flattened2D = arr.Cast<int>();
-        IEnumerable<int> flattened3D = DArray.Cast<int>();
-    {code}

@@ -1,8 +1,0 @@
-﻿
-# What's the usage of System.Diagnostics.CodeAnalysis.SupressMessage?
-
-# Study the following resources for ProxyCreationEnabled
-	## http://stackoverflow.com/questions/4596371/what-are-the-downsides-to-turning-off-proxycreationenabled-for-ctp5-of-ef-code-f
-	## http://stackoverflow.com/questions/25720006/ef-6-1-difference-between-proxycreationenabled-and-lazyloadingenabled
-
-# What is the usage of LazyLoadingEnabled found in DbContextConfiguration & accessed via DbContext.Configuration.LazyLoadingEnabled

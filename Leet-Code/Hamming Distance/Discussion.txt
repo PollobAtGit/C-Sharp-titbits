@@ -1,2 +1,0 @@
-
-# For same numbers XOR value will be '0'. So distance is zero always

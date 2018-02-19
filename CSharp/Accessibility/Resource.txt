@@ -1,1 +1,0 @@
-Accessibility domains: https://msdn.microsoft.com/en-us/library/aa691128(v=vs.71).aspx

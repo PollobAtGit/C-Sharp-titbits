@@ -1,5 +1,0 @@
-﻿1) Warning CS0108	'Jet.Go()' hides inherited member 'Vehicle.Go()'. Use the new keyword if hiding was intended.StrategyPattern E:\Users\C# Git Repository\Design Patterns\Strategy Pattern\StrategyPattern\StrategyPattern\Jet.cs	16
-
-
-Main Advantage of Strategy Pattern:
-1) We can change strategy whever we want

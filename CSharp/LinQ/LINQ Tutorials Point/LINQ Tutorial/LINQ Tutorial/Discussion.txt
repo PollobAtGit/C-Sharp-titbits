@@ -1,4 +1,0 @@
-﻿
-# How does LinqToSqlDataContext gets Employees & Department Table?
-
-# Investigate file "LinqToSql.designer.cs". Some nice auto-generated code is there

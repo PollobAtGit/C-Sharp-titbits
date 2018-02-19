@@ -1,5 +1,0 @@
-
-# Can't collections be constant? Following throws error:
-    {code}
-        private const string[] _names = new string[] { "" };
-    {code}

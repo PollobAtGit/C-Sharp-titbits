@@ -1,9 +1,0 @@
-
-# LINQ has a Reverse<T>() method that reverses the input
-
-# String is immutable. So the indexer is READ-ONLY
-
-# To Modify string in-place use String Builder defined in System.Text
-
-# It might be better to use extra space to hold the returned value rather than to create a string
-    builder with the string first. Creation of the String Builder takes time

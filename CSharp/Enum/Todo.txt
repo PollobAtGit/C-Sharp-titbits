@@ -1,4 +1,0 @@
-
-# What is the use of System.ValueType abstract class?
-
-# What are other System.Linq.Enumerable class's extension methods that take IEnumerable?
