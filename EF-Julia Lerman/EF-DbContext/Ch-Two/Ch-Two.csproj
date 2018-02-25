@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Ch_Two.Loading</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
@@ -50,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL\BreakAwayContext.cs" />
+    <Compile Include="Loading.cs" />
     <Compile Include="Migrations\201802141810276_Init-2-15-2018.cs" />
     <Compile Include="Migrations\201802141810276_Init-2-15-2018.Designer.cs">
       <DependentUpon>201802141810276_Init-2-15-2018.cs</DependentUpon>
