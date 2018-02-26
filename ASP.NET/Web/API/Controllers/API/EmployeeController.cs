@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Tracing;
 using API.Controllers.Model;
 
 namespace API.Controllers.API
@@ -44,6 +43,15 @@ namespace API.Controllers.API
         // POI: Consider thinking about the URL
         public Employee GetById(int orgId, int id)
         {
+            Configuration
+                .Services
+                .GetTraceWriter()
+                .Info(Request, "EmployeeController extends ApiController", "EmployeeController : Getting employee with [id] for [orgId]");
+
+            Debug.Indent();
+            Debug.WriteLine("SHOW", "OTHER-CAT");
+            Debug.Unindent();
+
             return _employees.SingleOrDefault(x => x.Id == id && x.OrgId == orgId);
         }
 

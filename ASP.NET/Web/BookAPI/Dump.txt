@@ -1,0 +1,58 @@
+﻿// GET: api/Reviews
+        //public IQueryable<Review> GetReviews()
+        //{
+        //    return _context.Reviews;
+        //}
+
+        //// GET: api/Reviews/5
+        //[ResponseType(typeof(Review))]
+        //public async Task<IHttpActionResult> GetReview(int id)
+        //{
+        //    Review review = await _context.Reviews.FindAsync(id);
+        //    if (review == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(review);
+        //}
+
+        // PUT: api/Reviews/5
+        //[ResponseType(typeof(void))]
+        //public async Task<IHttpActionResult> PutReview(int id, Review review)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    if (id != review.Id)
+        //    {
+        //        return BadRequest();
+        //    }
+
+        //    _context.Entry(review).State = EntityState.Modified;
+
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!ReviewExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+
+        //    return StatusCode(HttpStatusCode.NoContent);
+        //}
+
+		        //bool ReviewExists(int id)
+        //{
+        //    return _context.Reviews.Count(e => e.Id == id) > 0;
+        //}
