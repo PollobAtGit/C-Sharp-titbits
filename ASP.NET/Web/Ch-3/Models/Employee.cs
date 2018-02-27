@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Ch_3.Models
+﻿namespace Ch_3.Models
 {
     public class Employee
     {

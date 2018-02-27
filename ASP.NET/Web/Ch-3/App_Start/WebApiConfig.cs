@@ -1,9 +1,10 @@
-﻿using Ch_3.Models;
+﻿using Ch_3.MediaTypeFormatter;
+using Ch_3.Models;
 using Ch_3.TraceWriter;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 using System.Web.Http.Tracing;
 
@@ -21,6 +22,52 @@ namespace Ch_3
             config.EnableSystemDiagnosticsTracing();
 
             config.Services.Replace(typeof(ITraceWriter), new TextTraceWriter());
+
+            // POI: Content negotiation gives negotiation via Query String the highest precedence
+            // So for this example when Accept is application/xml but query string contains frmt=json
+            // then response will be serialized in JSON not in XML because query string has higher precedence
+
+            // POI: We are saying that if query string contains key frmt with value json then it's media type
+            // will be application/json
+            config
+                .Formatters
+                .JsonFormatter
+                .MediaTypeMappings
+                .Add(new QueryStringMapping("frmt", "json", "application/json"));
+
+            // POI: We are denoting that if a query string key is frmt that contains value not-json-but-xml
+            // then media Type for that request should set to application/xml
+            config
+                .Formatters
+                .XmlFormatter
+                .MediaTypeMappings
+                .Add(new QueryStringMapping("frmt", "not-json-but-xml", "application/xml"));
+
+            // POI: Custom header has higher precedence than any other way of Content negotiation
+            // Precedence: Custom Header => Query String => Accept Header => Content-Type
+            config
+                .Formatters
+                .JsonFormatter
+                .MediaTypeMappings
+                .Add(new RequestHeaderMapping(
+                    "X-Media-Type",
+                    "hJson",
+                    StringComparison.InvariantCultureIgnoreCase,
+                    false,
+                    "application/json"));
+
+            config
+                .Formatters
+                .JsonFormatter
+                .MediaTypeMappings
+
+                // POI: MediaTypeMapping has two constructors and both having arguments still we are
+                // not providing anything for custom media type mapping because we ar invoking base with
+                // a default instance of the desired Type
+                .Add(new IPBasedMediaTypeMapping());
+
+            config.Formatters.JsonFormatter.MediaTypeMappings.ToList()
+                .ForEach(x => Trace.WriteLine(x.MediaType.MediaType));// application/json
 
             // POI: Removing XML Formatter
             // POI: Any GET request where Accept header is application/xml will fail to 
