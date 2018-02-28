@@ -17,7 +17,102 @@ namespace Ch_Two
             //Example_2_23();
             //Example_2_23_Explicit_Loading();
             //Example_2_23_Eager_Single();
-            Example_2_23_Eager_Single_With_Include();
+            //Example_2_23_Eager_Single_With_Include();
+            //Page_38();
+            //Page_38_Load_All_Navigation();
+            //Page_38_Query_On_Collection_Ref();
+            Page_38_Lazy_Loading_ToDB_Even_If_Local_IsLoaded();
+        }
+
+        private static void Page_38_Lazy_Loading_ToDB_Even_If_Local_IsLoaded()
+        {
+            using (var context = new BreakAwayContext())
+            {
+                var d = context
+                    .Destinations
+                    .Where(x => x.Lodgings.Count != 0)
+                    .First();// Last(...) not recognized?
+
+                d.Lodgings.ToList();
+
+                cl(context.Lodgings.Local.Count);
+
+                // POI: Interesting! This statement is not issue-ing a query to DB seems like it's 
+                // using the previous loaded result
+                d.Lodgings.ToList();
+            }
+        }
+
+        private static void Page_38_Query_On_Collection_Ref()
+        {
+            using (var context = new BreakAwayContext())
+            {
+                var l = context.Lodgings.First();
+                var cll = context
+                    .Entry(l)
+                    .Collection(x => x.InternetSpecials);
+
+                cll
+                    .Query()
+                    .Where(x => x.Id == 123) // No data will be returned for this query
+                    .Load();
+
+                // TODO: Why IsLoaded not working properly when used with Query()
+                cl(cll.IsLoaded);// False
+
+                //cl(l.InternetSpecials.First().Id);
+
+                // POI: Query() returned IQuerable<T> which returned no records so navigation property is null
+                cl(l.InternetSpecials == null);// True
+            }
+        }
+
+        private static void Page_38_Load_All_Navigation()
+        {
+            using (var context = new BreakAwayContext())
+            {
+                var l = context.Lodgings.First();
+
+                var e = context.Entry(l);
+                var cll = e.Collection(x => x.InternetSpecials);
+                var r = e.Reference(x => x.PrimaryContact);
+                var sr = e.Reference(x => x.SecondaryContact);
+
+                cll.Load();
+                r.Load();
+
+                // POI: Better approach then checking null against collection or reference
+                cl(cll.IsLoaded);// True
+                cl(r.IsLoaded);// True
+                cl(sr.IsLoaded);// False
+            }
+        }
+
+        private static void Page_38()
+        {
+            using (var context = new BreakAwayContext())
+            {
+                var l = context.Lodgings.First();
+
+                cl(l.PrimaryContact == null);// True
+                cl(context.Lodgings.Local.First().PrimaryContact == null);// True
+
+                context
+                    .Entry(l)
+                    .Reference(x => x.PrimaryContact)
+                    .Load();
+
+                // POI: Referencing navigation property using the parent object
+                cl(l.PrimaryContact != null);// True
+                cl(l.PrimaryContact.Id);// 1
+
+                // POI: Though Local cache coul have been used too
+                cl(context.Lodgings.Local.First().PrimaryContact != null);// True
+
+                // POI: Reference(...) has been used to explicitly load a Navigation property that is
+                // not a collection that's why the Collection property is not initialized
+                cl(l.InternetSpecials == null);// True
+            }
         }
 
         private static void Example_2_23_Eager_Single_With_Include()
