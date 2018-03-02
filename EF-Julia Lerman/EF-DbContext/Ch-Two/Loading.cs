@@ -21,7 +21,25 @@ namespace Ch_Two
             //Page_38();
             //Page_38_Load_All_Navigation();
             //Page_38_Query_On_Collection_Ref();
-            Page_38_Lazy_Loading_ToDB_Even_If_Local_IsLoaded();
+            //Page_38_Lazy_Loading_ToDB_Even_If_Local_IsLoaded();
+            //Page_39_Query_Lodging_Distance();
+        }
+
+        private static void Page_39_Query_Lodging_Distance()
+        {
+            using (var context = new BreakAwayContext())
+            {
+                var d = context.Destinations.First();
+
+                cl(d.Lodgings == null);
+
+                // When Lazy loading is no enabled for navigation property
+                var distanceQuery =
+                    d.Lodgings
+                    .Where(x => x.MilesFromNearestAirport <= 10);
+
+                distanceQuery.ToList().ForEach(x => cl(x.Name));
+            }
         }
 
         private static void Page_38_Lazy_Loading_ToDB_Even_If_Local_IsLoaded()

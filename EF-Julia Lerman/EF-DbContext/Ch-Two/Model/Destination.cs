@@ -23,7 +23,9 @@ namespace Model
 
         public string ClimateInfo { get; set; }
 
-        public virtual List<Lodging> Lodgings { get; set; }
+        // POI: For convenience we can keep some navigation property virtual or some non-virtual
+        // POI: In other words we can selectively enable lazy loading for some navigation property
+        public List<Lodging> Lodgings { get; set; }
 
         public override string ToString() => DestinationId + " => " + Name;
     }
