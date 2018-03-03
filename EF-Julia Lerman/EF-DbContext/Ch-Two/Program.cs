@@ -1,5 +1,5 @@
-﻿using Ch_Two.DAL;
-using Model;
+﻿using ObjectModel.DAL;
+using ObjectModel.Model;
 using System;
 using System.Data.Entity;
 using System.Linq;

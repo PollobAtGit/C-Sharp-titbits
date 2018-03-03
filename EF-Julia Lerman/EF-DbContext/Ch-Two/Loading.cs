@@ -1,10 +1,7 @@
-﻿using Ch_Two.DAL;
+﻿using ObjectModel.DAL;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Ch_Two
 {
