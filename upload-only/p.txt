@@ -1,0 +1,12 @@
+Thinking In LINQ
+Web API 2.0
+	- Practical Web API
+EF
+	- DbContext
+CSharp
+	- In Depth
+	- In a Nutshell 6.0
+Design Pattern
+	- ASP.NET
+REST API Design
+	- Designing Evolving API

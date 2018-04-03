@@ -1,0 +1,91 @@
+
+# --------------------------------- CLIENT ---------------------------------------
+
+INotifier n;
+INotificationReceiver r = GetNotificationReceiverDecorator();
+
+if CurrentUser [is not] Admin
+    n = new EmailNotifier(r);
+else n = new PortalNotifier(r);
+
+QuoteCreator qc = new QuoteCreator(n);
+
+# --------------------------------- IMPLEMENTATION ---------------------------------------
+
+    QuoteCreator
+        INotifier n;// Strategy
+        .
+        .
+        .
+
+        n.Send();
+
+-- ----------------------------------------------------------------------------
+
+GetNotificationReceiverDecorator
+    var a = GetAllDepartment();
+    INotificationReceiver r = new EmptyNotificationReceiver();
+
+    for i -> a
+        if(i.Checked)
+            r = GetType(t.Type, r)
+
+    return r
+
+-- ----------------------------------------------------------------------------
+
+// Simple Factory
+GetType
+    switch(t.Type)
+        case "HR": return new HRNotificationReceiverDecorator(r);
+        case "IT": return new ITNotificationReceiverDecorator(r);
+        case "MARKETING": return new MRKNotificationReceiverDecorator(r);
+        case "Executive": return new EXNotificationReceiverDecorator(r);
+
+    return new EmptyNotificationReceiver();
+
+-- ----------------------------------------------------------------------------
+
+INotificationReceiver
+    INotificationReceiver n // Decorator
+
+    abstract GetColumnsToView(): string[]
+
+EmptyNotificationReceiver : INotificationReceiver
+    GetColumnsToView(): string[]
+        return new string[] { }
+
+HRNotificationReceiverDecorator : INotificationReceiver
+    GetColumnsToView(): string[]
+        return new string[] { "" }
+
+MRKNotificationReceiverDecorator : INotificationReceiver
+    GetColumnsToView(): string[]
+        return new string[] { "Product" }
+
+EXNotificationReceiverDecorator : INotificationReceiver
+    GetColumnsToView(): string[]
+        return new string[] { "Total Profit" }
+
+-- ----------------------------------------------------------------------------
+
+INotifier
+
+    INotificationReceiver n
+
+    GetReportColumns: string[]
+        n.GetColumnsToView()
+
+    abstract Send()
+
+PortalNotifier : INotifier
+
+    Send()
+        CreateHTMLTag(....) ....
+
+EmailNotifier : INotifier
+    Send()
+        SMTP .....
+
+---------------------------------------------
+
