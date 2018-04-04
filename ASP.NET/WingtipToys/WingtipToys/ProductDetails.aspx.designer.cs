@@ -10,15 +10,15 @@
 namespace WingtipToys {
     
     
-    public partial class ProductList {
+    public partial class ProductDetails {
         
         /// <summary>
-        /// productList control.
+        /// productDetail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView productList;
+        protected global::System.Web.UI.WebControls.FormView productDetail;
     }
 }

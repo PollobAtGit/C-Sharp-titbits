@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.ModelBinding;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using DAL.Context;
 using Model.Product;
+using System.Web.ModelBinding;
+using DAL.Context;
 
 namespace WingtipToys
 {
-    public partial class ProductList : Page
+    public partial class ProductDetails : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        public IList<Product> Products([QueryString("id")]int? categoryId)
+        public Product GetProductDetails([QueryString("productID")] int? id)
         {
+            if (!id.HasValue) Response.Redirect("/");
+
             using (var context = new Context())
             {
-                if (!categoryId.HasValue) return context.Products.ToList();
-                return context.Products.Where(x => x.CategoryId == categoryId).ToList();
+                return context.Products.Where(x => x.ProductId == id.Value).Single();
             }
         }
     }
