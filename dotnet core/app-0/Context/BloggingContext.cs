@@ -1,6 +1,7 @@
 
 using app_0.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace app_0.Context
 {
@@ -13,6 +14,10 @@ namespace app_0.Context
         {
             optionsBuilder
             .UseSqlite("Data Source=blogging.db");
+
+            // POI: This is awesome. Throws exception if some part of the EF query is evaluated on client side
+            // which might not be intentional
+            // .ConfigureWarnings(x => x.Throw(RelationalEventId.QueryClientEvaluationWarning));
         }
     }
 }
