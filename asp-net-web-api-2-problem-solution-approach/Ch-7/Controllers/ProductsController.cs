@@ -21,6 +21,9 @@ namespace Ch_7.Controllers
         [ResourceDeleted]
         public Product Get(int id)
         {
+            // Configuration is HttpConfiguration which also is exposed via RequestContext
+            var tracerWriter = Configuration.Services.GetTraceWriter();
+
             try
             {
                 return Service.FindById(id);
