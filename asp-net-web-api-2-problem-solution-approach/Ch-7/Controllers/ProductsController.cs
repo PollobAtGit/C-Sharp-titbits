@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Http;
+using Ch_7.DomainExceptions;
 using Ch_7.ExceptionAttributes;
 using DAL;
 using Model;

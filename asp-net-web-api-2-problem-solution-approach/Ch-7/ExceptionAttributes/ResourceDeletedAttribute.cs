@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Filters;
-using Ch_7.Controllers;
+using Ch_7.DomainExceptions;
 
 namespace Ch_7.ExceptionAttributes
 {
@@ -13,11 +13,8 @@ namespace Ch_7.ExceptionAttributes
         {
             if (actionExecutedContext.Exception is ResourceDeletedException)
             {
-                actionExecutedContext.Response = new HttpResponseMessage
-                {
-                    StatusCode = HttpStatusCode.Gone,
-                    Content = new StringContent(actionExecutedContext.Exception.Message)
-                };
+                actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.Gone);
+                actionExecutedContext.Response.Content = new StringContent(actionExecutedContext.Exception.Message);
             }
 
             return base.OnExceptionAsync(actionExecutedContext, cancellationToken);

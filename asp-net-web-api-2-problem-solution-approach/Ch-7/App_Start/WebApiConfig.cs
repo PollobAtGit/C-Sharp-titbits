@@ -1,4 +1,6 @@
 ﻿using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
+using Ch_7.GlobalExceptions;
 using Microsoft.Owin.Security.OAuth;
 
 namespace Ch_7
@@ -20,6 +22,12 @@ namespace Ch_7
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            // Register services
+
+            config
+                .Services
+                .Replace(typeof(IExceptionHandler), new ContentNegotiatedExceptionHandler());
         }
     }
 }

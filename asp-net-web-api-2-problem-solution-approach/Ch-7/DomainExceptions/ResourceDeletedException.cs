@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Ch_7.Controllers
+namespace Ch_7.DomainExceptions
 {
     public class ResourceDeletedException : Exception
     {

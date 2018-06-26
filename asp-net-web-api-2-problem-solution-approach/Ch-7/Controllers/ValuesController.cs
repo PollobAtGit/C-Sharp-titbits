@@ -1,11 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
+using Service;
 
 namespace Ch_7.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController
     {
+        // Intentional. Constructor initialization will fail that will trigger ContentNegotiatedException
+        public ValuesController(ProductService service) { }
+
+        [AllowAnonymous]
         // GET api/values
         public IEnumerable<string> Get()
         {
