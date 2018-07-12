@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPPattern.Chap8.MVP.StubRe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Web", "UI.Web\UI.Web.csproj", "{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVP", "MVP", "{BF6A1CAE-975C-4336-A674-25C43880F361}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CircleMvp", "CircleMvp\CircleMvp.csproj", "{9EE96FC9-90D0-4BD2-8845-0D096F25CA10}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,8 +37,15 @@ Global
 		{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9EE96FC9-90D0-4BD2-8845-0D096F25CA10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EE96FC9-90D0-4BD2-8845-0D096F25CA10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EE96FC9-90D0-4BD2-8845-0D096F25CA10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EE96FC9-90D0-4BD2-8845-0D096F25CA10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9EE96FC9-90D0-4BD2-8845-0D096F25CA10} = {BF6A1CAE-975C-4336-A674-25C43880F361}
 	EndGlobalSection
 EndGlobal
