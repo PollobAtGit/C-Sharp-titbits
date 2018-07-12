@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPPattern.Chap8.MVP.Presen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPPattern.Chap8.MVP.StubRepository", "ASPPattern.Chap8.MVP.StubRepository\ASPPattern.Chap8.MVP.StubRepository.csproj", "{F3812566-597A-4A74-B186-1A265D3B79E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI.Web", "UI.Web\UI.Web.csproj", "{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F3812566-597A-4A74-B186-1A265D3B79E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3812566-597A-4A74-B186-1A265D3B79E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3812566-597A-4A74-B186-1A265D3B79E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4EFB07-1FE1-40BF-84A3-14A7FF33118E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

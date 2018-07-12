@@ -27,5 +27,11 @@ namespace ASPPattern.Chap8.MVP.StubRepository
 
         public IList<Product> GetBestSellingProducts(int takeCount) =>
             ProductRepository.FindAll().OrderBy(x => x.Rating).Take(takeCount).ToList();
+
+        public IList<Product> GetProductsIn(int categoryId) =>
+            ProductRepository
+            .FindAll()
+            .Where(x => x.Category.Id == categoryId)
+            .ToList();
     }
 }
