@@ -34,7 +34,8 @@ namespace Ch_7
             // TODO: NLog tracing is not working now
 
             // System Diagnostics Trace Writer is pretty good
-            config.Services
+            config
+                .Services
                 .Replace(typeof(ITraceWriter), new SystemDiagnosticsTraceWriter());
 
         }

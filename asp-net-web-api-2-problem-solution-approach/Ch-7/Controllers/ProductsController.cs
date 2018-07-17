@@ -5,6 +5,7 @@ using Ch_7.ExceptionAttributes;
 using DAL;
 using Model;
 using Service;
+using System.Web.Http.Description;
 
 namespace Ch_7.Controllers
 {
@@ -32,6 +33,19 @@ namespace Ch_7.Controllers
             {
                 throw new ResourceDeletedException($"Product with Id {id} has been deleted.", expException);
             }
+        }
+
+
+        public void Get(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        // IgnoreApi won't show the controller action in Help
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public Product Get()
+        {
+            throw new NotImplementedException();
         }
     }
 }

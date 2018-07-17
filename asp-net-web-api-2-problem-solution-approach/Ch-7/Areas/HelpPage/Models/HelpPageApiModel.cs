@@ -104,5 +104,7 @@ namespace Ch_7.Areas.HelpPage.Models
 
             return null;
         }
+
+        public bool HasExceptionHandler { get; set; }
     }
 }

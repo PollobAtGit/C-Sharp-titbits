@@ -13,6 +13,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Description;
 using Ch_7.Areas.HelpPage.ModelDescriptions;
 using Ch_7.Areas.HelpPage.Models;
+using System.Web.Http.Filters;
 
 namespace Ch_7.Areas.HelpPage
 {
@@ -231,7 +232,10 @@ namespace Ch_7.Areas.HelpPage
                 }
             }
 
-            return (HelpPageApiModel)model;
+
+            var helpApiModel = (HelpPageApiModel)model;
+
+            return helpApiModel;
         }
 
         private static HelpPageApiModel GenerateApiModel(ApiDescription apiDescription, HttpConfiguration config)
@@ -247,6 +251,15 @@ namespace Ch_7.Areas.HelpPage
             GenerateRequestModelDescription(apiModel, modelGenerator, sampleGenerator);
             GenerateResourceDescription(apiModel, modelGenerator);
             GenerateSamples(apiModel, sampleGenerator);
+
+            if (apiDescription
+                        .ActionDescriptor
+                        .GetFilterPipeline()
+                        .Any(x => x.Instance is IExceptionFilter))
+            {
+                apiModel.HasExceptionHandler = true;
+
+            }
 
             return apiModel;
         }
