@@ -13,5 +13,10 @@ namespace XmlSerialization
         public List<Course> Courses { get; set; }
 
         public List<Student> Students { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Environment.NewLine}Department name => {Name}, Student count => {TotalStudentCount}, Courses => {string.Join(", ", Courses)}, Students => {string.Join(", ", Students)}";
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace XmlSerialization
     [Serializable]
     public class University
     {
-        public string Name { get; set; }
+        public UniversityName Name { get; set; }
 
         [XmlElement("ThisUniversityIsAnEngineeringUniversity")]
         public bool IsEngineeringUniversity { get; set; }
@@ -15,10 +15,16 @@ namespace XmlSerialization
         [XmlElement("UniversityAddress")]
         public Address Location { get; set; }
 
-        [XmlIgnore]
         public List<Department> Departments { get; set; }
+
+        //[XmlIgnore] will not de-serialize the property into the CLR object
 
         [XmlAttribute("UniversityIdentity")]
         public string UniversityCode { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Environment.NewLine}University name => {Name}, Code => {UniversityCode} Address => {Location}, Departments => {string.Join(", ", Departments)}";
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
@@ -7,21 +8,45 @@ namespace XmlSerialization
 {
     class Program
     {
+        private const string XmlFileName = "./university.xml";
+
         static void Main()
+        {
+            //Serialize();
+            Deserialize();
+        }
+
+        private static void Deserialize()
+        {
+            var serializer = new XmlSerializer(typeof(List<University>));
+
+            Console.WriteLine("De-serialization - [STARTING]" + Environment.NewLine);
+
+            var fileStream = new FileStream(XmlFileName, FileMode.Open, FileAccess.Read);
+
+            var deserializedUniversity = serializer
+                .Deserialize(fileStream) as List<University>;
+
+            var multipleNewLine = string
+                .Join(string.Empty, Enumerable.Range(1, 3)
+                    .Select(x => Environment.NewLine));
+
+            Console.WriteLine(string.Join(multipleNewLine, deserializedUniversity));
+        }
+
+        private static void Serialize()
         {
             var university = GetSampleUniversity();
 
             var serializer = new XmlSerializer(typeof(List<University>));
 
-            var writer = new StreamWriter("./university.xml");
+            var writer = new StreamWriter(XmlFileName);
 
-            serializer.Serialize(writer, new[]
-            {
-                university,
-                university
-            }.ToList());
+            serializer.Serialize(writer, new University[] { university, university }.ToList());
 
             writer.Close();
+
+            Console.WriteLine("Serialization - [DONE]" + Environment.NewLine);
         }
 
         private static University GetSampleUniversity()
@@ -38,7 +63,7 @@ namespace XmlSerialization
 
             return new University
             {
-                Name = "AIUB",
+                Name = new UniversityName { Name = "AIUB", Culture = "eng" },
                 IsEngineeringUniversity = false,
                 UniversityCode = "XRT",
                 Location = new Address
