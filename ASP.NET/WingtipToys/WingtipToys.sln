@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WingtipToys", "WingtipToys\WingtipToys.csproj", "{0DC8F33D-7614-44C1-A512-F9FC286A6124}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{5294FCCC-6F7E-43B5-ABDC-9816839960FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{946315E5-E200-460E-AA68-DAAF5A7E8F7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0DC8F33D-7614-44C1-A512-F9FC286A6124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC8F33D-7614-44C1-A512-F9FC286A6124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC8F33D-7614-44C1-A512-F9FC286A6124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC8F33D-7614-44C1-A512-F9FC286A6124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5294FCCC-6F7E-43B5-ABDC-9816839960FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5294FCCC-6F7E-43B5-ABDC-9816839960FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5294FCCC-6F7E-43B5-ABDC-9816839960FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5294FCCC-6F7E-43B5-ABDC-9816839960FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{946315E5-E200-460E-AA68-DAAF5A7E8F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{946315E5-E200-460E-AA68-DAAF5A7E8F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{946315E5-E200-460E-AA68-DAAF5A7E8F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{946315E5-E200-460E-AA68-DAAF5A7E8F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
