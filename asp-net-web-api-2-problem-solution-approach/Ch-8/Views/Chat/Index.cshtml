@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "View";
+}
+
+<h2>Chat View</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <dl id="console" data-bind="template: { name: 'chatMessageTemplate', foreach: chatMessages}"></dl>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <input type="text" class="form-control" placeholder="name" data-bind="value: chatUsername" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <textarea class="form-control" rows="3" data-bind="value: newMessage.text"></textarea>
+        <button type="button" class="btn btn-primary" data-bind="click: send, enable: enabled()">Send</button>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/html" id="chatMessageTemplate">
+        <dt>
+            <span data-bind="text: UserName"></span>
+            <span data-bind="text: MessageText"></span>
+        </dt>
+    </script>
+
+    <script type="text/javascript">
+
+        const ChatApp = {};
+        ChatApp.Model = function () {
+            var self = this;
+            self.chatMessages = ko.observableArray([]);
+            self.chatUsername = ko.observable("");
+            self.connected = ko.observable(false);
+            self.enabled = ko.computed(function () {
+                return self.connected() && self.chatUsername().length > 0;
+            });
+            self.newMessage = {
+                username: ko.computed(function () {
+                    return self.chatUsername();
+                }),
+                text: ko.observable("")
+            };
+            self.send = function () {
+                $.ajax({
+                    url: "http://localhost:2783/api/chatapi/",
+                    data: JSON.stringify({
+                        username: self.newMessage.username(),
+                        messagetext: self.newMessage.text()
+                    }),
+                    cache: false,
+                    type: 'POST',
+                    dataType: "json",
+                    contentType: 'application/json; charset=utf-8'
+                }).success(function () {
+                    self.newMessage.text("");
+                });
+            };
+        };
+
+        $(document).ready(function () {
+            var viewModel = new ChatApp.Model();
+            ko.applyBindings(viewModel);
+            if (window.EventSource) {
+                var source = new EventSource('http://localhost:2783/api/chatapi/');
+                source.addEventListener('message', function (e) {
+                    if (e.data != "") {
+                        var json = JSON.parse(e.data);
+                        viewModel.chatMessages.push(json);
+                    }
+                }, false);
+                source.addEventListener('open', function (e) {
+                    console.log("open!");
+                    viewModel.connected(true);
+                }, false);
+                source.addEventListener('error', function (e) {
+                    if (e.readyState == EventSource.CLOSED) {
+                        console.log("error!");
+                    }
+                }, false);
+            }
+        });
+    </script>
+}
