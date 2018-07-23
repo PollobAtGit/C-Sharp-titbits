@@ -164,6 +164,8 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DI\ControllerDependencyInjector.cs" />
     <Compile Include="DI\DependencyResolver.cs" />
+    <Compile Include="DI\WhateverDependencyResolver.cs" />
+    <Compile Include="Filter\ResourceNotFoundException.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
