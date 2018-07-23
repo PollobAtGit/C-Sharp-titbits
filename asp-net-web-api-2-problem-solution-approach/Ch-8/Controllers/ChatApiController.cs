@@ -22,7 +22,7 @@ namespace Ch_8.Controllers
             Subscribers = new List<StreamWriter>();
         }
 
-        public HttpResponseMessage Get(HttpRequestMessage message)
+        public HttpResponseMessage Get()
         {
             return new HttpResponseMessage
             {
