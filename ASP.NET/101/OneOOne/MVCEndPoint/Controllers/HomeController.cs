@@ -10,6 +10,14 @@ namespace MVCEndPoint.Controllers
     {
         public ActionResult Index()
         {
+            // POI: Why not Abandon() working?
+            // Why not session id is changing
+            // Why session Id is being changed for main browser instance
+
+            //var sessionId = Session.SessionID;
+            //Session.Abandon();
+            //sessionId = Session.SessionID;
+
             return View();
         }
 
