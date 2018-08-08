@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 
 namespace Ch_11.Controllers
 {
@@ -10,5 +11,10 @@ namespace Ch_11.Controllers
         {
         }
 
+        internal void SaveItem(Item newItem)
+        {
+            Items.Add(newItem);
+            SaveChanges();
+        }
     }
 }

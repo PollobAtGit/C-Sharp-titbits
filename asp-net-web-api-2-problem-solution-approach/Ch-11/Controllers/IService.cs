@@ -5,5 +5,6 @@
         IItemRepository Repository { get; }
 
         Item GetById(int id);
+        void AddItem(Item newItem);
     }
 }

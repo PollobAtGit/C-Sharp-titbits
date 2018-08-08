@@ -17,5 +17,10 @@ namespace Ch_11.Tests
         }
 
         public Item GetById(int id) => Repository.GetById(id: id);
+
+        public void AddItem(Item newItem)
+        {
+            Repository.AddItem(newItem);
+        }
     }
 }

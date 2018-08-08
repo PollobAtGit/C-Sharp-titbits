@@ -14,5 +14,10 @@ namespace Ch_11.Controllers
         }
 
         public Item GetById(int id) => Context.Items.ToList().Single(x => x.Id == id);
+
+        public void AddItem(Item newItem)
+        {
+            Context.SaveItem(newItem);
+        }
     }
 }

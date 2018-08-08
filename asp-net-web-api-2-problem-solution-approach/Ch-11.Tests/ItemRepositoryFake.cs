@@ -11,7 +11,7 @@ namespace Ch_11.Tests
 
         public ItemRepositoryFake()
         {
-            Items = new Item[]
+            Items = new List<Item>
             {
                 new Item
                 {
@@ -23,5 +23,13 @@ namespace Ch_11.Tests
         }
 
         public Item GetById(int id) => Items.Single(x => x.Id == id);
+
+        public void AddItem(Item newItem)
+        {
+            if (newItem.Id != 0) throw new InvalidOperationException();
+
+            newItem.Id = Items.Max(x => x.Id) + 10;
+            Items.Add(newItem);
+        }
     }
 }
