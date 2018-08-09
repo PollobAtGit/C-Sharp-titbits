@@ -80,6 +80,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -200,6 +201,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\ApplicationSetting.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -236,20 +238,21 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\IRepository.cs" />
-    <Compile Include="Controllers\IService.cs" />
-    <Compile Include="Controllers\Item.cs" />
-    <Compile Include="Controllers\ItemDbContext.cs" />
-    <Compile Include="Controllers\ItemReposiotory.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
-    <Compile Include="Controllers\ItemService.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MessageHandlers\IFileWriter.cs" />
+    <Compile Include="MessageHandlers\IPDumper.cs" />
+    <Compile Include="MessageHandlers\WindowsFileWriter.cs" />
     <Compile Include="Migrations\201808081317246_init-item.cs" />
     <Compile Include="Migrations\201808081317246_init-item.Designer.cs">
       <DependentUpon>201808081317246_init-item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808091125508_ItemNameIsRequired.cs" />
+    <Compile Include="Migrations\201808091125508_ItemNameIsRequired.Designer.cs">
+      <DependentUpon>201808091125508_ItemNameIsRequired.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -295,6 +298,7 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="app.manifest" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -337,10 +341,30 @@
     <EmbeddedResource Include="Migrations\201808081317246_init-item.resx">
       <DependentUpon>201808081317246_init-item.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808091125508_ItemNameIsRequired.resx">
+      <DependentUpon>201808091125508_ItemNameIsRequired.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{1C43C4CC-DD8E-4E1E-BE1D-D8F893DF1ADA}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{21E252CC-9819-44AF-BC80-96127CEFB07B}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{C341C23B-5F51-440B-8F62-67F3D53B05CD}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

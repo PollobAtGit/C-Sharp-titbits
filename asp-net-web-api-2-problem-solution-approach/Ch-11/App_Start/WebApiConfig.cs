@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using Ch_11.App_Start;
+using Ch_11.MessageHandlers;
 
 namespace Ch_11
 {
@@ -17,11 +19,14 @@ namespace Ch_11
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
+            // TODO: Address dispose warning
+            config.MessageHandlers.Add(new IpDumper());
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
+                name: ApplicationSetting.DefaultApiRouteName,
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );

@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Ch_11.App_Start;
+using Model;
+using Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Http;
 
@@ -21,7 +25,7 @@ namespace Ch_11.Controllers
             Service = service;
         }
 
-        public Item Get(int id) => Service.GetById(id);
+        public async Task<Item> Get(int id) => await Service.GetById(id);
 
         public IHttpActionResult Post(Item newItem)
         {
@@ -31,8 +35,11 @@ namespace Ch_11.Controllers
                 {
                     Service.AddItem(newItem);
 
+                    var uri = new Uri(Url
+                        .Link(ApplicationSetting.DefaultApiRouteName, new { id = newItem.Id }));
+
                     // TODO: 
-                    return Redirect($"{Request.RequestUri.AbsoluteUri}/{newItem.Id}");
+                    return Redirect(uri);
                 }
 
                 return InternalServerError();

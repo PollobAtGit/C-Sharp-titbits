@@ -1,10 +1,15 @@
-﻿namespace Ch_11.Controllers
+﻿using DAL;
+using Model;
+using System.Threading.Tasks;
+
+namespace Service
 {
     public interface IService
     {
         IItemRepository Repository { get; }
 
-        Item GetById(int id);
+        Task<Item> GetById(int id);
+
         void AddItem(Item newItem);
     }
 }

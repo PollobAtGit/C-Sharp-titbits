@@ -1,18 +1,19 @@
 namespace Ch_11.Migrations
 {
+    using DAL;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Ch_11.Controllers.ItemDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ItemDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Ch_11.Controllers.ItemDbContext context)
+        protected override void Seed(ItemDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

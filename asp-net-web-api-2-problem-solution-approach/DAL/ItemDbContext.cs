@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Data.Entity;
 
-namespace Ch_11.Controllers
+namespace DAL
 {
     public class ItemDbContext : DbContext
     {

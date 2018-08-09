@@ -1,7 +1,10 @@
-﻿using System;
+﻿using DAL;
+using Model;
+using System;
 using System.Linq;
+using System.Threading.Tasks;
 
-namespace Ch_11.Controllers
+namespace Service
 {
     public class ItemService : IService
     {
@@ -12,7 +15,7 @@ namespace Ch_11.Controllers
             Repository = new ItemRepository();
         }
 
-        public Item GetById(int id) => Repository.GetById(id: id);
+        public Task<Item> GetById(int id) => Repository.GetById(id: id);
 
         public void AddItem(Item newItem)
         {
