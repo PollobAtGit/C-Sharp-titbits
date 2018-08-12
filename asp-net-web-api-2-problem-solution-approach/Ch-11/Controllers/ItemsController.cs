@@ -1,4 +1,5 @@
 ﻿using Ch_11.App_Start;
+using Ch_11.Filters;
 using Model;
 using Service;
 using System;
@@ -25,6 +26,7 @@ namespace Ch_11.Controllers
             Service = service;
         }
 
+        [CacheControlHeaderFilter(50)]
         public async Task<Item> Get(int id) => await Service.GetById(id);
 
         public IHttpActionResult Post(Item newItem)

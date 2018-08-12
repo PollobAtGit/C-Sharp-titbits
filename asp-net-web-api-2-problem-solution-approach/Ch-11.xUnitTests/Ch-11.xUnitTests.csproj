@@ -98,6 +98,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CacheControlFilterTests.cs" />
+    <Compile Include="FakeCacheControlHeaderSetter.cs" />
     <Compile Include="ItemControllerTests.cs" />
     <Compile Include="ItemRepositoryFake.cs" />
     <Compile Include="ItemServiceTests.cs" />

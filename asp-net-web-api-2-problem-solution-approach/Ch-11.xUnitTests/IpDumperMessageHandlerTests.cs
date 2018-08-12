@@ -37,7 +37,7 @@ namespace Ch_11.xUnitTests
         {
             using (var httpRequestMessage = new HttpRequestMessage())
             {
-                await MessageHandlerInvoker.SendAsync(httpRequestMessage, new CancellationToken());
+                await MessageHandlerInvoker.SendAsync(httpRequestMessage, CancellationToken.None);
 
                 FileWriterMock.Verify(x => x.AppendAllLines(It.IsAny<string[]>()), Times.Never());
             }
