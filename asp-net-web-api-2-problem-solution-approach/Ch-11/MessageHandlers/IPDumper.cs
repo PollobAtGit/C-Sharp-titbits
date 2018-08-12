@@ -21,6 +21,11 @@ namespace Ch_11.MessageHandlers
             Writer = new WindowsFileWriter(IpDumperFileName);
         }
 
+        public IpDumper(IFileWriter writer)
+        {
+            Writer = writer;
+        }
+
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
             if (request.Properties.ContainsKey(ApplicationSetting.HttpContextPropertyKey))

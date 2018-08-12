@@ -1,5 +1,9 @@
 ﻿using Ch_11.App_Start;
+using Ch_11.Controllers;
 using Ch_11.MessageHandlers;
+using Model;
+using Moq;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,30 +18,29 @@ namespace Ch_11.xUnitTests
 {
     public class IpDumperMessageHandlerTests
     {
+        private Mock<IFileWriter> FileWriterMock { get; }
+
         private HttpMessageInvoker MessageHandlerInvoker { get; }
 
         public IpDumperMessageHandlerTests()
         {
-            MessageHandlerInvoker = new HttpMessageInvoker(new IpDumper());
+            FileWriterMock = new Mock<IFileWriter>();
+
+            MessageHandlerInvoker = new HttpMessageInvoker(new IpDumper(FileWriterMock.Object)
+            {
+                InnerHandler = new Mock<HttpMessageHandler>(MockBehavior.Loose).Object
+            });
         }
 
         [Fact]
-        public async Task Handler_Must_BeAbleToRetrieveHttpContext()
+        public async Task Handler_Must_NotInvokeWriterIfContextIsNotAvailable()
         {
-            Assert.True(false, "Complete Implementation");
-            //const string localHostAddress = "http://localhost";
+            using (var httpRequestMessage = new HttpRequestMessage())
+            {
+                await MessageHandlerInvoker.SendAsync(httpRequestMessage, new CancellationToken());
 
-            //using (var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, localHostAddress))
-            //{
-            //    httpRequestMessage
-            //        .Properties[ApplicationSetting.HttpContextPropertyKey] =
-            //        new HttpContextWrapper(null);
-
-            //    //new HttpContext(new HttpRequest(null, localHostAddress, null), null)
-
-            //    // TODO: Dependency on File
-            //    await MessageHandlerInvoker.SendAsync(httpRequestMessage, new CancellationToken());
-            //}
+                FileWriterMock.Verify(x => x.AppendAllLines(It.IsAny<string[]>()), Times.Never());
+            }
         }
     }
 }
