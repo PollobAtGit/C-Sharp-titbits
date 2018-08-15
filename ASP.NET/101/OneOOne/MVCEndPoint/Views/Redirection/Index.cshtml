@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @ViewBag.sessionData
+</p>
+<p>
+    @ViewBag.AspSessionId
+</p>
+
+<p id="session-id-viewer">
+
+</p>
+
+@section Scripts {
+    <script type="text/javascript">
+        const cookie = document.cookie;
+        console.log(cookie);
+
+        document.getElementById('session-id-viewer').innerText = `Session ID: ${cookie}`;
+    </script>
+}

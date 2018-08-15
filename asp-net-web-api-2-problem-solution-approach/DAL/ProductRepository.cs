@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Model;
+using System.Collections.Generic;
 
 namespace DAL
 {
@@ -11,5 +12,7 @@ namespace DAL
             // TODO: Change Single may be 
             return ProductContext.Products.Single(cond);
         }
+
+        public IList<Product> GetAll => ProductContext.Products.ToList();
     }
 }

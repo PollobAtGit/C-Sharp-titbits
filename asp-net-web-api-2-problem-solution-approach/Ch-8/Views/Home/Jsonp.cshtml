@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Jsonp";
+}
+
+<h2>Jsonp</h2>
+
+<div class="container">
+    <ul data-bind="foreach: books">
+        <li>
+            <small data-bind="text: Id"></small>
+            <small data-bind="text: Name"></small>
+        </li>
+    </ul>
+</div>
+
+@*<div class="container">
+        <ul data-bind="foreach: books, visible: books().length > 0">
+            <li>
+                <h3 data-bind="text: Title"></h3>
+                <small data-bind="text: Author"></small>
+            </li>
+        </ul>
+    </div>*@
+
+@section Scripts{
+    <script type="text/javascript">
+
+        $(document).ready(() => {
+            const vm = new Apress.Books();
+            ko.applyBindings(vm);
+            vm.loadBooks();
+
+            loadYahooWeatherData();
+        });
+
+        const Apress = {};
+
+        Apress.Books = function () {
+            const self = this;
+
+            self.books = ko.observableArray([]);
+
+            self.loadBooks = () => {
+                $.ajax("http://localhost:2783/api/values", { dataType: 'jsonp' })
+                    .done((d) => {
+                        $.each(d, (i, item) => {
+                            self.books.push(item);
+                        })
+                    })
+                    .fail((xhr, status, error) => {
+                        alert(status);
+                    });
+            };
+        }
+
+        function processWeather(d) {
+            console.log(JSON.stringify(d));
+        }
+
+        // Nice hack!
+        // script tag has limitation on from which domain it may get information
+        // but there's no limitation on to which domain a script tag should point
+        // given the server knows about 'callback' approach & recognizes callback
+        // query parameter it will wrap the json result in a function invocation
+        // syntax with the name of the function itself
+
+        // So after the script tag is added to the HTML & the data is downloaded from
+        // server the script starts to EXECUTE which essentially means the function
+        // invocation syntax is executed & the function is defined in the host script
+        // causing the execution to be successful & process the data (json returned from server)
+
+        function loadYahooWeatherData() {
+
+            const script = document.createElement("script");
+
+            script.src = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20weather.forecast%20where%20woeid=%2210543%22&format=json&callback=processWeather";
+
+            script.onload = function () { this.remove(); }
+
+            const head = document.querySelector("head");
+
+            head.insertBefore(script, null);
+        }
+
+    </script>
+}

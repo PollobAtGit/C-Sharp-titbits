@@ -146,6 +146,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\QueryStringEncoderCheckerController.cs" />
     <Compile Include="Controllers\QueryStringProcessorController.cs" />
+    <Compile Include="Controllers\RedirectionController.cs" />
+    <Compile Include="Controllers\SessionTesterController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +193,8 @@
     <Content Include="Views\QueryStringProcessor\Index.cshtml" />
     <Content Include="Views\QueryStringEncoderChecker\Index.cshtml" />
     <Content Include="Views\Cookie\Index.cshtml" />
+    <Content Include="Views\SessionTester\Index.cshtml" />
+    <Content Include="Views\Redirection\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

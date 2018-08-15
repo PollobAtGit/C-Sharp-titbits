@@ -1,5 +1,6 @@
 ﻿using DAL;
 using Model;
+using System.Collections.Generic;
 
 namespace Service
 {
@@ -13,5 +14,7 @@ namespace Service
         }
 
         public Product FindById(int id) => Repository.FindBy(x => x.Id == id);
+
+        public IList<Product> FindAll => Repository.GetAll;
     }
 }

@@ -12,7 +12,8 @@ namespace DAL
             Products = new List<Product>
             {
                 new Product {Id = 1, Name = "Paste"},
-                new Product {Id = 2, Name = "Book"}
+                new Product {Id = 2, Name = "Book"},
+                new Product {Id = 3, Name = "Motherboard" }
             };
         }
     }
