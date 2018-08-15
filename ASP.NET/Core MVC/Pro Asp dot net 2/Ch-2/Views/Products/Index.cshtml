@@ -1,0 +1,26 @@
+﻿@model Product
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Products</h2>
+
+@*Interesting! Razor requires imports not for functionality rather for intellisense*@
+
+<ul>
+    <li>
+        @Model.Id
+    </li>
+    <li>
+        @Model.Name
+    </li>
+    <li>
+        @Model.Category
+    </li>
+    <li>
+        @Model.Price
+    </li>
+</ul>
+

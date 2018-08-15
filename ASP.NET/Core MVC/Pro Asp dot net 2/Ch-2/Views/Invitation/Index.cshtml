@@ -1,0 +1,43 @@
+﻿@model Ch_2.Models.GuestResponse
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<h4>Be a Guest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index" method="post">
+            <p>
+                <label asp-for="Name"></label>
+                <input asp-for="Name" />
+            </p>
+            <p>
+                <label asp-for="Email"></label>
+                <input asp-for="Email" />
+            </p>
+            <p>
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" />
+            </p>
+            <p>
+                <label asp-for="WillAttend"></label>
+                <select asp-for="WillAttend">
+                    <option value="">Choose An Option</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </p>
+            <input type="submit" />
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
