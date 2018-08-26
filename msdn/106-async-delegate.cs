@@ -21,7 +21,7 @@ class T
 
         return x + y;
     }
-    
+
     public static void Main()
     {
         // MainSync();
@@ -60,7 +60,7 @@ class T
         }
 
         // unless we are waiting for returned value main thread exists
-        // is the async operation starting even unless we invoke EndInvoke(...) ? 
+        // is the async operation starting even unless we invoke EndInvoke(...) ?
             // No. The async operation starts whenever we invoke BeginInvoke(...) because of scheduling algorithm/priorities it might seem
             // like the operation hasn't started yet
         // Console.WriteLine(binOp.EndInvoke(asyncAddResult));
