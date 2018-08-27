@@ -9,8 +9,6 @@ namespace _101.Forms
 {
     public partial class ViewState : System.Web.UI.Page
     {
-        private const string SecretKeyKeyName = "secret-key";
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,8 +24,17 @@ namespace _101.Forms
                     data is passed as base64 encoded to client in a hidden field
                 */
 
-                ViewState[SecretKeyKeyName] = Guid.NewGuid();
+                ViewState[AppSettings.SecretKeyKeyName] = Guid.NewGuid();
+
+                if (Session != null)
+                {
+                    var nationalId = Session.GetFromStorage(AppSettings.UserNationalId);
+                    if (nationalId == null)
+                        Session.SetToStorage(AppSettings.UserNationalId, Guid.NewGuid());
+                }
             }
+
+            nid.Text = Session.GetFromStorage(AppSettings.UserNationalId).ToString();
         }
 
         protected void btnIncr_Click(object sender, EventArgs e)
@@ -40,18 +47,16 @@ namespace _101.Forms
 
                 lblPreviousInt.Text = previousInt;
 
-                var secretKey = ViewState[SecretKeyKeyName];
+                var secretKey = ViewState[AppSettings.SecretKeyKeyName];
 
                 if (!string.IsNullOrWhiteSpace(secretKey?.ToString()))
                     lblSecretKey.Text = secretKey.ToString();
-
-                IncrementPureHtml();
             }
         }
 
-        private void IncrementPureHtml()
+        protected void redirectTo_Click(object sender, EventArgs e)
         {
-            //lblTxtPureHtml
+            Response.Redirect("./RedirectedToHere");
         }
     }
 }

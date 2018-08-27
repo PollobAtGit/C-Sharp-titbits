@@ -135,6 +135,8 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Forms\EventsInWebForm.aspx" />
+    <Content Include="Forms\RedirectedToHere.aspx" />
     <Content Include="Forms\ViewState.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -179,6 +181,7 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppSettings.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -201,6 +204,20 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\EventsInWebForm.aspx.cs">
+      <DependentUpon>EventsInWebForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\EventsInWebForm.aspx.designer.cs">
+      <DependentUpon>EventsInWebForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\RedirectedToHere.aspx.cs">
+      <DependentUpon>RedirectedToHere.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\RedirectedToHere.aspx.designer.cs">
+      <DependentUpon>RedirectedToHere.aspx</DependentUpon>
     </Compile>
     <Compile Include="Forms\ViewState.aspx.cs">
       <DependentUpon>ViewState.aspx</DependentUpon>

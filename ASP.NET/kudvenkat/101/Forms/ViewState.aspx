@@ -18,4 +18,6 @@
     --%>
 
     <input type="text" value="-99" />
+    <asp:TextBox ID="nid" runat="server" Width="350"></asp:TextBox>
+    <asp:Button ID="redirectTo" Text="Redirect me to somewhere" runat="server" OnClick="redirectTo_Click" />
 </asp:Content>

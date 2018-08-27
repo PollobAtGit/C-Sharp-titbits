@@ -7,18 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace _101 {
+namespace _101.Forms {
     
     
-    public partial class SiteMaster {
+    public partial class RedirectedToHere {
         
         /// <summary>
-        /// MainContent control.
+        /// secretKeyKeyValueFromViewStateWebForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        protected global::System.Web.UI.WebControls.TextBox secretKeyKeyValueFromViewStateWebForm;
+        
+        /// <summary>
+        /// txtSessionIdFromOriginalPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSessionIdFromOriginalPage;
     }
 }
