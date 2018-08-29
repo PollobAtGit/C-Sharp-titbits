@@ -10,69 +10,51 @@
 namespace _101.Forms {
     
     
-    public partial class ViewState {
+    public partial class WebPageEvents {
         
         /// <summary>
-        /// incrementedValue control.
+        /// postBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox incrementedValue;
+        protected global::System.Web.UI.WebControls.Button postBack;
         
         /// <summary>
-        /// btnIncr control.
+        /// textWillChangeOnAutoPostBack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIncr;
+        protected global::System.Web.UI.WebControls.TextBox textWillChangeOnAutoPostBack;
         
         /// <summary>
-        /// lblPreviousInt control.
+        /// textWillChange control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPreviousInt;
+        protected global::System.Web.UI.WebControls.TextBox textWillChange;
         
         /// <summary>
-        /// lblSecretKey control.
+        /// requiredField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSecretKey;
+        protected global::System.Web.UI.WebControls.TextBox requiredField;
         
         /// <summary>
-        /// inputNumberDisplayer control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputNumberDisplayer;
-        
-        /// <summary>
-        /// nid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nid;
-        
-        /// <summary>
-        /// redirectTo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button redirectTo;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
     }
 }

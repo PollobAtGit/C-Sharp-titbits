@@ -35,6 +35,12 @@ namespace _101.Forms
             }
 
             nid.Text = Session.GetFromStorage(AppSettings.UserNationalId).ToString();
+
+            // form data can be used to restore value of pure HTML field
+            var num = Request.Form["inputNumber"];
+
+            if (num != null)
+                inputNumberDisplayer.Text = num;
         }
 
         protected void btnIncr_Click(object sender, EventArgs e)

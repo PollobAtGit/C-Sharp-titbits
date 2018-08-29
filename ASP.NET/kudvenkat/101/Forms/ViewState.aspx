@@ -17,7 +17,8 @@
         <asp:TextBox ID="lblTxtPureHtml">0</asp:TextBox>
     --%>
 
-    <input type="text" value="-99" />
+    <input type="text" name="inputNumber" value="-99" />
+    <asp:TextBox ID="inputNumberDisplayer" runat="server" />
     <asp:TextBox ID="nid" runat="server" Width="350"></asp:TextBox>
     <asp:Button ID="redirectTo" Text="Redirect me to somewhere" runat="server" OnClick="redirectTo_Click" />
 </asp:Content>

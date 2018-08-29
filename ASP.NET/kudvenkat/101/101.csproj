@@ -138,6 +138,7 @@
     <Content Include="Forms\EventsInWebForm.aspx" />
     <Content Include="Forms\RedirectedToHere.aspx" />
     <Content Include="Forms\ViewState.aspx" />
+    <Content Include="Forms\WebPageEvents.aspx" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -205,6 +206,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Extensions.cs" />
     <Compile Include="Forms\EventsInWebForm.aspx.cs">
       <DependentUpon>EventsInWebForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -225,6 +227,13 @@
     </Compile>
     <Compile Include="Forms\ViewState.aspx.designer.cs">
       <DependentUpon>ViewState.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WebPageEvents.aspx.cs">
+      <DependentUpon>WebPageEvents.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Forms\WebPageEvents.aspx.designer.cs">
+      <DependentUpon>WebPageEvents.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
