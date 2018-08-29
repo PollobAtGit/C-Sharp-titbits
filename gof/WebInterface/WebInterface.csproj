@@ -158,12 +158,32 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Commands\AddCommand.cs" />
+    <Compile Include="App_Start\AppSettings.cs" />
+    <Compile Include="Commands\CalculatorCommand.cs" />
+    <Compile Include="Controllers\PlainTextInterface.cs" />
+    <Compile Include="Interfaces\BinaryOperation.cs" />
+    <Compile Include="Storage\Cache.cs" />
+    <Compile Include="Interfaces\Interface.cs" />
+    <Compile Include="Controllers\CalculatorController.cs" />
+    <Compile Include="Extensions\Extension.cs" />
+    <Compile Include="Factories\CommandFactory.cs" />
+    <Compile Include="Commands\DefaultCommand.cs" />
     <Compile Include="Controllers\EmployeeSalaryChangerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\SubtractCommand.cs" />
+    <Compile Include="Commands\MultiplyCommand.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Receivers\GeneralCalculator.cs" />
+    <Compile Include="Receivers\IAddable.cs" />
+    <Compile Include="Receivers\ICalculator.cs" />
+    <Compile Include="Receivers\IMultiplier.cs" />
+    <Compile Include="Receivers\ProgrammerCalculator.cs" />
+    <Compile Include="Receivers\ScientificCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
