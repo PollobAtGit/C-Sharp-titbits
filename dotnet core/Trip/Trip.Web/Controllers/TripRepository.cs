@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Trip.Web.Controllers
 {
@@ -26,5 +27,7 @@ namespace Trip.Web.Controllers
         internal List<Trip> GetAll() => Trips;
 
         internal void Add(Trip trip) => Trips.Add(item: trip);
+
+        internal Trip Find(Trip trip) => Trips.Find(x => x.Id == trip.Id);
     }
 }

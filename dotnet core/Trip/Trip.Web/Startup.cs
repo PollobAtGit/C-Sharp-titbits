@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 using Trip.Web.Controllers;
 
 namespace Trip.Web
@@ -28,6 +29,12 @@ namespace Trip.Web
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // swagger works as a moddleware
+            // v1 as Version in Info should be same as v1 as SwaggerDoc name
+            services
+                .AddSwaggerGen(o => o.SwaggerDoc("v1",
+                new Info { Title = "trip app", Version = "v1" }));
+
             services.AddTransient<TripRepository>();
         }
 
@@ -37,6 +44,12 @@ namespace Trip.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+
+                // TODO: swagger not working for some reason
+
+                // swagger adds routing. so make sure to add .UseSwagger(...) before .UseMvc()
+                app.UseSwagger();
+                app.UseSwaggerUI(o => o.SwaggerEndpoint("/swagger/v1/swagger.json", "Trip Tracker v1 [0.1]"));
             }
             else
             {

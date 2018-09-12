@@ -10,5 +10,11 @@ namespace Trip.Web.Controllers
 
         [Required]
         public string PickupPoint { get; set; }
+
+        public void Copy(Trip copyInstance)
+        {
+            Destination = copyInstance.Destination;
+            PickupPoint = copyInstance.PickupPoint;
+        }
     }
 }

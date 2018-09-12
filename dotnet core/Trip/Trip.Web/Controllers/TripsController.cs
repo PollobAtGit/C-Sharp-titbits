@@ -49,5 +49,15 @@ namespace Trip.Web.Controllers
 
             return Redirect(Request.GetDisplayUrl());
         }
+
+        [HttpPut]
+        public ActionResult Put(Trip trip)
+        {
+            var t = Repository.Find(trip: trip);
+
+            t.Copy(copyInstance: trip);
+
+            return Redirect(Request.GetDisplayUrl());
+        }
     }
 }
