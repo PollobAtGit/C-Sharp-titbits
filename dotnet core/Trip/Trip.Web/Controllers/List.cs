@@ -1,4 +1,6 @@
-﻿namespace Trip.Web.Controllers
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Trip.Web.Controllers
 {
     public class Trip
     {
@@ -6,6 +8,7 @@
 
         public string Destination { get; set; }
 
+        [Required]
         public string PickupPoint { get; set; }
     }
 }

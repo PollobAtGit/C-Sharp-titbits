@@ -5,7 +5,7 @@ namespace Trip.Web.Controllers
 {
     public class TripRepository
     {
-        public List<Trip> GetAll() => new List<Trip>
+        static List<Trip> _trips = new List<Trip>
         {
             new Trip
             {
@@ -20,5 +20,11 @@ namespace Trip.Web.Controllers
                 PickupPoint = "pickup place-xx"
             }
         };
+
+        static List<Trip> Trips => _trips;
+
+        internal List<Trip> GetAll() => Trips;
+
+        internal void Add(Trip trip) => Trips.Add(item: trip);
     }
 }
