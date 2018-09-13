@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -35,7 +36,9 @@ namespace Trip.Web
                 .AddSwaggerGen(o => o.SwaggerDoc("v1",
                 new Info { Title = "trip app", Version = "v1" }));
 
-            services.AddTransient<TripRepository>();
+            //services.AddTransient<TripRepository>();
+            services.AddTransient<TripContextRepository>();
+            services.AddDbContext<TripContext>(x => x.UseSqlite("Data Source=trips-db.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

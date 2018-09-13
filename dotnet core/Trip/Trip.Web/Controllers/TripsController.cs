@@ -14,20 +14,15 @@ namespace Trip.Web.Controllers
     [Route("api/[controller]")]
     public class TripsController : ControllerBase
     {
-        TripRepository Repository { get; set; }
+        TripContextRepository Repository { get; set; }
 
-        protected TripsController()
-        {
-            Repository = new TripRepository();
-        }
-
-        public TripsController(TripRepository repository)
+        public TripsController(TripContextRepository repository)
         {
             Repository = repository;
         }
 
         [HttpGet]
-        public ActionResult<List<Trip>> Get() => Repository.GetAll();
+        public async Task<ActionResult<List<Trip>>> GetAsync() => await Repository.GetAllAsync();
 
         [HttpPost]
 
@@ -36,14 +31,15 @@ namespace Trip.Web.Controllers
 
         // [ApiController] attribute also validate the model on it's own
 
-        public ActionResult Post(Trip trip)
+        public async Task<ActionResult> PostAsync(Trip trip)
         {
             // ModelState validation is not required because of [ApiController] 
             //controller attribute
 
             //ModelState.IsValid
 
-            Repository.Add(trip: trip);
+            await Task.Run(() => new TripRepository().Add(trip: trip));
+            //await Repository.AddAsync(trip: trip);
 
             Trace.WriteLine(Request.GetDisplayUrl());
 
@@ -51,9 +47,9 @@ namespace Trip.Web.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put(Trip trip)
+        public async Task<ActionResult> PutAsync(Trip trip)
         {
-            var t = Repository.Find(trip: trip);
+            var t = await Repository.FindAsync(trip: trip);
 
             t.Copy(copyInstance: trip);
 
