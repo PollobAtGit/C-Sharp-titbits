@@ -8,13 +8,6 @@ namespace Trip.Web.Controllers
 
         public TripContext(DbContextOptions<TripContext> options) : base(options) { }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=trips-db;Trusted_Connection=True");
-
-        //    Database.EnsureCreatedAsync();
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var entityTypeBuilder = modelBuilder.Entity<Trip>();

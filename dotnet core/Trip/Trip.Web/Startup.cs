@@ -36,7 +36,7 @@ namespace Trip.Web
                 .AddSwaggerGen(o => o.SwaggerDoc("v1",
                 new Info { Title = "trip app", Version = "v1" }));
 
-            //services.AddTransient<TripRepository>();
+            services.AddTransient<TripRepository>();
             services.AddTransient<TripContextRepository>();
             services.AddDbContext<TripContext>(x => x.UseSqlite("Data Source=trips-db.db"));
         }

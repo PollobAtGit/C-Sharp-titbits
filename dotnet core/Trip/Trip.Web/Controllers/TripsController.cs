@@ -38,8 +38,8 @@ namespace Trip.Web.Controllers
 
             //ModelState.IsValid
 
-            await Task.Run(() => new TripRepository().Add(trip: trip));
-            //await Repository.AddAsync(trip: trip);
+            await Repository.AddAsync(trip: trip);
+            Repository.SaveAsync();
 
             Trace.WriteLine(Request.GetDisplayUrl());
 

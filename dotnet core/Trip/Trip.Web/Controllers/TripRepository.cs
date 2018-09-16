@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Trip.Web.Controllers
 {
@@ -24,10 +25,10 @@ namespace Trip.Web.Controllers
 
         static List<Trip> Trips => _trips;
 
-        internal List<Trip> GetAll() => Trips;
+        internal async Task<List<Trip>> GetAllAsync() => await Task.Run(() => Trips);
 
-        internal void Add(Trip trip) => Trips.Add(item: trip);
+        internal async Task AddAsync(Trip trip) => await Task.Run(() => Trips.Add(item: trip));
 
-        internal Trip Find(Trip trip) => Trips.Find(x => x.Id == trip.Id);
+        internal async Task<Trip> FindAsync(Trip trip) => await Task.Run(() => Trips.Find(x => x.Id == trip.Id));
     }
 }
