@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DAL.Model;
+using Microsoft.EntityFrameworkCore;
 
-namespace Trip.Web.Controllers
+namespace DAL.Context
 {
     public class TripContext : DbContext
     {

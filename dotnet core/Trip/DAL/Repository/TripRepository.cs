@@ -1,9 +1,10 @@
-﻿using System;
+﻿using DAL.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Trip.Web.Controllers
+namespace DAL.Repository
 {
     public class TripRepository
     {

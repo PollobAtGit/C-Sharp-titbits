@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Trip.Web.Migrations
+namespace DAL.Migrations
 {
     public partial class Init : Migration
     {

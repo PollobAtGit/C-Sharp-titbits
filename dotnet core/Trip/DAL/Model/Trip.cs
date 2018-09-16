@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Trip.Web.Controllers
+namespace DAL.Model
 {
     public class Trip
     {
