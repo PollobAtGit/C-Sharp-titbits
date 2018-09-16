@@ -1,10 +1,10 @@
-﻿using DAL.Model;
+﻿using DataAccessLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DAL.Repository
+namespace DataAccessLayer.Repository
 {
     public class TripRepository
     {
@@ -26,10 +26,10 @@ namespace DAL.Repository
 
         static List<Trip> Trips => _trips;
 
-        internal async Task<List<Trip>> GetAllAsync() => await Task.Run(() => Trips);
+        public async Task<List<Trip>> GetAllAsync() => await Task.Run(() => Trips);
 
-        internal async Task AddAsync(Trip trip) => await Task.Run(() => Trips.Add(item: trip));
+        public async Task AddAsync(Trip trip) => await Task.Run(() => Trips.Add(item: trip));
 
-        internal async Task<Trip> FindAsync(Trip trip) => await Task.Run(() => Trips.Find(x => x.Id == trip.Id));
+        public async Task<Trip> FindAsync(Trip trip) => await Task.Run(() => Trips.Find(x => x.Id == trip.Id));
     }
 }

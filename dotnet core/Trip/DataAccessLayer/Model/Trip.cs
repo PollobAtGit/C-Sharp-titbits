@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DAL.Model
+namespace DataAccessLayer.Model
 {
     public class Trip
     {
@@ -10,6 +10,8 @@ namespace DAL.Model
 
         [Required]
         public string PickupPoint { get; set; }
+
+        public override string ToString() => $"Id: {Id}; destination: {Destination}; Pickup point: {PickupPoint}";
 
         public void Copy(Trip copyInstance)
         {

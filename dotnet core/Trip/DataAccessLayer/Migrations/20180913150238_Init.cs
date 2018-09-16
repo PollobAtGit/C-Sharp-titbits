@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DAL.Migrations
+namespace DataAccessLayer.Migrations
 {
     public partial class Init : Migration
     {

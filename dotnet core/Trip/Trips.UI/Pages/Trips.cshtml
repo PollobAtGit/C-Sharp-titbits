@@ -6,3 +6,20 @@
 
 <h2>Trips</h2>
 
+@if (!@Model.DoesAnyTripExist)
+{
+    <p>
+        No Trips to displaty
+    </p>
+}
+else
+{
+    <ol>
+        @foreach (var trip in @Model.Trips)
+        {
+            <li>
+                @trip
+            </li>
+        }
+    </ol>
+}

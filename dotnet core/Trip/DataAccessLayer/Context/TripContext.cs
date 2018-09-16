@@ -1,7 +1,7 @@
-﻿using DAL.Model;
+﻿using DataAccessLayer.Model;
 using Microsoft.EntityFrameworkCore;
 
-namespace DAL.Context
+namespace DataAccessLayer.Context
 {
     public class TripContext : DbContext
     {

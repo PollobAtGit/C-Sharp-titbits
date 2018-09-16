@@ -1,12 +1,12 @@
-﻿using DAL.Context;
-using DAL.Model;
+﻿using DataAccessLayer.Context;
+using DataAccessLayer.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DAL.Repository
+namespace DataAccessLayer.Repository
 {
     public class TripContextRepository
     {
