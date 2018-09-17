@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Trips.UI.Filter;
+using Trips.UI.Operation;
 
 namespace Trips.UI
 {
@@ -33,10 +35,9 @@ namespace Trips.UI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            var mvcBuilder = services.AddMvc();
-
-            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            services
+                .AddMvc(o => o.Filters.Add(new LogPageFilter()))
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // if anti forgery token validation is not enabled then Pages will
             // not be able to validate the form on it's own
@@ -47,6 +48,24 @@ namespace Trips.UI
             services.AddTransient<TripRepository>();
             services.AddTransient<TripContextRepository>();
             services.AddDbContext<TripContext>(x => x.UseSqlite("Data Source=./../trips-db.db"));
+
+            IOCBehaviorTestDependencies(services);
+        }
+
+        private void IOCBehaviorTestDependencies(IServiceCollection services)
+        {
+            //services.AddTransient<IOperation, Operation.Operation>();
+            //services.AddScoped<IScopedOperation, Operation.Operation>();
+            //services.AddSingleton<ISingletonOperation, Operation.Operation>();
+            //services.AddTransient<DummyOperationService>();
+
+            services.AddTransient<OperationService>();
+
+            // new instance each resolution
+            //services.AddTransient<Operation.Operation>();
+
+            // new instance each HTTP request
+            services.AddScoped<Operation.Operation>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

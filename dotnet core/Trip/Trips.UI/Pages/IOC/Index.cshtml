@@ -1,0 +1,92 @@
+﻿@page
+@model Trips.UI.Pages.IOC.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>IOC Index</h2>
+
+<table class="table">
+    <thead>
+
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <label>@nameof(Model.Operation)</label>
+            </td>
+            <td>
+                <label>@Model.Operation.OperationId</label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>@nameof(Model.ViaServiceOperation)</label>
+            </td>
+            <td>
+                <label>@Model.ViaServiceOperation.OperationId</label>
+            </td>
+        </tr>
+        @*<tr>
+                <td>
+                    <label>@nameof(Model.TransientOperation)</label>
+                </td>
+                <td>
+                    <label>@Model.TransientOperation.OperationId</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>@nameof(Model.ScopedOperation)</label>
+                </td>
+                <td>
+                    <label>@Model.SingletonOperation.OperationId</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>@nameof(Model.SingletonOperation)</label>
+                </td>
+                <td>
+                    <label>@Model.SingletonOperation.OperationId</label>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <label>@nameof(Model.DummyTransientOperation)</label>
+                </td>
+                <td>
+                    <label>@Model.DummyTransientOperation.OperationId</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>@nameof(Model.DummyScopedOperation)</label>
+                </td>
+                <td>
+                    <label>@Model.DummySingletonOperation.OperationId</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>@nameof(Model.DummySingletonOperation)</label>
+                </td>
+                <td>
+                    <label>@Model.DummySingletonOperation.OperationId</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label>@nameof(Model.Operation)</label>
+                </td>
+                <td>
+                    <label>@Model.Operation.OperationId</label>
+                </td>
+            </tr>*@
+    </tbody>
+</table>
+
+<a asp-page="index">Redirect to this page</a>

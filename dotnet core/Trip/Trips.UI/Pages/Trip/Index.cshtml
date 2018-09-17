@@ -30,7 +30,7 @@ else
                 </td>
                 <td>
                     @*asp-route-id simply puts the given value as [id=value] query parameter*@
-                    <a class="btn btn-danger" asp-page="delete" asp-route-id="@trip.Id">
+                    <a name="delete-anchor" class="btn btn-danger" asp-page="delete" asp-route-id="@trip.Id">
                         Delete
                     </a>
                 </td>
@@ -46,3 +46,27 @@ else
 *@
 
 <a asp-page="create" class="btn btn-primary">Create new Trip</a>
+
+@section Scripts {
+<script type="application/javascript">
+    $('a[name=delete-anchor]').click(function(o) {
+
+        const deleteUrl = o.currentTarget.href;
+        const queryString = {};
+
+        deleteUrl
+        .substring(deleteUrl.indexOf('?') + 1).split('&')
+        .forEach(function(x) {
+            const kv = x.split('=');
+            queryString[kv[0]] = kv[1];
+        })
+
+        const confirmationStatus =
+            confirm(`Do you really want to delete Trip with id: ${queryString['id']}`)
+
+        if(!confirmationStatus) {
+            o.preventDefault();
+        }
+    })
+</script>
+}
