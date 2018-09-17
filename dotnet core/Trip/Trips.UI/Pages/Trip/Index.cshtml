@@ -1,0 +1,48 @@
+﻿@page
+@model Trips.UI.Pages.TripIndexModel
+@{
+    ViewData["Title"] = "Trips";
+}
+
+<h2>Trips</h2>
+
+@if (!@Model.DoesAnyTripExist)
+{
+    <p>
+        No Trips to display
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <td>
+                    Trip
+                </td>
+            </tr>
+        </thead>
+        @foreach (var trip in @Model.Trips)
+        {
+            <tr>
+                <td>
+                    @trip
+                </td>
+                <td>
+                    @*asp-route-id simply puts the given value as [id=value] query parameter*@
+                    <a class="btn btn-danger" asp-page="delete" asp-route-id="@trip.Id">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+@*
+    asp-page works based on routing information. If 'create' page didn't exist
+    then page browser will be redirected to current (Index) page
+*@
+
+<a asp-page="create" class="btn btn-primary">Create new Trip</a>

@@ -23,6 +23,8 @@ namespace DataAccessLayer.Repository
 
         public async Task<Trip> FindAsync(Trip trip) => await Context.Trips.FindAsync(trip);
 
-        public void SaveAsync() => Context.SaveChangesAsync();
+        public async Task SaveAsync() => await Context.SaveChangesAsync();
+
+        public void Remove(Trip trip) => Context.Trips.Remove(trip);
     }
 }

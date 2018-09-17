@@ -33,12 +33,20 @@ namespace Trips.UI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            var mvcBuilder = services.AddMvc();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            mvcBuilder.SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+
+            // if anti forgery token validation is not enabled then Pages will
+            // not be able to validate the form on it's own
+
+            //mvcBuilder.AddRazorPagesOptions(o =>
+            //o.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute()));
 
             services.AddTransient<TripRepository>();
             services.AddTransient<TripContextRepository>();
-            services.AddDbContext<TripContext>(x => x.UseSqlite("Data Source=trips-db.db"));
+            services.AddDbContext<TripContext>(x => x.UseSqlite("Data Source=./../trips-db.db"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

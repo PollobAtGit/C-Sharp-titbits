@@ -1,0 +1,29 @@
+﻿@page
+@model Trips.UI.Pages.Trip.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<form method="post">
+    @*<div class="form-group">
+        <label for="id">Id</label>
+        <input type="text" asp-for="Trip.Id" class="form-control" />
+    </div>*@
+
+    <div class="form-group">
+        <label for="destination">Destination</label>
+        <input type="text" asp-for="Trip.Destination" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="pickupPoint">Pickup point</label>
+        <input type="text" asp-for="Trip.PickupPoint" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" />
+    </div>
+</form>
+

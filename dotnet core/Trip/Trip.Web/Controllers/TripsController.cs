@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using DAL.Repository;
-using DAL.Model;
+using DataAccessLayer.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using T = DataAccessLayer.Model.Trip;
 
 namespace Trip.Web.Controllers
 {
@@ -24,7 +24,7 @@ namespace Trip.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<DAL.Model.Trip>>> GetAsync() => await Repository.GetAllAsync();
+        public async Task<ActionResult<List<T>>> GetAsync() => await Repository.GetAllAsync();
 
         [HttpPost]
 
@@ -33,7 +33,7 @@ namespace Trip.Web.Controllers
 
         // [ApiController] attribute also validate the model on it's own
 
-        public async Task<ActionResult> PostAsync(DAL.Model.Trip trip)
+        public async Task<ActionResult> PostAsync(T trip)
         {
             // ModelState validation is not required because of [ApiController] 
             //controller attribute
@@ -49,7 +49,7 @@ namespace Trip.Web.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> PutAsync(DAL.Model.Trip trip)
+        public async Task<ActionResult> PutAsync(T trip)
         {
             var t = await Repository.FindAsync(trip: trip);
 

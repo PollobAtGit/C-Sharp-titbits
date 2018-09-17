@@ -2,29 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DataAccessLayer.Model;
 using DataAccessLayer.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using T = DataAccessLayer.Model.Trip;
 
-namespace Trips.UI.Pages
+namespace Trips.UI.Pages.Trip
 {
-    public class TripsModel : PageModel
+    public class DeleteModel : PageModel
     {
         internal TripContextRepository Repository { get; }
 
-        public List<Trip> Trips { get; set; }
-
-        public bool DoesAnyTripExist => Trips.Any();
-
-        public TripsModel(TripContextRepository repository)
+        public DeleteModel(TripContextRepository repository)
         {
             Repository = repository;
         }
 
-        public async Task OnGet()
+        public async Task<ActionResult> OnGet(int id)
         {
-            Trips = await Repository.GetAllAsync();
+            Repository.Remove(new T { Id = id });
+            await Repository.SaveAsync();
+
+            return RedirectToPage("Index");
         }
     }
 }
