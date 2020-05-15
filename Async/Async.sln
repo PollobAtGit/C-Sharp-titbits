@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29403.142
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Async", "Async\Async.csproj", "{33896FED-090B-4626-A371-8FA46D14E91E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FaviconBrowser", "FaviconBrowser\FaviconBrowser.csproj", "{FF26F65E-0DF6-4DC9-B37A-7CB5387244ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{E8629CD8-0980-4460-B338-D25989942C12}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33896FED-090B-4626-A371-8FA46D14E91E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33896FED-090B-4626-A371-8FA46D14E91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33896FED-090B-4626-A371-8FA46D14E91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33896FED-090B-4626-A371-8FA46D14E91E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF26F65E-0DF6-4DC9-B37A-7CB5387244ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF26F65E-0DF6-4DC9-B37A-7CB5387244ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF26F65E-0DF6-4DC9-B37A-7CB5387244ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF26F65E-0DF6-4DC9-B37A-7CB5387244ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8629CD8-0980-4460-B338-D25989942C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8629CD8-0980-4460-B338-D25989942C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8629CD8-0980-4460-B338-D25989942C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8629CD8-0980-4460-B338-D25989942C12}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3294BC5-7878-449F-95DA-003BC1ABE7B5}
+	EndGlobalSection
+EndGlobal
