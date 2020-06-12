@@ -195,3 +195,4 @@ packages/
 
 .script_temp/
 .vs/
+git-stdout
